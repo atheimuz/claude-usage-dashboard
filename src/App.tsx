@@ -3,6 +3,7 @@ import { HashRouter, Routes, Route } from "react-router-dom"
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import { TooltipProvider } from "@/components/ui/tooltip"
 import { Layout } from "@/components/layout/Layout"
+import { ScrollToTop } from "@/components/layout/ScrollToTop"
 import { Skeleton } from "@/components/ui/skeleton"
 
 const HomePage = lazy(() => import("@/pages/HomePage").then(m => ({ default: m.HomePage })))
@@ -25,6 +26,7 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <HashRouter>
+        <ScrollToTop />
         <TooltipProvider>
           <Suspense fallback={<PageFallback />}>
             <Routes>
