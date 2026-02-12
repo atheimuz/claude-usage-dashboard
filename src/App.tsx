@@ -1,5 +1,5 @@
 import { lazy, Suspense } from "react"
-import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { HashRouter, Routes, Route } from "react-router-dom"
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import { TooltipProvider } from "@/components/ui/tooltip"
 import { Layout } from "@/components/layout/Layout"
@@ -24,7 +24,7 @@ function PageFallback() {
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <BrowserRouter>
+      <HashRouter>
         <TooltipProvider>
           <Suspense fallback={<PageFallback />}>
             <Routes>
@@ -36,7 +36,7 @@ function App() {
             </Routes>
           </Suspense>
         </TooltipProvider>
-      </BrowserRouter>
+      </HashRouter>
     </QueryClientProvider>
   )
 }

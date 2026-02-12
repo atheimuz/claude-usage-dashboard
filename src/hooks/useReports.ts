@@ -2,7 +2,7 @@ import { useQuery, useQueries } from "@tanstack/react-query"
 import type { DailyReport, FileEntry } from "@/types"
 
 async function fetchFileList(): Promise<string[]> {
-  const res = await fetch("/data/index.json")
+  const res = await fetch(`${import.meta.env.BASE_URL}data/index.json`)
   if (!res.ok) throw new Error("파일 목록을 불러올 수 없습니다.")
   const data = await res.json()
   const entries = data.files as FileEntry[]
@@ -10,7 +10,7 @@ async function fetchFileList(): Promise<string[]> {
 }
 
 async function fetchReport(file: string): Promise<DailyReport> {
-  const res = await fetch(`/data/${file}`)
+  const res = await fetch(`${import.meta.env.BASE_URL}data/${file}`)
   if (!res.ok) throw new Error(`파일을 찾을 수 없습니다: ${file}`)
   return res.json()
 }
