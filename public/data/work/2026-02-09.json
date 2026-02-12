@@ -1,0 +1,419 @@
+{
+  "date": "2026-02-09",
+  "identifier": "work",
+  "filename": "work/2026-02-09",
+  "overview": {
+    "totalSessions": 28,
+    "totalToolCalls": 0,
+    "projectCount": 0,
+    "avgMessagesPerSession": 39.4,
+    "avgToolCallsPerSession": 23.2
+  },
+  "projectSessions": [],
+  "techStack": {
+    "languages": [
+      {
+        "name": "TypeScript"
+      },
+      {
+        "name": "JavaScript"
+      }
+    ],
+    "frameworks": [
+      {
+        "name": "Tailwind"
+      },
+      {
+        "name": "Radix UI"
+      },
+      {
+        "name": "Zustand"
+      },
+      {
+        "name": "TanStack"
+      }
+    ],
+    "tools": [
+      {
+        "name": "Git"
+      },
+      {
+        "name": "Vite"
+      },
+      {
+        "name": "npm"
+      },
+      {
+        "name": "pnpm"
+      },
+      {
+        "name": "ESLint"
+      }
+    ]
+  },
+  "claudeUsage": {
+    "modes": [
+      {
+        "name": "Accept Edits 모드",
+        "description": "Accept Edits 모드"
+      },
+      {
+        "name": "Plan Mode",
+        "description": "Plan Mode"
+      }
+    ],
+    "features": [],
+    "delegationStyle": [],
+    "subAgentUsages": [
+      {
+        "agentType": "Explore",
+        "count": 12,
+        "description": "코드베이스 탐색 및 구조 분석"
+      },
+      {
+        "agentType": "Plan",
+        "count": 2,
+        "description": "구현 계획 설계"
+      }
+    ]
+  },
+  "promptPatterns": {
+    "effective": [
+      "구체적인 요구사항과 기대 동작을 함께 제시",
+      "파일 참조를 통한 컨텍스트 제공",
+      "개방형 질문으로 AI의 분석 유도"
+    ],
+    "conversationFlow": []
+  },
+  "toolStats": [
+    {
+      "toolName": "Read",
+      "usageCount": 278,
+      "primaryUse": "파일 읽기"
+    },
+    {
+      "toolName": "Bash",
+      "usageCount": 109,
+      "primaryUse": "Git 작업, 명령 실행, 패키지 관리"
+    },
+    {
+      "toolName": "Edit",
+      "usageCount": 64,
+      "primaryUse": "파일 수정"
+    },
+    {
+      "toolName": "Write",
+      "usageCount": 48,
+      "primaryUse": "파일 생성"
+    },
+    {
+      "toolName": "TodoWrite",
+      "usageCount": 35,
+      "primaryUse": ""
+    },
+    {
+      "toolName": "Grep",
+      "usageCount": 28,
+      "primaryUse": "코드 검색"
+    },
+    {
+      "toolName": "Glob",
+      "usageCount": 28,
+      "primaryUse": "파일 탐색"
+    },
+    {
+      "toolName": "ExitPlanMode",
+      "usageCount": 24,
+      "primaryUse": ""
+    },
+    {
+      "toolName": "AskUserQuestion",
+      "usageCount": 21,
+      "primaryUse": ""
+    },
+    {
+      "toolName": "Task",
+      "usageCount": 14,
+      "primaryUse": "Sub Agent(Explore)"
+    }
+  ],
+  "taskTypes": [
+    {
+      "type": "기타",
+      "count": 15,
+      "description": "53.6%"
+    },
+    {
+      "type": "수정",
+      "count": 11,
+      "description": "39.3%"
+    },
+    {
+      "type": "코딩",
+      "count": 11,
+      "description": "39.3%"
+    },
+    {
+      "type": "디버깅",
+      "count": 9,
+      "description": "32.1%"
+    },
+    {
+      "type": "설계/기획",
+      "count": 9,
+      "description": "32.1%"
+    },
+    {
+      "type": "테스트",
+      "count": 8,
+      "description": "28.6%"
+    },
+    {
+      "type": "리팩토링",
+      "count": 4,
+      "description": "14.3%"
+    },
+    {
+      "type": "학습",
+      "count": 3,
+      "description": "10.7%"
+    },
+    {
+      "type": "설정",
+      "count": 3,
+      "description": "10.7%"
+    },
+    {
+      "type": "문서화",
+      "count": 3,
+      "description": "10.7%"
+    },
+    {
+      "type": "스타일링",
+      "count": 2,
+      "description": "7.1%"
+    },
+    {
+      "type": "데이터/DB",
+      "count": 1,
+      "description": "3.6%"
+    },
+    {
+      "type": "배포/CI",
+      "count": 1,
+      "description": "3.6%"
+    },
+    {
+      "type": "보안",
+      "count": 1,
+      "description": "3.6%"
+    }
+  ],
+  "sessionDetails": [
+    {
+      "groupName": "세션 1: 기타",
+      "taskTypes": [],
+      "approach": "직접 도구 호출로 작업 수행",
+      "mainTasks": "",
+      "changeScale": "1개 파일, 13건 도구 호출"
+    },
+    {
+      "groupName": "세션 2: 기타",
+      "taskTypes": [],
+      "approach": "Plan Mode 사용",
+      "mainTasks": "",
+      "changeScale": "2개 파일, 14건 도구 호출"
+    },
+    {
+      "groupName": "세션 3: 기타",
+      "taskTypes": [],
+      "approach": "Sub Agent 활용 (Explore)Plan Mode 사용",
+      "mainTasks": "",
+      "changeScale": "8개 파일, 67건 도구 호출"
+    },
+    {
+      "groupName": "세션 4: 기타",
+      "taskTypes": [],
+      "approach": "간단한 대화형 작업",
+      "mainTasks": "",
+      "changeScale": "0개 파일, 6건 도구 호출"
+    },
+    {
+      "groupName": "세션 5: 수정",
+      "taskTypes": [],
+      "approach": "Sub Agent 활용 (Explore)Plan Mode 사용",
+      "mainTasks": "",
+      "changeScale": "1개 파일, 10건 도구 호출"
+    },
+    {
+      "groupName": "세션 6: 기타",
+      "taskTypes": [],
+      "approach": "간단한 대화형 작업",
+      "mainTasks": "",
+      "changeScale": "0개 파일, 0건 도구 호출"
+    },
+    {
+      "groupName": "세션 7: 코딩, 수정, 테스트, 설계/기획",
+      "taskTypes": [],
+      "approach": "직접 도구 호출로 작업 수행",
+      "mainTasks": "",
+      "changeScale": "5개 파일, 14건 도구 호출"
+    },
+    {
+      "groupName": "세션 8: 기타",
+      "taskTypes": [],
+      "approach": "간단한 대화형 작업",
+      "mainTasks": "",
+      "changeScale": "1개 파일, 6건 도구 호출"
+    },
+    {
+      "groupName": "세션 9: 수정",
+      "taskTypes": [],
+      "approach": "Plan Mode 사용",
+      "mainTasks": "",
+      "changeScale": "1개 파일, 3건 도구 호출"
+    },
+    {
+      "groupName": "세션 10: 기타",
+      "taskTypes": [],
+      "approach": "Sub Agent 활용 (Explore)",
+      "mainTasks": "",
+      "changeScale": "2개 파일, 37건 도구 호출"
+    },
+    {
+      "groupName": "세션 11: 코딩, 리팩토링, 수정, 테스트, 설계/기획, 설정, 스타일링, 문서화",
+      "taskTypes": [],
+      "approach": "Plan Mode 사용",
+      "mainTasks": "",
+      "changeScale": "1개 파일, 21건 도구 호출"
+    },
+    {
+      "groupName": "세션 12: 코딩, 리팩토링, 수정, 테스트",
+      "taskTypes": [],
+      "approach": "간단한 대화형 작업",
+      "mainTasks": "",
+      "changeScale": "1개 파일, 3건 도구 호출"
+    },
+    {
+      "groupName": "세션 13: 코딩, 리팩토링, 수정, 테스트",
+      "taskTypes": [],
+      "approach": "직접 도구 호출로 작업 수행",
+      "mainTasks": "",
+      "changeScale": "3개 파일, 12건 도구 호출"
+    },
+    {
+      "groupName": "세션 14: 기타",
+      "taskTypes": [],
+      "approach": "Plan Mode 사용",
+      "mainTasks": "",
+      "changeScale": "2개 파일, 13건 도구 호출"
+    },
+    {
+      "groupName": "세션 15: 기타",
+      "taskTypes": [],
+      "approach": "간단한 대화형 작업",
+      "mainTasks": "",
+      "changeScale": "1개 파일, 6건 도구 호출"
+    },
+    {
+      "groupName": "세션 16: 기타",
+      "taskTypes": [],
+      "approach": "Sub Agent 활용 (Explore)Plan Mode 사용",
+      "mainTasks": "",
+      "changeScale": "6개 파일, 28건 도구 호출"
+    },
+    {
+      "groupName": "세션 17: 기타",
+      "taskTypes": [],
+      "approach": "Sub Agent 활용 (Explore, Plan)",
+      "mainTasks": "",
+      "changeScale": "7개 파일, 32건 도구 호출"
+    },
+    {
+      "groupName": "세션 18: 코딩",
+      "taskTypes": [],
+      "approach": "Sub Agent 활용 (Explore, Plan)Plan Mode 사용",
+      "mainTasks": "",
+      "changeScale": "1개 파일, 4건 도구 호출"
+    },
+    {
+      "groupName": "세션 19: 코딩, 디버깅, 수정, 테스트, 설계/기획, 데이터/DB",
+      "taskTypes": [],
+      "approach": "직접 도구 호출로 작업 수행",
+      "mainTasks": "",
+      "changeScale": "5개 파일, 21건 도구 호출"
+    },
+    {
+      "groupName": "세션 20: 코딩, 리팩토링, 수정, 테스트, 설계/기획, 학습, 문서화",
+      "taskTypes": [],
+      "approach": "Plan Mode 사용",
+      "mainTasks": "",
+      "changeScale": "2개 파일, 15건 도구 호출"
+    }
+  ],
+  "learningInsights": [
+    "하루 동안 총 649회의 도구 호출이 있었으며, 활발한 개발 활동이 있었습니다",
+    "Sub Agent를 14회 위임하여 복잡한 작업을 분산 처리했습니다"
+  ],
+  "workflowPatterns": [
+    {
+      "name": "Read → Read → Read (147회)",
+      "flow": ""
+    },
+    {
+      "name": "Bash → Bash → Bash (39회)",
+      "flow": ""
+    },
+    {
+      "name": "Edit → Edit → Edit (28회)",
+      "flow": ""
+    },
+    {
+      "name": "Read → Read → Write (14회)",
+      "flow": ""
+    },
+    {
+      "name": "TodoWrite → Write → TodoWrite (13회)",
+      "flow": ""
+    }
+  ],
+  "usageEvaluation": {
+    "overallScore": 79,
+    "maxScore": 100,
+    "categories": [
+      {
+        "name": "의도 전달력",
+        "score": 25,
+        "maxScore": 25,
+        "description": "수정비율 0%"
+      },
+      {
+        "name": "작업 효율성",
+        "score": 22,
+        "maxScore": 30,
+        "description": "재작업 15건"
+      },
+      {
+        "name": "도구 적합성",
+        "score": 18,
+        "maxScore": 25,
+        "description": "Bash 안티패턴 66건"
+      },
+      {
+        "name": "워크플로우 성숙도",
+        "score": 14,
+        "maxScore": 20,
+        "description": ""
+      }
+    ],
+    "strengths": [
+      "수정 지시가 적어 초기 의도 전달이 명확합니다",
+      "첫 메시지에서 충분한 컨텍스트를 제공합니다"
+    ],
+    "improvements": [
+      "같은 파일을 3회 이상 수정한 경우가 15건입니다. 수정 전 파일을 먼저 Read로 확인하면 재작업을 줄일 수 있습니다",
+      "Bash에서 grep/cat/find 등을 66회 사용했습니다. Grep/Read/Glob 전용 도구를 사용하면 더 효율적입니다",
+      "Git 커밋을 수동으로 실행했습니다. /commit 또는 /granular-commit 스킬을 활용하면 더 효율적입니다"
+    ]
+  }
+}

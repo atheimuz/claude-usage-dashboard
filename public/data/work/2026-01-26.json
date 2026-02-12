@@ -1,0 +1,169 @@
+{
+  "date": "2026-01-26",
+  "identifier": "work",
+  "filename": "work/2026-01-26",
+  "overview": {
+    "totalSessions": 3,
+    "totalToolCalls": 0,
+    "projectCount": 0,
+    "avgMessagesPerSession": 23.7,
+    "avgToolCallsPerSession": 16
+  },
+  "projectSessions": [],
+  "techStack": {
+    "languages": [
+      {
+        "name": "TypeScript"
+      }
+    ],
+    "frameworks": [
+      {
+        "name": "React"
+      }
+    ],
+    "tools": [
+      {
+        "name": "Git"
+      }
+    ]
+  },
+  "claudeUsage": {
+    "modes": [
+      {
+        "name": "일반 모드",
+        "description": "일반 모드"
+      }
+    ],
+    "features": [],
+    "delegationStyle": []
+  },
+  "promptPatterns": {
+    "effective": [],
+    "conversationFlow": []
+  },
+  "toolStats": [
+    {
+      "toolName": "Read",
+      "usageCount": 18,
+      "primaryUse": "파일 읽기"
+    },
+    {
+      "toolName": "Bash",
+      "usageCount": 15,
+      "primaryUse": "Git 작업, 명령 실행"
+    },
+    {
+      "toolName": "Glob",
+      "usageCount": 9,
+      "primaryUse": "파일 탐색"
+    },
+    {
+      "toolName": "Grep",
+      "usageCount": 3,
+      "primaryUse": "코드 검색"
+    },
+    {
+      "toolName": "AskUserQuestion",
+      "usageCount": 2,
+      "primaryUse": ""
+    },
+    {
+      "toolName": "Write",
+      "usageCount": 1,
+      "primaryUse": "파일 생성"
+    }
+  ],
+  "taskTypes": [
+    {
+      "type": "기타",
+      "count": 3,
+      "description": "100.0%"
+    }
+  ],
+  "sessionDetails": [
+    {
+      "groupName": "세션 1: 기타",
+      "taskTypes": [],
+      "approach": "간단한 대화형 작업",
+      "mainTasks": "",
+      "changeScale": "0개 파일, 9건 도구 호출"
+    },
+    {
+      "groupName": "세션 2: 기타",
+      "taskTypes": [],
+      "approach": "간단한 대화형 작업",
+      "mainTasks": "",
+      "changeScale": "0개 파일, 0건 도구 호출"
+    },
+    {
+      "groupName": "세션 3: 기타",
+      "taskTypes": [],
+      "approach": "간단한 대화형 작업",
+      "mainTasks": "",
+      "changeScale": "1개 파일, 4건 도구 호출"
+    }
+  ],
+  "learningInsights": [
+    "일반적인 개발 작업이 수행되었습니다"
+  ],
+  "workflowPatterns": [
+    {
+      "name": "Read → Read → Read (8회)",
+      "flow": ""
+    },
+    {
+      "name": "Glob → Glob → Glob (5회)",
+      "flow": ""
+    },
+    {
+      "name": "Bash → Bash → Bash (4회)",
+      "flow": ""
+    },
+    {
+      "name": "Bash → Read → Read (3회)",
+      "flow": ""
+    },
+    {
+      "name": "Read → Read → Bash (2회)",
+      "flow": ""
+    }
+  ],
+  "usageEvaluation": {
+    "overallScore": 77,
+    "maxScore": 100,
+    "categories": [
+      {
+        "name": "의도 전달력",
+        "score": 25,
+        "maxScore": 25,
+        "description": ""
+      },
+      {
+        "name": "작업 효율성",
+        "score": 25,
+        "maxScore": 30,
+        "description": "재작업 0건"
+      },
+      {
+        "name": "도구 적합성",
+        "score": 13,
+        "maxScore": 25,
+        "description": "Bash 안티패턴 11건"
+      },
+      {
+        "name": "워크플로우 성숙도",
+        "score": 14,
+        "maxScore": 20,
+        "description": ""
+      }
+    ],
+    "strengths": [
+      "메시지 없음",
+      "파일 재수정이 적어 한번에 정확한 작업을 수행합니다"
+    ],
+    "improvements": [
+      "Bash에서 grep/cat/find 등을 11회 사용했습니다. Grep/Read/Glob 전용 도구를 사용하면 더 효율적입니다",
+      "Git 커밋을 수동으로 실행했습니다. /commit 또는 /granular-commit 스킬을 활용하면 더 효율적입니다"
+    ]
+  }
+}

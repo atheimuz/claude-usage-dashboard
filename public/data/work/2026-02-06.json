@@ -1,0 +1,527 @@
+{
+  "date": "2026-02-06",
+  "identifier": "work",
+  "filename": "work/2026-02-06",
+  "overview": {
+    "totalSessions": 81,
+    "totalToolCalls": 0,
+    "projectCount": 0,
+    "avgMessagesPerSession": 50.3,
+    "avgToolCallsPerSession": 25.6
+  },
+  "projectSessions": [],
+  "techStack": {
+    "languages": [
+      {
+        "name": "TypeScript"
+      },
+      {
+        "name": "JavaScript"
+      },
+      {
+        "name": "Python"
+      },
+      {
+        "name": "Go"
+      },
+      {
+        "name": "Rust"
+      }
+    ],
+    "frameworks": [
+      {
+        "name": "Playwright"
+      },
+      {
+        "name": "Tailwind"
+      },
+      {
+        "name": "Zustand"
+      },
+      {
+        "name": "Radix UI"
+      },
+      {
+        "name": "TanStack"
+      }
+    ],
+    "tools": [
+      {
+        "name": "npm"
+      },
+      {
+        "name": "Git"
+      },
+      {
+        "name": "Vite"
+      },
+      {
+        "name": "ESLint"
+      }
+    ]
+  },
+  "claudeUsage": {
+    "modes": [
+      {
+        "name": "Accept Edits 모드",
+        "description": "Accept Edits 모드"
+      },
+      {
+        "name": "Plan Mode",
+        "description": "Plan Mode"
+      },
+      {
+        "name": "Bypass Permissions 모드",
+        "description": "Bypass Permissions 모드"
+      },
+      {
+        "name": "일반 모드",
+        "description": "일반 모드"
+      }
+    ],
+    "features": [],
+    "delegationStyle": [],
+    "slashCommands": [
+      {
+        "command": "feature-pipeline",
+        "count": 1
+      },
+      {
+        "command": "pr",
+        "count": 1
+      },
+      {
+        "command": "/feature-pipeline",
+        "count": 1
+      },
+      {
+        "command": "/ui-components",
+        "count": 1
+      },
+      {
+        "command": "/pr",
+        "count": 1
+      }
+    ],
+    "subAgentUsages": [
+      {
+        "agentType": "Explore",
+        "count": 38,
+        "description": "코드베이스 탐색 및 구조 분석"
+      },
+      {
+        "agentType": "general-purpose",
+        "count": 5,
+        "description": "범용 작업 처리"
+      },
+      {
+        "agentType": "ui-designer",
+        "count": 4,
+        "description": "UI 디자인 명세서 작성"
+      },
+      {
+        "agentType": "playwright-e2e-tester",
+        "count": 4,
+        "description": "E2E 테스트 시나리오 및 코드 작성"
+      },
+      {
+        "agentType": "product-spec-writer",
+        "count": 4,
+        "description": "기획 명세서 작성"
+      },
+      {
+        "agentType": "code-simplifier",
+        "count": 4,
+        "description": "코드 정리 및 단순화"
+      },
+      {
+        "agentType": "code-analyst",
+        "count": 3,
+        "description": "코드 패턴 분석 및 구현 가이드"
+      },
+      {
+        "agentType": "Plan",
+        "count": 3,
+        "description": "구현 계획 설계"
+      },
+      {
+        "agentType": "claude-code-guide",
+        "count": 2,
+        "description": "Claude Code 사용법 안내"
+      }
+    ]
+  },
+  "promptPatterns": {
+    "effective": [
+      "구체적인 요구사항과 기대 동작을 함께 제시",
+      "파일 참조를 통한 컨텍스트 제공",
+      "개방형 질문으로 AI의 분석 유도"
+    ],
+    "conversationFlow": []
+  },
+  "toolStats": [
+    {
+      "toolName": "Read",
+      "usageCount": 684,
+      "primaryUse": "파일 읽기"
+    },
+    {
+      "toolName": "Bash",
+      "usageCount": 446,
+      "primaryUse": "명령 실행, Git 작업, 테스트 실행"
+    },
+    {
+      "toolName": "Edit",
+      "usageCount": 231,
+      "primaryUse": "파일 수정"
+    },
+    {
+      "toolName": "Glob",
+      "usageCount": 192,
+      "primaryUse": "파일 탐색"
+    },
+    {
+      "toolName": "Write",
+      "usageCount": 159,
+      "primaryUse": "파일 생성"
+    },
+    {
+      "toolName": "Grep",
+      "usageCount": 70,
+      "primaryUse": "코드 검색"
+    },
+    {
+      "toolName": "Task",
+      "usageCount": 67,
+      "primaryUse": "Sub Agent(Explore)"
+    },
+    {
+      "toolName": "AskUserQuestion",
+      "usageCount": 60,
+      "primaryUse": ""
+    },
+    {
+      "toolName": "ExitPlanMode",
+      "usageCount": 55,
+      "primaryUse": ""
+    },
+    {
+      "toolName": "TodoWrite",
+      "usageCount": 43,
+      "primaryUse": ""
+    },
+    {
+      "toolName": "TaskUpdate",
+      "usageCount": 25,
+      "primaryUse": ""
+    },
+    {
+      "toolName": "TaskCreate",
+      "usageCount": 14,
+      "primaryUse": ""
+    },
+    {
+      "toolName": "TaskOutput",
+      "usageCount": 14,
+      "primaryUse": ""
+    },
+    {
+      "toolName": "TaskStop",
+      "usageCount": 7,
+      "primaryUse": ""
+    },
+    {
+      "toolName": "Skill",
+      "usageCount": 2,
+      "primaryUse": ""
+    }
+  ],
+  "taskTypes": [
+    {
+      "type": "코딩",
+      "count": 39,
+      "description": "48.1%"
+    },
+    {
+      "type": "기타",
+      "count": 35,
+      "description": "43.2%"
+    },
+    {
+      "type": "수정",
+      "count": 35,
+      "description": "43.2%"
+    },
+    {
+      "type": "디버깅",
+      "count": 26,
+      "description": "32.1%"
+    },
+    {
+      "type": "테스트",
+      "count": 26,
+      "description": "32.1%"
+    },
+    {
+      "type": "설계/기획",
+      "count": 25,
+      "description": "30.9%"
+    },
+    {
+      "type": "스타일링",
+      "count": 7,
+      "description": "8.6%"
+    },
+    {
+      "type": "리팩토링",
+      "count": 7,
+      "description": "8.6%"
+    },
+    {
+      "type": "데이터/DB",
+      "count": 5,
+      "description": "6.2%"
+    },
+    {
+      "type": "설정",
+      "count": 5,
+      "description": "6.2%"
+    },
+    {
+      "type": "배포/CI",
+      "count": 4,
+      "description": "4.9%"
+    },
+    {
+      "type": "탐색/분석",
+      "count": 4,
+      "description": "4.9%"
+    },
+    {
+      "type": "학습",
+      "count": 4,
+      "description": "4.9%"
+    },
+    {
+      "type": "보안",
+      "count": 3,
+      "description": "3.7%"
+    },
+    {
+      "type": "문서화",
+      "count": 1,
+      "description": "1.2%"
+    },
+    {
+      "type": "성능 최적화",
+      "count": 1,
+      "description": "1.2%"
+    }
+  ],
+  "sessionDetails": [
+    {
+      "groupName": "세션 1: 기타",
+      "taskTypes": [],
+      "approach": "간단한 대화형 작업",
+      "mainTasks": "",
+      "changeScale": "0개 파일, 0건 도구 호출"
+    },
+    {
+      "groupName": "세션 2: 수정",
+      "taskTypes": [],
+      "approach": "Sub Agent 활용 (Explore)",
+      "mainTasks": "",
+      "changeScale": "3개 파일, 13건 도구 호출"
+    },
+    {
+      "groupName": "세션 3: 코딩, 수정, 테스트, 스타일링",
+      "taskTypes": [],
+      "approach": "간단한 대화형 작업",
+      "mainTasks": "",
+      "changeScale": "1개 파일, 2건 도구 호출"
+    },
+    {
+      "groupName": "세션 4: 기타",
+      "taskTypes": [],
+      "approach": "직접 도구 호출로 작업 수행",
+      "mainTasks": "",
+      "changeScale": "0개 파일, 21건 도구 호출"
+    },
+    {
+      "groupName": "세션 5: 기타",
+      "taskTypes": [],
+      "approach": "Sub Agent 활용 (Explore)Plan Mode 사용",
+      "mainTasks": "",
+      "changeScale": "1개 파일, 6건 도구 호출"
+    },
+    {
+      "groupName": "세션 6: 기타",
+      "taskTypes": [],
+      "approach": "간단한 대화형 작업",
+      "mainTasks": "",
+      "changeScale": "0개 파일, 0건 도구 호출"
+    },
+    {
+      "groupName": "세션 7: 코딩, 수정, 테스트, 설계/기획",
+      "taskTypes": [],
+      "approach": "간단한 대화형 작업",
+      "mainTasks": "",
+      "changeScale": "1개 파일, 5건 도구 호출"
+    },
+    {
+      "groupName": "세션 8: 코딩, 디버깅, 리팩토링, 수정, 테스트",
+      "taskTypes": [],
+      "approach": "간단한 대화형 작업",
+      "mainTasks": "",
+      "changeScale": "1개 파일, 7건 도구 호출"
+    },
+    {
+      "groupName": "세션 9: 코딩, 디버깅, 수정, 테스트, 설계/기획, 설정",
+      "taskTypes": [],
+      "approach": "직접 도구 호출로 작업 수행",
+      "mainTasks": "",
+      "changeScale": "3개 파일, 13건 도구 호출"
+    },
+    {
+      "groupName": "세션 10: 디버깅, 수정, 테스트",
+      "taskTypes": [],
+      "approach": "Sub Agent 활용 (ui-designer, code-analyst, Explore, playwright-e2e-tester)Skills 활용 (feature-pipeline)Plan Mode 사용",
+      "mainTasks": "",
+      "changeScale": "14개 파일, 150건 도구 호출"
+    },
+    {
+      "groupName": "세션 11: 기타",
+      "taskTypes": [],
+      "approach": "직접 도구 호출로 작업 수행",
+      "mainTasks": "",
+      "changeScale": "0개 파일, 12건 도구 호출"
+    },
+    {
+      "groupName": "세션 12: 코딩, 디버깅, 수정, 테스트",
+      "taskTypes": [],
+      "approach": "간단한 대화형 작업",
+      "mainTasks": "",
+      "changeScale": "1개 파일, 3건 도구 호출"
+    },
+    {
+      "groupName": "세션 13: 코딩, 리팩토링, 수정, 테스트, 설계/기획",
+      "taskTypes": [],
+      "approach": "Sub Agent 활용 (Explore)Plan Mode 사용",
+      "mainTasks": "",
+      "changeScale": "5개 파일, 33건 도구 호출"
+    },
+    {
+      "groupName": "세션 14: 기타",
+      "taskTypes": [],
+      "approach": "직접 도구 호출로 작업 수행",
+      "mainTasks": "",
+      "changeScale": "1개 파일, 25건 도구 호출"
+    },
+    {
+      "groupName": "세션 15: 기타",
+      "taskTypes": [],
+      "approach": "간단한 대화형 작업",
+      "mainTasks": "",
+      "changeScale": "0개 파일, 0건 도구 호출"
+    },
+    {
+      "groupName": "세션 16: 코딩, 수정",
+      "taskTypes": [],
+      "approach": "간단한 대화형 작업",
+      "mainTasks": "",
+      "changeScale": "1개 파일, 3건 도구 호출"
+    },
+    {
+      "groupName": "세션 17: 코딩, 테스트",
+      "taskTypes": [],
+      "approach": "간단한 대화형 작업",
+      "mainTasks": "",
+      "changeScale": "0개 파일, 0건 도구 호출"
+    },
+    {
+      "groupName": "세션 18: 코딩, 수정",
+      "taskTypes": [],
+      "approach": "Sub Agent 활용 (Explore)",
+      "mainTasks": "",
+      "changeScale": "3개 파일, 17건 도구 호출"
+    },
+    {
+      "groupName": "세션 19: 기타",
+      "taskTypes": [],
+      "approach": "Plan Mode 사용",
+      "mainTasks": "",
+      "changeScale": "1개 파일, 9건 도구 호출"
+    },
+    {
+      "groupName": "세션 20: 기타",
+      "taskTypes": [],
+      "approach": "간단한 대화형 작업",
+      "mainTasks": "",
+      "changeScale": "0개 파일, 0건 도구 호출"
+    }
+  ],
+  "learningInsights": [
+    "하루 동안 총 2070회의 도구 호출이 있었으며, 활발한 개발 활동이 있었습니다",
+    "Sub Agent를 67회 위임하여 복잡한 작업을 분산 처리했습니다",
+    "Skills를 2회 활용하여 반복 작업을 자동화했습니다"
+  ],
+  "workflowPatterns": [
+    {
+      "name": "Read → Read → Read (260회)",
+      "flow": ""
+    },
+    {
+      "name": "Bash → Bash → Bash (140회)",
+      "flow": ""
+    },
+    {
+      "name": "Edit → Edit → Edit (69회)",
+      "flow": ""
+    },
+    {
+      "name": "Glob → Glob → Glob (68회)",
+      "flow": ""
+    },
+    {
+      "name": "Bash → Bash → Read (53회)",
+      "flow": ""
+    }
+  ],
+  "usageEvaluation": {
+    "overallScore": 80,
+    "maxScore": 100,
+    "categories": [
+      {
+        "name": "의도 전달력",
+        "score": 20,
+        "maxScore": 25,
+        "description": "수정비율 10%"
+      },
+      {
+        "name": "작업 효율성",
+        "score": 25,
+        "maxScore": 30,
+        "description": "재작업 37건"
+      },
+      {
+        "name": "도구 적합성",
+        "score": 18,
+        "maxScore": 25,
+        "description": "Bash 안티패턴 274건"
+      },
+      {
+        "name": "워크플로우 성숙도",
+        "score": 17,
+        "maxScore": 20,
+        "description": ""
+      }
+    ],
+    "strengths": [
+      "첫 메시지에서 충분한 컨텍스트를 제공합니다"
+    ],
+    "improvements": [
+      "Bash에서 grep/cat/find 등을 274회 사용했습니다. Grep/Read/Glob 전용 도구를 사용하면 더 효율적입니다",
+      "Git 커밋을 수동으로 실행했습니다. /commit 또는 /granular-commit 스킬을 활용하면 더 효율적입니다"
+    ]
+  }
+}

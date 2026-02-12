@@ -1,0 +1,360 @@
+{
+  "date": "2026-02-02",
+  "identifier": "side",
+  "filename": "side/2026-02-02",
+  "overview": {
+    "totalSessions": 12,
+    "totalToolCalls": 0,
+    "projectCount": 0,
+    "avgMessagesPerSession": 30.4,
+    "avgToolCallsPerSession": 10.1
+  },
+  "projectSessions": [],
+  "techStack": {
+    "languages": [
+      {
+        "name": "JavaScript"
+      },
+      {
+        "name": "Shell"
+      },
+      {
+        "name": "SQL"
+      },
+      {
+        "name": "HTML/CSS"
+      }
+    ],
+    "frameworks": [
+      {
+        "name": "Angular"
+      }
+    ],
+    "tools": []
+  },
+  "claudeUsage": {
+    "modes": [
+      {
+        "name": "Plan Mode (7개 세션)",
+        "description": "Plan Mode (7개 세션)"
+      },
+      {
+        "name": "일반 모드",
+        "description": "일반 모드"
+      }
+    ],
+    "features": [],
+    "delegationStyle": [
+      "에이전트 위임을 활용한 작업 분배",
+      "Plan Mode를 통한 체계적 작업 계획",
+      "단계별 지시를 통한 상호작용 위주"
+    ],
+    "subAgentUsages": [
+      {
+        "agentType": "Explore",
+        "count": 9,
+        "description": "코드베이스 탐색 및 검색"
+      }
+    ]
+  },
+  "promptPatterns": {
+    "effective": [
+      "구체적이고 상세한 지시 패턴"
+    ],
+    "conversationFlow": [
+      {
+        "type": "연속적인 후속 지시를 통한 점진적 작업 진행",
+        "description": "연속적인 후속 지시를 통한 점진적 작업 진행"
+      }
+    ]
+  },
+  "toolStats": [
+    {
+      "toolName": "Bash",
+      "usageCount": 46,
+      "primaryUse": "터미널 명령 실행"
+    },
+    {
+      "toolName": "Read",
+      "usageCount": 19,
+      "primaryUse": "파일 내용 읽기"
+    },
+    {
+      "toolName": "Write",
+      "usageCount": 19,
+      "primaryUse": "파일 생성/작성"
+    },
+    {
+      "toolName": "AskUserQuestion",
+      "usageCount": 11,
+      "primaryUse": "사용자 확인 요청"
+    },
+    {
+      "toolName": "ExitPlanMode",
+      "usageCount": 10,
+      "primaryUse": "계획 모드 종료"
+    },
+    {
+      "toolName": "Task",
+      "usageCount": 9,
+      "primaryUse": "서브 에이전트 실행"
+    },
+    {
+      "toolName": "Edit",
+      "usageCount": 6,
+      "primaryUse": "파일 내용 수정"
+    },
+    {
+      "toolName": "Glob",
+      "usageCount": 1,
+      "primaryUse": "파일 패턴 검색"
+    }
+  ],
+  "taskTypes": [
+    {
+      "type": "배포/CI",
+      "count": 11,
+      "description": "92%"
+    },
+    {
+      "type": "코딩",
+      "count": 10,
+      "description": "83%"
+    },
+    {
+      "type": "수정",
+      "count": 9,
+      "description": "75%"
+    },
+    {
+      "type": "설계/기획",
+      "count": 9,
+      "description": "75%"
+    },
+    {
+      "type": "문서화",
+      "count": 8,
+      "description": "67%"
+    },
+    {
+      "type": "탐색/분석",
+      "count": 7,
+      "description": "58%"
+    },
+    {
+      "type": "스타일링",
+      "count": 7,
+      "description": "58%"
+    },
+    {
+      "type": "설정",
+      "count": 6,
+      "description": "50%"
+    },
+    {
+      "type": "테스트",
+      "count": 5,
+      "description": "42%"
+    },
+    {
+      "type": "디버깅",
+      "count": 4,
+      "description": "33%"
+    },
+    {
+      "type": "리팩토링",
+      "count": 3,
+      "description": "25%"
+    },
+    {
+      "type": "학습",
+      "count": 3,
+      "description": "25%"
+    },
+    {
+      "type": "데이터/DB",
+      "count": 1,
+      "description": "8%"
+    },
+    {
+      "type": "성능 최적화",
+      "count": 1,
+      "description": "8%"
+    }
+  ],
+  "sessionDetails": [
+    {
+      "groupName": "세션 1: 코딩 / 디버깅 / 리팩토링 / 수정 / 테스트 / 설계/기획 / 설정 / 탐색/분석 / 스타일링 / 문서화 / 배포/CI",
+      "taskTypes": [
+        "코딩 / 디버깅 / 리팩토링 / 수정 / 테스트 / 설계/기획 / 설정 / 탐색/분석 / 스타일링 / 문서화 / 배포/CI"
+      ],
+      "approach": "직접 대화를 통한 작업 수행",
+      "mainTasks": "",
+      "changeScale": "2개 파일 유형, 0건 변경"
+    },
+    {
+      "groupName": "세션 2: 코딩 / 수정 / 설계/기획 / 설정 / 학습 / 문서화 / 배포/CI",
+      "taskTypes": [
+        "코딩 / 수정 / 설계/기획 / 설정 / 학습 / 문서화 / 배포/CI"
+      ],
+      "approach": "Explore 에이전트 활용 / Plan Mode 활용",
+      "mainTasks": "",
+      "changeScale": "1개 파일 유형, 3건 변경"
+    },
+    {
+      "groupName": "세션 3: 코딩 / 수정 / 테스트 / 설계/기획 / 설정 / 스타일링 / 문서화 / 배포/CI",
+      "taskTypes": [
+        "코딩 / 수정 / 테스트 / 설계/기획 / 설정 / 스타일링 / 문서화 / 배포/CI"
+      ],
+      "approach": "Plan Mode 활용",
+      "mainTasks": "",
+      "changeScale": "1개 파일 유형, 2건 변경"
+    },
+    {
+      "groupName": "세션 4: 코딩 / 배포/CI",
+      "taskTypes": [
+        "코딩 / 배포/CI"
+      ],
+      "approach": "Explore 에이전트 활용",
+      "mainTasks": "",
+      "changeScale": "0개 파일 유형, 0건 변경"
+    },
+    {
+      "groupName": "세션 5: 코딩 / 디버깅 / 리팩토링 / 수정 / 설계/기획 / 탐색/분석 / 학습 / 스타일링 / 문서화 / 배포/CI / 데이터/DB",
+      "taskTypes": [
+        "코딩 / 디버깅 / 리팩토링 / 수정 / 설계/기획 / 탐색/분석 / 학습 / 스타일링 / 문서화 / 배포/CI / 데이터/DB"
+      ],
+      "approach": "Explore 에이전트 활용 / Plan Mode 활용",
+      "mainTasks": "",
+      "changeScale": "1개 파일 유형, 7건 변경"
+    },
+    {
+      "groupName": "세션 6: 코딩 / 수정 / 설계/기획 / 탐색/분석 / 문서화 / 배포/CI",
+      "taskTypes": [
+        "코딩 / 수정 / 설계/기획 / 탐색/분석 / 문서화 / 배포/CI"
+      ],
+      "approach": "Explore 에이전트 활용 / Plan Mode 활용",
+      "mainTasks": "",
+      "changeScale": "1개 파일 유형, 4건 변경"
+    },
+    {
+      "groupName": "세션 7: 코딩 / 수정 / 테스트 / 설계/기획 / 설정 / 탐색/분석 / 스타일링 / 문서화 / 배포/CI",
+      "taskTypes": [
+        "코딩 / 수정 / 테스트 / 설계/기획 / 설정 / 탐색/분석 / 스타일링 / 문서화 / 배포/CI"
+      ],
+      "approach": "Explore 에이전트 활용 / Plan Mode 활용",
+      "mainTasks": "",
+      "changeScale": "2개 파일 유형, 4건 변경"
+    },
+    {
+      "groupName": "세션 8: 코딩 / 수정 / 테스트 / 설계/기획 / 탐색/분석 / 학습 / 스타일링 / 문서화 / 배포/CI",
+      "taskTypes": [
+        "코딩 / 수정 / 테스트 / 설계/기획 / 탐색/분석 / 학습 / 스타일링 / 문서화 / 배포/CI"
+      ],
+      "approach": "Explore 에이전트 활용 / Plan Mode 활용",
+      "mainTasks": "",
+      "changeScale": "1개 파일 유형, 3건 변경"
+    },
+    {
+      "groupName": "세션 9: 배포/CI",
+      "taskTypes": [
+        "배포/CI"
+      ],
+      "approach": "직접 대화를 통한 작업 수행",
+      "mainTasks": "",
+      "changeScale": "0개 파일 유형, 0건 변경"
+    },
+    {
+      "groupName": "세션 10: 디버깅 / 테스트 / 설계/기획",
+      "taskTypes": [
+        "디버깅 / 테스트 / 설계/기획"
+      ],
+      "approach": "직접 대화를 통한 작업 수행",
+      "mainTasks": "",
+      "changeScale": "0개 파일 유형, 0건 변경"
+    },
+    {
+      "groupName": "세션 11: 코딩 / 디버깅 / 리팩토링 / 수정 / 설정 / 탐색/분석 / 스타일링 / 배포/CI",
+      "taskTypes": [
+        "코딩 / 디버깅 / 리팩토링 / 수정 / 설정 / 탐색/분석 / 스타일링 / 배포/CI"
+      ],
+      "approach": "직접 대화를 통한 작업 수행",
+      "mainTasks": "",
+      "changeScale": "0개 파일 유형, 0건 변경"
+    },
+    {
+      "groupName": "세션 12: 코딩 / 수정 / 설계/기획 / 설정 / 탐색/분석 / 스타일링 / 문서화 / 배포/CI / 성능 최적화",
+      "taskTypes": [
+        "코딩 / 수정 / 설계/기획 / 설정 / 탐색/분석 / 스타일링 / 문서화 / 배포/CI / 성능 최적화"
+      ],
+      "approach": "Explore 에이전트 활용 / Plan Mode 활용",
+      "mainTasks": "",
+      "changeScale": "3개 파일 유형, 2건 변경"
+    }
+  ],
+  "learningInsights": [
+    "디버깅 세션에서 문제 해결 경험 축적",
+    "설계/기획 단계에서 체계적 접근법 활용",
+    "코드 품질 개선을 위한 리팩토링 수행",
+    "새로운 기술/개념 학습 및 탐색",
+    "다양한 프로그래밍 언어를 활용한 폴리글랏 개발"
+  ],
+  "workflowPatterns": [
+    {
+      "name": "Bash → AskUserQuestion (2회)",
+      "flow": ""
+    },
+    {
+      "name": "Bash → Read → AskUserQuestion (1회)",
+      "flow": ""
+    },
+    {
+      "name": "AskUserQuestion → Read → Write → ExitPlanMode (1회)",
+      "flow": ""
+    },
+    {
+      "name": "Bash → Read → Write → Glob (1회)",
+      "flow": ""
+    },
+    {
+      "name": "Write → Bash → Read → ExitPlanMode (1회)",
+      "flow": ""
+    }
+  ],
+  "usageEvaluation": {
+    "overallScore": 75,
+    "maxScore": 100,
+    "categories": [
+      {
+        "name": "의도 전달력",
+        "score": 14,
+        "maxScore": 25,
+        "description": "보통"
+      },
+      {
+        "name": "작업 효율성",
+        "score": 24,
+        "maxScore": 30,
+        "description": "우수"
+      },
+      {
+        "name": "도구 적합성",
+        "score": 19,
+        "maxScore": 25,
+        "description": "양호"
+      },
+      {
+        "name": "워크플로우 성숙도",
+        "score": 18,
+        "maxScore": 20,
+        "description": "우수"
+      }
+    ],
+    "strengths": [
+      "커밋 자동화 스킬을 활용하여 반복 작업을 줄였습니다"
+    ],
+    "improvements": [
+      "현재 활용도가 높습니다. 새로운 스킬이나 기능을 탐색해보세요"
+    ]
+  }
+}

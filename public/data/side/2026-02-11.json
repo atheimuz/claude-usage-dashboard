@@ -1,0 +1,458 @@
+{
+  "date": "2026-02-11",
+  "identifier": "side",
+  "filename": "side/2026-02-11",
+  "overview": {
+    "totalSessions": 15,
+    "totalToolCalls": 341,
+    "projectCount": 0,
+    "totalUserMessages": 395,
+    "avgMessagesPerSession": 26.3,
+    "avgToolCallsPerSession": 22.7
+  },
+  "projectSessions": [],
+  "techStack": {
+    "languages": [
+      {
+        "name": "Python"
+      },
+      {
+        "name": "TypeScript"
+      },
+      {
+        "name": "JavaScript"
+      },
+      {
+        "name": "Rust"
+      },
+      {
+        "name": "Ruby"
+      }
+    ],
+    "frameworks": [
+      {
+        "name": "React"
+      },
+      {
+        "name": "shadcn/ui"
+      },
+      {
+        "name": "Tailwind CSS"
+      },
+      {
+        "name": "Next.js"
+      },
+      {
+        "name": "Vue"
+      }
+    ],
+    "tools": [
+      {
+        "name": "Vite"
+      },
+      {
+        "name": "Git"
+      },
+      {
+        "name": "Docker"
+      }
+    ]
+  },
+  "claudeUsage": {
+    "modes": [
+      {
+        "name": "Plan Mode",
+        "description": "Plan Mode: 13개 세션 (87%)",
+        "percentage": 87
+      },
+      {
+        "name": "일반 모드",
+        "description": "일반 모드: 2개 세션 (13%)",
+        "percentage": 13
+      }
+    ],
+    "features": [],
+    "delegationStyle": [
+      "스킬을 통한 자동화 (19개 세션)",
+      "Plan Mode로 계획 수립 후 실행 (13개 세션)",
+      "Explore 에이전트 위임 (10개 세션)",
+      "Plan 에이전트 위임 (1개 세션)"
+    ],
+    "slashCommands": [
+      {
+        "command": "/session-analyzer",
+        "count": 26,
+        "description": "세션 로그를 자동 분석하여 날짜별 활동 요약 리포트 생성"
+      },
+      {
+        "command": "/granular-commit",
+        "count": 11,
+        "description": "변경사항을 hunk/줄 단위로 분석하여 의미 단위의 개별 커밋으로 분리"
+      },
+      {
+        "command": "/commit",
+        "count": 11,
+        "description": "Git 변경사항 분석 후 한글 Conventional Commit 메시지 자동 생성"
+      },
+      {
+        "command": "/retrospective",
+        "count": 4,
+        "description": "개발 세션 후 회고를 수행하여 CLAUDE.md와 에이전트 프롬프트 개선"
+      },
+      {
+        "command": "/session-analyzer",
+        "count": 26,
+        "description": "세션 로그를 자동 분석하여 날짜별 활동 요약 리포트 생성"
+      },
+      {
+        "command": "/granular-commit",
+        "count": 11,
+        "description": "변경사항을 hunk/줄 단위로 분석하여 의미 단위의 개별 커밋으로 분리"
+      },
+      {
+        "command": "/commit",
+        "count": 11,
+        "description": "Git 변경사항 분석 후 한글 Conventional Commit 메시지 자동 생성"
+      },
+      {
+        "command": "/compact",
+        "count": 10,
+        "description": "대화 컨텍스트를 압축하여 토큰 사용량 절감"
+      },
+      {
+        "command": "/clear",
+        "count": 6,
+        "description": "현재 대화 히스토리를 초기화"
+      },
+      {
+        "command": "/model",
+        "count": 5,
+        "description": "사용할 AI 모델을 전환"
+      },
+      {
+        "command": "/help",
+        "count": 5,
+        "description": "Claude Code 도움말 표시"
+      },
+      {
+        "command": "/retrospective",
+        "count": 4,
+        "description": "개발 세션 후 회고를 수행하여 CLAUDE.md와 에이전트 프롬프트 개선"
+      },
+      {
+        "command": "/sync-context",
+        "count": 4,
+        "description": "IDE 컨텍스트 동기화"
+      },
+      {
+        "command": "/daily",
+        "count": 1,
+        "description": "일일 활동 요약"
+      }
+    ],
+    "subAgentUsages": [
+      {
+        "agentType": "Explore",
+        "count": 13,
+        "description": "코드베이스를 빠르게 탐색하여 파일 패턴 검색, 코드 키워드 검색, 구조 파악"
+      },
+      {
+        "agentType": "Plan",
+        "count": 1,
+        "description": "구현 전략을 설계하고 단계별 실행 계획을 수립"
+      }
+    ]
+  },
+  "promptPatterns": {
+    "effective": [],
+    "conversationFlow": [
+      {
+        "type": "긴 대화를 통해 점진적으로 작업을 다듬어나감",
+        "description": "긴 대화를 통해 점진적으로 작업을 다듬어나감"
+      },
+      {
+        "type": "Plan Mode를 활용한 체계적 작업 진행 (13/15 세션)",
+        "description": "Plan Mode를 활용한 체계적 작업 진행 (13/15 세션)"
+      }
+    ]
+  },
+  "toolStats": [
+    {
+      "toolName": "Read",
+      "usageCount": 95,
+      "primaryUse": "파일 읽기"
+    },
+    {
+      "toolName": "TodoWrite",
+      "usageCount": 53,
+      "primaryUse": "작업 목록 관리"
+    },
+    {
+      "toolName": "Bash",
+      "usageCount": 52,
+      "primaryUse": "터미널 명령어 실행"
+    },
+    {
+      "toolName": "Edit",
+      "usageCount": 43,
+      "primaryUse": "파일 부분 수정"
+    },
+    {
+      "toolName": "Write",
+      "usageCount": 29,
+      "primaryUse": "파일 생성/덮어쓰기"
+    },
+    {
+      "toolName": "Grep",
+      "usageCount": 21,
+      "primaryUse": "코드 내용 검색"
+    },
+    {
+      "toolName": "ExitPlanMode",
+      "usageCount": 18,
+      "primaryUse": "계획 모드 종료"
+    },
+    {
+      "toolName": "Task",
+      "usageCount": 14,
+      "primaryUse": "서브 에이전트 실행"
+    },
+    {
+      "toolName": "Glob",
+      "usageCount": 9,
+      "primaryUse": "파일 패턴 검색"
+    },
+    {
+      "toolName": "AskUserQuestion",
+      "usageCount": 7,
+      "primaryUse": "사용자에게 질문"
+    }
+  ],
+  "taskTypes": [
+    {
+      "type": "수정",
+      "count": 13,
+      "description": "87%"
+    },
+    {
+      "type": "코딩",
+      "count": 12,
+      "description": "80%"
+    },
+    {
+      "type": "설계/기획",
+      "count": 12,
+      "description": "80%"
+    },
+    {
+      "type": "탐색/분석",
+      "count": 12,
+      "description": "80%"
+    },
+    {
+      "type": "스타일링",
+      "count": 11,
+      "description": "73%"
+    },
+    {
+      "type": "디버깅",
+      "count": 10,
+      "description": "67%"
+    },
+    {
+      "type": "리팩토링",
+      "count": 10,
+      "description": "67%"
+    },
+    {
+      "type": "테스트",
+      "count": 10,
+      "description": "67%"
+    },
+    {
+      "type": "학습",
+      "count": 9,
+      "description": "60%"
+    },
+    {
+      "type": "문서화",
+      "count": 9,
+      "description": "60%"
+    }
+  ],
+  "sessionDetails": [
+    {
+      "groupName": "세션 1: 코딩, 디버깅, 리팩토링",
+      "taskTypes": [],
+      "approach": "Explore 에이전트 활용 (1회), Plan Mode 활용",
+      "mainTasks": "",
+      "changeScale": "4건 파일 변경, 16회 도구 호출"
+    },
+    {
+      "groupName": "세션 2: 코딩, 수정, 설계/기획",
+      "taskTypes": [],
+      "approach": "Explore 에이전트 활용 (1회), Plan Mode 활용",
+      "mainTasks": "",
+      "changeScale": "3건 파일 변경, 11회 도구 호출"
+    },
+    {
+      "groupName": "세션 3: 코딩, 수정, 테스트",
+      "taskTypes": [],
+      "approach": "Explore 에이전트 활용 (1회), Plan Mode 활용",
+      "mainTasks": "",
+      "changeScale": "3건 파일 변경, 25회 도구 호출"
+    },
+    {
+      "groupName": "세션 4: 기타",
+      "taskTypes": [],
+      "approach": "Explore 에이전트 활용 (1회), Plan Mode 활용",
+      "mainTasks": "",
+      "changeScale": "3건 파일 변경, 24회 도구 호출"
+    },
+    {
+      "groupName": "세션 5: 코딩, 디버깅, 리팩토링",
+      "taskTypes": [],
+      "approach": "Explore 에이전트 활용 (2회), Plan 에이전트 활용 (1회)",
+      "mainTasks": "",
+      "changeScale": "13건 파일 변경, 48회 도구 호출"
+    },
+    {
+      "groupName": "세션 6: 코딩, 디버깅, 리팩토링",
+      "taskTypes": [],
+      "approach": "Plan Mode 활용",
+      "mainTasks": "",
+      "changeScale": "1건 파일 변경, 26회 도구 호출"
+    },
+    {
+      "groupName": "세션 7: 코딩, 디버깅, 리팩토링",
+      "taskTypes": [],
+      "approach": "Explore 에이전트 활용 (3회), granular-commit 스킬 사용 (1회)",
+      "mainTasks": "",
+      "changeScale": "2건 파일 변경, 7회 도구 호출"
+    },
+    {
+      "groupName": "세션 8: 수정, 탐색/분석",
+      "taskTypes": [],
+      "approach": "Explore 에이전트 활용 (1회)",
+      "mainTasks": "",
+      "changeScale": "0건 파일 변경, 2회 도구 호출"
+    },
+    {
+      "groupName": "세션 9: 코딩, 디버깅, 리팩토링",
+      "taskTypes": [],
+      "approach": "retrospective 스킬 사용 (4회), granular-commit 스킬 사용 (4회)",
+      "mainTasks": "",
+      "changeScale": "10건 파일 변경, 31회 도구 호출"
+    },
+    {
+      "groupName": "세션 10: 코딩, 디버깅, 리팩토링",
+      "taskTypes": [],
+      "approach": "Explore 에이전트 활용 (1회), granular-commit 스킬 사용 (2회)",
+      "mainTasks": "",
+      "changeScale": "9건 파일 변경, 29회 도구 호출"
+    },
+    {
+      "groupName": "세션 11: 코딩, 디버깅, 리팩토링",
+      "taskTypes": [],
+      "approach": "granular-commit 스킬 사용 (2회), commit 스킬 사용 (2회)",
+      "mainTasks": "",
+      "changeScale": "9건 파일 변경, 21회 도구 호출"
+    },
+    {
+      "groupName": "세션 12: 코딩, 디버깅, 리팩토링",
+      "taskTypes": [],
+      "approach": "session-analyzer 스킬 사용 (2회)",
+      "mainTasks": "",
+      "changeScale": "0건 파일 변경, 14회 도구 호출"
+    },
+    {
+      "groupName": "세션 13: 탐색/분석",
+      "taskTypes": [],
+      "approach": "Explore 에이전트 활용 (1회), session-analyzer 스킬 사용 (1회)",
+      "mainTasks": "",
+      "changeScale": "2건 파일 변경, 15회 도구 호출"
+    },
+    {
+      "groupName": "세션 14: 코딩, 디버깅, 리팩토링",
+      "taskTypes": [],
+      "approach": "Explore 에이전트 활용 (1회), session-analyzer 스킬 사용 (6회)",
+      "mainTasks": "",
+      "changeScale": "8건 파일 변경, 47회 도구 호출"
+    },
+    {
+      "groupName": "세션 15: 코딩, 디버깅, 리팩토링",
+      "taskTypes": [],
+      "approach": "granular-commit 스킬 사용 (2회), commit 스킬 사용 (2회)",
+      "mainTasks": "",
+      "changeScale": "5건 파일 변경, 25회 도구 호출"
+    }
+  ],
+  "learningInsights": [
+    "Plan Mode 중심의 체계적 개발 워크플로우를 구축하고 있음",
+    "서브 에이전트에 총 14회 작업을 위임하여 효율적으로 탐색/설계를 수행",
+    "세션당 평균 22.7회의 도구를 호출하여 적극적으로 코드 작업을 수행",
+    "커밋 자동화 등 반복 작업에 스킬을 활용하여 생산성을 향상"
+  ],
+  "workflowPatterns": [
+    {
+      "name": "Read → Read → Read (43회)",
+      "flow": ""
+    },
+    {
+      "name": "Bash → Bash → Bash (19회)",
+      "flow": ""
+    },
+    {
+      "name": "Write → ExitPlanMode → TodoWrite (12회)",
+      "flow": ""
+    },
+    {
+      "name": "Read → Write → ExitPlanMode (11회)",
+      "flow": ""
+    },
+    {
+      "name": "Read → Read → Write (10회)",
+      "flow": ""
+    }
+  ],
+  "usageEvaluation": {
+    "overallScore": 68,
+    "maxScore": 100,
+    "categories": [
+      {
+        "name": "의도 전달력",
+        "score": 10,
+        "maxScore": 25,
+        "description": "보통"
+      },
+      {
+        "name": "작업 효율성",
+        "score": 24,
+        "maxScore": 30,
+        "description": "우수"
+      },
+      {
+        "name": "도구 적합성",
+        "score": 18,
+        "maxScore": 25,
+        "description": "양호"
+      },
+      {
+        "name": "워크플로우 성숙도",
+        "score": 16,
+        "maxScore": 20,
+        "description": "우수"
+      }
+    ],
+    "strengths": [
+      "첫 메시지에서 충분한 컨텍스트를 제공했습니다",
+      "도구 호출 성공률이 94.3%로 높습니다",
+      "커밋 자동화 스킬을 활용하여 반복 작업을 줄였습니다"
+    ],
+    "improvements": [
+      "수정 지시 비율이 25.6%입니다. 초기 지시를 더 구체적으로 작성하면 재작업이 줄어듭니다",
+      "재작업 비율이 31.5%입니다. 수정 전 파일을 먼저 Read로 확인하면 재작업을 줄일 수 있습니다",
+      "Bash에서 grep/cat/find 등을 57회 사용했습니다. Grep/Read/Glob 전용 도구를 사용하면 더 효율적입니다"
+    ]
+  }
+}
