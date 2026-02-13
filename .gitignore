@@ -4,3 +4,4 @@ dist/
 *.local
 specs/
 test-results/
+.mcp-test.json
