@@ -112,6 +112,9 @@ JSON 파일 위치: `public/data/{location}/YYYY-MM-DD.json` (DailyReport 형식
 
 - **아이콘**: lucide-react 사용 (마크다운의 이모지는 파싱용으로만 사용, UI에 표시하지 않음)
 - **스타일링**: Tailwind CSS + shadcn/ui 컴포넌트
+- **CSS 변수 색상**: Tailwind CSS v4에서 CSS 변수는 완전한 oklch 값을 포함함 (예: `--chart-1: oklch(0.54 0.19 264)`)
+  - SVG에서는 Tailwind 클래스 사용: `className="stroke-success"`, `className="fill-chart-1"`
+  - Recharts/인라인 스타일에서는 wrapper 없이 직접 사용: `var(--chart-1)` (NOT `hsl(var(...))` 또는 `oklch(var(...))`)
 - **데이터 캐싱**: staleTime/gcTime을 Infinity로 설정 (정적 데이터)
 - **E2E 테스트**: Page Object 패턴, 목업 데이터로 API 인터셉트
 - **테스트명**: 한글로 작성, "~해야 한다" 형식

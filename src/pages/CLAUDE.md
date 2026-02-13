@@ -4,9 +4,9 @@
 
 | 페이지 | 라우트 | Hook | 핵심 컴포넌트 |
 |--------|--------|------|--------------|
-| `HomePage` | `/` | `useAllReports` + `aggregateReports` | UsageScoreCard, ToolStatsTable, TaskTypeGrid, TechStackCloud, RecentActivity |
+| `HomePage` | `/` | `useAllReports` + `aggregateReports` | UsageScoreCard, ToolStatsTable, TaskTypeGrid, SummaryCard, RecentActivity |
 | `DailyListPage` | `/daily` | `useAllReports` | CalendarView (collapsible), ListView |
-| `DailyDetailPage` | `/daily/:location/:name` | `useDailyReport` + `useFileList` | DailyHeader + 10개 섹션 컴포넌트 (daily/CLAUDE.md 참조) |
+| `DailyDetailPage` | `/daily/:location/:name` | `useDailyReport` + `useFileList` | DailyHeader + 9개 섹션 컴포넌트 (daily/CLAUDE.md 참조) |
 
 ## 공통 3단계 상태 처리 패턴
 
