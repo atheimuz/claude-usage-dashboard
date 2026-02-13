@@ -10,7 +10,7 @@ export function TaskTypeGrid({ mainTasks }: Props) {
     if (mainTasks.length === 0) return null;
 
     return (
-        <Card>
+        <Card className="h-full">
             <CardHeader>
                 <CardTitle className="flex items-center gap-2 text-lg">
                     <ClipboardList className="h-5 w-5" />

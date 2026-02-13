@@ -19,7 +19,7 @@ const SCORE_THRESHOLDS = { high: 80, mid: 60 } as const;
 const SCORE_COLORS = {
     high: { text: "text-success", stroke: "stroke-success" },
     mid: { text: "text-orange-500", stroke: "stroke-orange-500" },
-    low: { text: "text-destructive", stroke: "stroke-destructive" },
+    low: { text: "text-destructive", stroke: "stroke-destructive" }
 } as const;
 
 function getScoreLevel(pct: number) {
@@ -77,7 +77,7 @@ export function UsageScoreCard({
                 </CardHeader>
             )}
             <CardContent className={cn(!title && "p-6")}>
-                <div className={cn("flex flex-col gap-6 md:flex-row md:items-center")}>
+                <div className={cn("flex items-center gap-6")}>
                     {/* Score gauge */}
                     <div className="flex flex-col items-center gap-2">
                         <div className={cn("relative", gaugeSize)}>
@@ -99,7 +99,10 @@ export function UsageScoreCard({
                                     strokeLinecap="round"
                                     strokeDasharray={circumference}
                                     strokeDashoffset={strokeDashoffset}
-                                    className={cn(getStrokeClass(percentage), "transition-all duration-500")}
+                                    className={cn(
+                                        getStrokeClass(percentage),
+                                        "transition-all duration-500"
+                                    )}
                                 />
                             </svg>
                             <div className="absolute inset-0 flex flex-col items-center justify-center">
@@ -116,10 +119,7 @@ export function UsageScoreCard({
                         )}
                         {grade && (
                             <Badge
-                                className={cn(
-                                    "text-sm font-bold",
-                                    gradeConfig[grade].className
-                                )}
+                                className={cn("text-sm font-bold", gradeConfig[grade].className)}
                             >
                                 {gradeConfig[grade].label}
                             </Badge>

@@ -84,7 +84,7 @@ export function DailyDetailPage() {
             <DailyHeader report={report} prevFilename={prev} nextFilename={next} />
 
             {/* 2. [2열] 활용도 평가 + 피드백 */}
-            <div className="grid grid-cols-1 gap-3 lg:grid-cols-2">
+            <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
                 {report.scoring && (
                     <UsageScoreCard
                         score={report.scoring.total}
@@ -108,17 +108,23 @@ export function DailyDetailPage() {
             {/* 4. 클로드 코드 활용 방식 */}
             <ClaudeUsageSection toolUsage={report.tool_usage} />
 
-            {/* 5. [2열] 도구 통계 + 주요 작업 */}
-            <div className="grid grid-cols-1 gap-3 lg:grid-cols-2">
+            {/* 5. [2열] 도구 통계 + 주요 작업 + 주요 워크플로우 */}
+            <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
                 <ToolStatsTable toolStats={report.tool_usage.top_tools} />
-                <TaskTypeGrid mainTasks={report.summary.main_tasks} />
+                <div className="flex flex-col gap-3">
+                    <div className="flex-1">
+                        <TaskTypeGrid mainTasks={report.summary.main_tasks} />
+                    </div>
+                    <div className="flex-1">
+                        <WorkflowPatterns mainWorkflow={report.main_workflow} />
+                    </div>
+                </div>
             </div>
 
             {/* 6. 에러 요약 */}
             <ErrorSummarySection errorSummary={report.error_summary} />
 
             {/* 7. 주요 워크플로우 */}
-            <WorkflowPatterns mainWorkflow={report.main_workflow} />
         </div>
     );
 }
