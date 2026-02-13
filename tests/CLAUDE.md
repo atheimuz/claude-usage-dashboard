@@ -5,11 +5,10 @@
 ```
 tests/
 ├── claude-usage-dashboard/   # 기능별 테스트 스펙
-│   ├── home.spec.ts          # 홈 대시보드
-│   ├── daily-list.spec.ts    # 일지 목록
-│   ├── daily-detail.spec.ts  # 일지 상세
-│   ├── common.spec.ts        # 공통 기능 (네비게이션, 다크모드)
-│   └── data-fetching.spec.ts # 데이터 fetching, 에러 처리
+│   ├── home.spec.ts          # 홈 대시보드 (10개 시나리오)
+│   ├── daily-list.spec.ts    # 일지 목록 (기존 유지)
+│   ├── daily-detail.spec.ts  # 일지 상세 (17개 시나리오)
+│   └── common.spec.ts        # 공통 기능 (네비게이션, 다크모드, 반응형)
 ├── page-objects/             # Page Object 클래스
 │   ├── base.page.ts          # BasePage (navigate, waitForPageLoad, waitForSelector)
 │   ├── home.page.ts
@@ -21,8 +20,9 @@ tests/
 
 ## 테스트 작성 컨벤션
 
-- **테스트명**: 한글, "~해야 한다" 형식
-- **구조**: `test.describe("섹션명")` > `test.beforeEach` > `test("테스트명")`
+- **테스트명**: 한글, "~해야 한다" 또는 "~할 수 있다" 형식
+- **구조**: `test.describe("섹션명 - 사용자 시나리오")` > `test.beforeEach` > `test("테스트명")`
+- **패턴**: Given-When-Then 시나리오 패턴 사용
 - **셀렉터**: `getByRole()` / `getByText()` 우선, `locator()` 보조
 
 ## API 인터셉트 패턴 (beforeEach)
@@ -76,3 +76,4 @@ test.beforeEach(async ({ page }) => {
 2. `claude-usage-dashboard/`에 `<feature>.spec.ts` 생성
 3. 필요한 목업 데이터를 `mocks/claude-usage-dashboard.mock.ts`에 추가
 4. `beforeEach`에서 API 인터셉트 설정 (위 패턴 복사)
+5. Given-When-Then 시나리오 패턴으로 테스트 작성
