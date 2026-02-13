@@ -8,24 +8,20 @@ import {
     TableHeader,
     TableRow
 } from "@/components/ui/table";
-import type { ClaudeUsage } from "@/types";
+import type { ToolUsage } from "@/types";
 
 interface Props {
-    claudeUsage: ClaudeUsage;
+    toolUsage: ToolUsage;
 }
 
-export function ClaudeUsageSection({ claudeUsage }: Props) {
-    const { modes, features, delegationStyle, subAgentUsages, slashCommands } = claudeUsage;
-    const hasAny =
-        modes.length > 0 ||
-        features.length > 0 ||
-        delegationStyle.length > 0 ||
-        (subAgentUsages && subAgentUsages.length > 0) ||
-        (slashCommands && slashCommands.length > 0);
+export function ClaudeUsageSection({ toolUsage }: Props) {
+    const { agents, commands, skills } = toolUsage;
+    const hasAny = agents.length > 0 || commands.length > 0 || skills.length > 0;
     if (!hasAny) return null;
 
-    const hasAgentDesc = subAgentUsages?.some((a) => a.description) ?? false;
-    const hasCmdDesc = slashCommands?.some((c) => c.description) ?? false;
+    const hasAgentDescription = agents.some((a) => a.description);
+    const hasCommandDescription = commands.some((c) => c.description);
+    const hasSkillDescription = skills.some((s) => s.description);
 
     return (
         <Card>
@@ -36,55 +32,7 @@ export function ClaudeUsageSection({ claudeUsage }: Props) {
                 </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
-                {modes.length > 0 && (
-                    <div>
-                        <p className="mb-2 text-sm font-medium text-muted-foreground">
-                            사용한 모드
-                        </p>
-                        <ul className="space-y-1">
-                            {modes.map((mode) => (
-                                <li key={mode.name} className="text-sm">
-                                    <span className="font-semibold">{mode.name}</span>
-                                    {mode.percentage != null && (
-                                        <span className="ml-2 text-muted-foreground">
-                                            {mode.percentage}%
-                                        </span>
-                                    )}
-                                    {mode.description && mode.description !== mode.name && (
-                                        <span className="ml-1 text-muted-foreground">
-                                            - {mode.description}
-                                        </span>
-                                    )}
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-                )}
-                {features.length > 0 && (
-                    <div>
-                        <p className="mb-2 text-sm font-medium text-muted-foreground">
-                            활용한 기능
-                        </p>
-                        <ul className="space-y-1">
-                            {features.map((feat) => (
-                                <li key={feat.name} className="text-sm">
-                                    <span className="font-semibold">{feat.name}</span>
-                                    {feat.percentage != null && (
-                                        <span className="ml-2 text-muted-foreground">
-                                            {feat.percentage}%
-                                        </span>
-                                    )}
-                                    {feat.count != null && (
-                                        <span className="ml-2 text-muted-foreground">
-                                            {feat.count}회
-                                        </span>
-                                    )}
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-                )}
-                {subAgentUsages && subAgentUsages.length > 0 && (
+                {agents.length > 0 && (
                     <div>
                         <p className="mb-2 text-sm font-medium text-muted-foreground">
                             Sub Agent 위임
@@ -93,31 +41,33 @@ export function ClaudeUsageSection({ claudeUsage }: Props) {
                             <TableHeader>
                                 <TableRow>
                                     <TableHead>Agent 유형</TableHead>
+                                    {hasAgentDescription && (
+                                        <TableHead>설명</TableHead>
+                                    )}
                                     <TableHead className="text-right">횟수</TableHead>
-                                    {hasAgentDesc && <TableHead>설명</TableHead>}
                                 </TableRow>
                             </TableHeader>
                             <TableBody>
-                                {subAgentUsages.map((agent) => (
-                                    <TableRow key={agent.agentType}>
+                                {agents.map((agent) => (
+                                    <TableRow key={agent.type}>
                                         <TableCell className="font-medium">
-                                            {agent.agentType}
+                                            {agent.type}
                                         </TableCell>
+                                        {hasAgentDescription && (
+                                            <TableCell className="text-muted-foreground">
+                                                {agent.description}
+                                            </TableCell>
+                                        )}
                                         <TableCell className="text-right">
                                             {agent.count}회
                                         </TableCell>
-                                        {hasAgentDesc && (
-                                            <TableCell className="text-muted-foreground">
-                                                {agent.description || "-"}
-                                            </TableCell>
-                                        )}
                                     </TableRow>
                                 ))}
                             </TableBody>
                         </Table>
                     </div>
                 )}
-                {slashCommands && slashCommands.length > 0 && (
+                {commands.length > 0 && (
                     <div>
                         <p className="mb-2 text-sm font-medium text-muted-foreground">
                             슬래시 커맨드
@@ -126,40 +76,61 @@ export function ClaudeUsageSection({ claudeUsage }: Props) {
                             <TableHeader>
                                 <TableRow>
                                     <TableHead>커맨드</TableHead>
+                                    {hasCommandDescription && (
+                                        <TableHead>설명</TableHead>
+                                    )}
                                     <TableHead className="text-right">횟수</TableHead>
-                                    {hasCmdDesc && <TableHead>설명</TableHead>}
                                 </TableRow>
                             </TableHeader>
                             <TableBody>
-                                {slashCommands.map((cmd) => (
-                                    <TableRow key={cmd.command}>
+                                {commands.map((cmd) => (
+                                    <TableRow key={cmd.name}>
                                         <TableCell className="font-mono font-medium">
-                                            {cmd.command}
+                                            {cmd.name}
                                         </TableCell>
-                                        <TableCell className="text-right">{cmd.count}회</TableCell>
-                                        {hasCmdDesc && (
+                                        {hasCommandDescription && (
                                             <TableCell className="text-muted-foreground">
-                                                {cmd.description || "-"}
+                                                {cmd.description}
                                             </TableCell>
                                         )}
+                                        <TableCell className="text-right">{cmd.count}회</TableCell>
                                     </TableRow>
                                 ))}
                             </TableBody>
                         </Table>
                     </div>
                 )}
-                {delegationStyle.length > 0 && (
+                {skills.length > 0 && (
                     <div>
                         <p className="mb-2 text-sm font-medium text-muted-foreground">
-                            작업 위임 스타일
+                            사용한 스킬
                         </p>
-                        <ul className="list-disc space-y-1 pl-4">
-                            {delegationStyle.map((style, i) => (
-                                <li key={i} className="text-sm">
-                                    {style}
-                                </li>
-                            ))}
-                        </ul>
+                        <Table>
+                            <TableHeader>
+                                <TableRow>
+                                    <TableHead>스킬</TableHead>
+                                    {hasSkillDescription && (
+                                        <TableHead>설명</TableHead>
+                                    )}
+                                    <TableHead className="text-right">횟수</TableHead>
+                                </TableRow>
+                            </TableHeader>
+                            <TableBody>
+                                {skills.map((skill) => (
+                                    <TableRow key={skill.name}>
+                                        <TableCell className="font-mono font-medium">
+                                            {skill.name}
+                                        </TableCell>
+                                        {hasSkillDescription && (
+                                            <TableCell className="text-muted-foreground">
+                                                {skill.description}
+                                            </TableCell>
+                                        )}
+                                        <TableCell className="text-right">{skill.count}회</TableCell>
+                                    </TableRow>
+                                ))}
+                            </TableBody>
+                        </Table>
                     </div>
                 )}
             </CardContent>

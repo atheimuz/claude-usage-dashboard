@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom"
 import { ChevronLeft, ChevronRight, ArrowLeft } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { formatDate } from "@/lib/utils"
+import { formatDate, formatNumber } from "@/lib/utils"
 import type { DailyReport } from "@/types"
 
 interface Props {
@@ -39,6 +39,9 @@ export function DailyHeader({ report, prevFilename, nextFilename }: Props) {
               <h1 className="text-3xl font-bold">{formatDate(report.date)}</h1>
               <Badge variant="secondary">{report.identifier}</Badge>
             </div>
+            <p className="mt-1 text-sm text-muted-foreground">
+              {report.summary.sessions}개 세션 · 평균 {formatNumber(report.summary.avg_messages)} 메시지 · 평균 {formatNumber(report.summary.avg_tool_calls)} 도구 호출
+            </p>
           </div>
           <Button
             variant="outline"

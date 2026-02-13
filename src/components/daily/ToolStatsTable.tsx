@@ -9,15 +9,26 @@ import {
     TableRow
 } from "@/components/ui/table";
 import { formatNumber } from "@/lib/utils";
-import type { ToolStat } from "@/types";
+import type { ToolStat, ToolUsageItem } from "@/types";
 
 interface Props {
-    toolStats: ToolStat[];
+    toolStats: ToolStat[] | ToolUsageItem[];
+}
+
+function normalizeToolStats(stats: ToolStat[] | ToolUsageItem[]): { name: string; count: number }[] {
+    return stats.map((item) => {
+        if ('toolName' in item) {
+            return { name: item.toolName, count: item.usageCount };
+        }
+        return { name: item.name || "Unknown", count: item.count };
+    });
 }
 
 export function ToolStatsTable({ toolStats }: Props) {
     if (toolStats.length === 0) return null;
-    const maxCount = Math.max(...toolStats.map((t) => t.usageCount));
+
+    const normalized = normalizeToolStats(toolStats);
+    const maxCount = Math.max(...normalized.map((t) => t.count));
 
     return (
         <Card>
@@ -33,30 +44,26 @@ export function ToolStatsTable({ toolStats }: Props) {
                         <TableRow>
                             <TableHead>도구</TableHead>
                             <TableHead>사용 횟수</TableHead>
-                            <TableHead className="hidden md:table-cell">주요 용도</TableHead>
                         </TableRow>
                     </TableHeader>
                     <TableBody>
-                        {toolStats.map((ts) => (
-                            <TableRow key={ts.toolName}>
-                                <TableCell className="font-medium">{ts.toolName}</TableCell>
+                        {normalized.map((ts) => (
+                            <TableRow key={ts.name}>
+                                <TableCell className="font-medium">{ts.name}</TableCell>
                                 <TableCell>
                                     <div className="flex items-center gap-2">
                                         <span className="min-w-[4rem] text-sm">
-                                            {formatNumber(ts.usageCount)}회
+                                            {formatNumber(ts.count)}회
                                         </span>
                                         <div className="h-2 flex-1 rounded-full bg-muted">
                                             <div
                                                 className="h-full rounded-full bg-primary"
                                                 style={{
-                                                    width: `${(ts.usageCount / maxCount) * 100}%`
+                                                    width: `${(ts.count / maxCount) * 100}%`
                                                 }}
                                             />
                                         </div>
                                     </div>
-                                </TableCell>
-                                <TableCell className="hidden text-sm text-muted-foreground md:table-cell">
-                                    {ts.primaryUse}
                                 </TableCell>
                             </TableRow>
                         ))}
