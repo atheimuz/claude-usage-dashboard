@@ -5,10 +5,11 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { Button } from "@/components/ui/button";
 import { useAllReports } from "@/hooks/useReports";
 import { aggregateReports } from "@/lib/aggregator";
-import { UsageScoreCard } from "@/components/shared/UsageScoreCard";
+import { ScoreTrendChart } from "@/components/dashboard/ScoreTrendChart";
+import { ScoreGaugeCard } from "@/components/dashboard/ScoreGaugeCard";
+import { CategoryRadarCard } from "@/components/dashboard/CategoryRadarCard";
 import { ToolStatsTable } from "@/components/daily/ToolStatsTable";
 import { TaskTypeGrid } from "@/components/daily/TaskTypeGrid";
-import { TechStackCloud } from "@/components/dashboard/TechStackCloud";
 import { RecentActivity } from "@/components/dashboard/RecentActivity";
 
 export function HomePage() {
@@ -52,7 +53,7 @@ export function HomePage() {
                 <FileText className="mb-4 h-16 w-16 text-muted-foreground" />
                 <p className="text-lg font-semibold">아직 기록된 사용 일지가 없습니다.</p>
                 <p className="text-sm text-muted-foreground">
-                    public/data/ 디렉토리에 마크다운 파일을 추가해 주세요.
+                    public/data/ 디렉토리에 JSON 파일을 추가해 주세요.
                 </p>
             </div>
         );
@@ -64,21 +65,25 @@ export function HomePage() {
                 <h1 className="text-3xl font-bold">Dashboard</h1>
                 <p className="text-muted-foreground">클로드 코드 활용도 종합</p>
             </div>
-            <UsageScoreCard
-                score={stats.averageEvaluationScore ?? stats.latestEvaluation?.overallScore ?? 0}
-                maxScore={stats.latestEvaluation?.maxScore ?? 100}
-                categories={stats.evaluationCategoryAverages ?? stats.latestEvaluation?.categories ?? []}
-                grade={stats.latestEvaluation?.grade}
-                taskComplexity={stats.latestEvaluation?.taskComplexity}
-                label={stats.averageEvaluationScore ? "평균 활용도 점수" : "최신 활용도 점수"}
-                categoryLabel="카테고리별 점수"
-                size="lg"
-            />
+            <div className="grid grid-cols-1 gap-3 md:grid-cols-3">
+                <ScoreTrendChart dailyTrend={stats.dailyTrend} />
+                <ScoreGaugeCard
+                    score={stats.averageEvaluationScore ?? stats.latestScoring?.total ?? 0}
+                    maxScore={100}
+                    grade={stats.latestScoring?.grade}
+                    label={stats.averageEvaluationScore ? "평균 활용도 점수" : "최신 활용도 점수"}
+                />
+                {stats.scoringCategoryAverages && (
+                    <CategoryRadarCard
+                        categoryAverages={stats.scoringCategoryAverages}
+                        label="카테고리별 평균"
+                    />
+                )}
+            </div>
             <div className="grid grid-cols-1 gap-3 lg:grid-cols-2">
                 <ToolStatsTable toolStats={stats.toolUsageAggregated} />
-                <TaskTypeGrid taskTypes={stats.taskTypeAggregated} />
+                <TaskTypeGrid mainTasks={stats.mainTasks} />
             </div>
-            <TechStackCloud frequency={stats.techStackFrequency} />
             <RecentActivity reports={reports} />
         </div>
     );

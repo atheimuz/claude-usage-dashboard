@@ -7,13 +7,12 @@ import { useDailyReport, useFileList } from "@/hooks/useReports";
 import { getNextPrevFilename, sortFilesByDate } from "@/lib/utils";
 import { DailyHeader } from "@/components/daily/DailyHeader";
 import { UsageScoreCard } from "@/components/shared/UsageScoreCard";
-import { TechStackSection } from "@/components/daily/TechStackSection";
+import { UsageStyleSection } from "@/components/daily/UsageStyleSection";
 import { ClaudeUsageSection } from "@/components/daily/ClaudeUsageSection";
 import { PromptPatterns } from "@/components/daily/PromptPatterns";
 import { ToolStatsTable } from "@/components/daily/ToolStatsTable";
 import { TaskTypeGrid } from "@/components/daily/TaskTypeGrid";
-import { ProjectDistributionSection } from "@/components/daily/ProjectDistributionSection";
-import { SessionTimeline } from "@/components/daily/SessionTimeline";
+import { ErrorSummarySection } from "@/components/daily/ErrorSummarySection";
 import { LearningInsights } from "@/components/daily/LearningInsights";
 import { WorkflowPatterns } from "@/components/daily/WorkflowPatterns";
 import { Link } from "react-router-dom";
@@ -84,52 +83,42 @@ export function DailyDetailPage() {
             {/* 1. Header */}
             <DailyHeader report={report} prevFilename={prev} nextFilename={next} />
 
-            {/* 2. Tech Stack */}
-            <TechStackSection techStack={report.techStack} />
-
-            {/* 4. Claude Usage */}
-            <ClaudeUsageSection claudeUsage={report.claudeUsage} />
-
-            {/* 5. Usage Evaluation (conditional) */}
-            {report.usageEvaluation && (
-                <UsageScoreCard
-                    score={report.usageEvaluation.overallScore}
-                    maxScore={report.usageEvaluation.maxScore}
-                    categories={report.usageEvaluation.categories}
-                    grade={report.usageEvaluation.grade}
-                    taskComplexity={report.usageEvaluation.taskComplexity}
-                    strengths={report.usageEvaluation.strengths}
-                    improvements={report.usageEvaluation.improvements}
-                    title="활용도 평가"
-                    size="sm"
-                    featured
-                />
-            )}
-
-            {/* 6. Prompt Patterns */}
-            <PromptPatterns patterns={report.promptPatterns} />
-
-            {/* 7. Tool Stats & Task Types (2-column grid) */}
+            {/* 2. [2열] 활용도 평가 + 피드백 */}
             <div className="grid grid-cols-1 gap-3 lg:grid-cols-2">
-                <ToolStatsTable toolStats={report.toolStats} />
-                <TaskTypeGrid taskTypes={report.taskTypes} />
+                {report.scoring && (
+                    <UsageScoreCard
+                        score={report.scoring.total}
+                        maxScore={100}
+                        categories={report.scoring.categories}
+                        grade={report.scoring.grade}
+                        title="활용도 평가"
+                        size="sm"
+                        featured
+                    />
+                )}
+                <LearningInsights feedback={report.feedback} />
             </div>
 
-            {/* 8. Project Distribution (conditional) */}
-            {report.projectDistribution && report.projectDistribution.length > 0 && (
-                <ProjectDistributionSection distributions={report.projectDistribution} />
-            )}
+            {/* 3. [2열] 사용 스타일 + 프롬프트 통계 */}
+            <div className="grid grid-cols-1 gap-3 lg:grid-cols-2">
+                <UsageStyleSection usageStyle={report.usage_style} />
+                <PromptPatterns promptStats={report.usage_style.prompt_stats} />
+            </div>
 
-            {/* 9. Learning Insights */}
-            <LearningInsights insights={report.learningInsights} />
+            {/* 4. 클로드 코드 활용 방식 */}
+            <ClaudeUsageSection toolUsage={report.tool_usage} />
 
-            {/* 10. Workflow Patterns */}
-            <WorkflowPatterns patterns={report.workflowPatterns} />
+            {/* 5. [2열] 도구 통계 + 주요 작업 */}
+            <div className="grid grid-cols-1 gap-3 lg:grid-cols-2">
+                <ToolStatsTable toolStats={report.tool_usage.top_tools} />
+                <TaskTypeGrid mainTasks={report.summary.main_tasks} />
+            </div>
 
-            {/* 11. Session Accordion (backward compatible, conditional) */}
-            {report.sessionDetails.length > 0 && (
-                <SessionTimeline sessions={report.sessionDetails} />
-            )}
+            {/* 6. 에러 요약 */}
+            <ErrorSummarySection errorSummary={report.error_summary} />
+
+            {/* 7. 주요 워크플로우 */}
+            <WorkflowPatterns mainWorkflow={report.main_workflow} />
         </div>
     );
 }
