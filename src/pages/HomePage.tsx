@@ -11,6 +11,7 @@ import { CategoryRadarCard } from "@/components/dashboard/CategoryRadarCard";
 import { ToolStatsTable } from "@/components/daily/ToolStatsTable";
 import { TaskTypeGrid } from "@/components/daily/TaskTypeGrid";
 import { RecentActivity } from "@/components/dashboard/RecentActivity";
+import { FrequentTools } from "@/components/dashboard/FrequentTools";
 
 export function HomePage() {
     const { data: reports, isLoading, isError } = useAllReports();
@@ -82,8 +83,9 @@ export function HomePage() {
             </div>
             <div className="grid grid-cols-1 gap-3 lg:grid-cols-2">
                 <ToolStatsTable toolStats={stats.toolUsageAggregated} />
-                <TaskTypeGrid mainTasks={stats.mainTasks} />
+                <FrequentTools frequentTools={stats.frequentTools} />
             </div>
+            <TaskTypeGrid mainTasks={stats.mainTasks} />
             <RecentActivity reports={reports} />
         </div>
     );

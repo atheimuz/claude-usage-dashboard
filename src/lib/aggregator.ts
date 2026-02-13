@@ -1,4 +1,4 @@
-import type { DailyReport, AggregatedStats, ToolStat, DailyTrendPoint, Scoring } from "@/types"
+import type { DailyReport, AggregatedStats, ToolStat, DailyTrendPoint, Scoring, FrequentToolItem } from "@/types"
 
 export function aggregateReports(reports: DailyReport[]): AggregatedStats {
   const dates = new Set<string>()
@@ -18,6 +18,9 @@ export function aggregateReports(reports: DailyReport[]): AggregatedStats {
     fitness: { total: 0, count: 0 },
     workflow: { total: 0, count: 0 },
   }
+
+  // FrequentTools 집계용 Map
+  const frequentToolsMap = new Map<string, { name: string; category: 'agent' | 'command' | 'skill'; totalCount: number; description?: string }>()
 
   for (const report of reports) {
     dates.add(report.date)
@@ -83,6 +86,51 @@ export function aggregateReports(reports: DailyReport[]): AggregatedStats {
         categoryScores.workflow.count += 1
       }
     }
+
+    // FrequentTools 집계: agents
+    for (const agent of report.tool_usage.agents) {
+      const name = agent.type || "Unknown"
+      const key = `agent::${name}`
+      const existing = frequentToolsMap.get(key)
+      if (existing) {
+        existing.totalCount += agent.count
+        if (!existing.description && agent.description) {
+          existing.description = agent.description
+        }
+      } else {
+        frequentToolsMap.set(key, { name, category: 'agent', totalCount: agent.count, description: agent.description })
+      }
+    }
+
+    // FrequentTools 집계: commands
+    for (const command of report.tool_usage.commands) {
+      const name = command.name || "Unknown"
+      const key = `command::${name}`
+      const existing = frequentToolsMap.get(key)
+      if (existing) {
+        existing.totalCount += command.count
+        if (!existing.description && command.description) {
+          existing.description = command.description
+        }
+      } else {
+        frequentToolsMap.set(key, { name, category: 'command', totalCount: command.count, description: command.description })
+      }
+    }
+
+    // FrequentTools 집계: skills
+    for (const skill of report.tool_usage.skills) {
+      const name = skill.name || "Unknown"
+      const key = `skill::${name}`
+      const existing = frequentToolsMap.get(key)
+      if (existing) {
+        existing.totalCount += skill.count
+        if (!existing.description && skill.description) {
+          existing.description = skill.description
+        }
+      } else {
+        frequentToolsMap.set(key, { name, category: 'skill', totalCount: skill.count, description: skill.description })
+      }
+    }
   }
 
   const toolUsageAggregated: ToolStat[] = Array.from(toolMap.entries())
@@ -117,6 +165,11 @@ export function aggregateReports(reports: DailyReport[]): AggregatedStats {
       }
     : undefined
 
+  // FrequentTools: 배열 변환, 정렬, 상위 10개 추출
+  const frequentTools: FrequentToolItem[] = Array.from(frequentToolsMap.values())
+    .sort((a, b) => b.totalCount - a.totalCount)
+    .slice(0, 10)
+
   return {
     totalDays: dates.size,
     totalSessions,
@@ -127,5 +180,6 @@ export function aggregateReports(reports: DailyReport[]): AggregatedStats {
     averageEvaluationScore,
     latestScoring,
     scoringCategoryAverages,
+    frequentTools,
   }
 }

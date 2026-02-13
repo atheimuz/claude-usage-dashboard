@@ -124,6 +124,13 @@ export interface ToolStat {
     usageCount: number;
 }
 
+export interface FrequentToolItem {
+    name: string;
+    category: 'agent' | 'command' | 'skill';
+    totalCount: number;
+    description?: string;
+}
+
 export interface AggregatedStats {
     totalDays: number;
     totalSessions: number;
@@ -139,6 +146,7 @@ export interface AggregatedStats {
         fitness: number;
         workflow: number;
     };
+    frequentTools: FrequentToolItem[];
 }
 
 export interface DailyTrendPoint {
