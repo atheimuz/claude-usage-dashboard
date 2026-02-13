@@ -1,275 +1,113 @@
 {
-  "date": "2026-01-16",
-  "identifier": "side",
-  "filename": "side/2026-01-16",
-  "overview": {
-    "totalSessions": 1,
-    "totalToolCalls": 0,
-    "projectCount": 0,
-    "avgMessagesPerSession": 318,
-    "avgToolCallsPerSession": 107
+  "date_range": {
+    "start": "2026-01-16T00:00:00",
+    "end": "2026-01-16T23:59:59.999999"
   },
-  "projectSessions": [],
-  "techStack": {
-    "languages": [
-      {
-        "name": "TypeScript"
-      },
-      {
-        "name": "JavaScript"
-      },
-      {
-        "name": "HTML/CSS"
-      },
-      {
-        "name": "Shell"
-      },
-      {
-        "name": "SQL"
-      }
-    ],
-    "frameworks": [
-      {
-        "name": "React"
-      },
-      {
-        "name": "Next.js"
-      },
-      {
-        "name": "Angular"
-      },
-      {
-        "name": "Tailwind CSS"
-      },
-      {
-        "name": "shadcn/ui"
-      }
-    ],
-    "tools": []
+  "summary": {
+    "sessions": 1,
+    "avg_messages": 320.0,
+    "avg_tool_calls": 107.0,
+    "main_tasks": [
+      "Coding",
+      "Debugging",
+      "Modification"
+    ]
   },
-  "claudeUsage": {
-    "modes": [
+  "usage_style": {
+    "prompt_stats": {
+      "avg_length": 2982.0,
+      "avg_words": 418,
+      "distribution": {
+        "command": 2,
+        "descriptive": 2,
+        "plan_based": 3
+      }
+    },
+    "session_scale": {
+      "small": {
+        "count": 1,
+        "avg_turns": 7.0
+      }
+    },
+    "correction_ratio": {
+      "initial": 1,
+      "followup": 0,
+      "ratio": 0.0
+    }
+  },
+  "tool_usage": {
+    "skills": [
       {
-        "name": "Plan Mode (1개 세션)",
-        "description": "Plan Mode (1개 세션)"
-      },
-      {
-        "name": "일반 모드",
-        "description": "일반 모드"
+        "name": "/implementation-plan",
+        "count": 1,
+        "description": "구현 계획 작성"
       }
     ],
-    "features": [],
-    "delegationStyle": [
-      "에이전트 위임을 활용한 작업 분배",
-      "Plan Mode를 통한 체계적 작업 계획",
-      "단계별 지시를 통한 상호작용 위주"
-    ],
-    "slashCommands": [
+    "agents": [
       {
-        "command": "implementation-plan",
+        "type": "Plan",
         "count": 1,
-        "description": "커스텀 스킬"
-      },
-      {
-        "command": "/implement",
-        "count": 7,
-        "description": "/implement"
-      },
-      {
-        "command": "/implementation-plan",
-        "count": 3,
-        "description": "/implementation-plan"
-      },
-      {
-        "command": "/test-scenario",
-        "count": 1,
-        "description": "/test-scenario"
+        "description": "구현 전략 설계 및 아키텍처 계획"
       }
     ],
-    "subAgentUsages": [
+    "commands": [
       {
-        "agentType": "Plan",
+        "name": "/implement",
         "count": 1,
-        "description": "구현 전략 설계 및 계획 수립"
+        "description": "구현 작업 실행"
+      },
+      {
+        "name": "/test-scenario",
+        "count": 1,
+        "description": "테스트 시나리오 작성"
+      }
+    ],
+    "top_tools": [
+      {
+        "name": "Write",
+        "count": 42
+      },
+      {
+        "name": "Read",
+        "count": 18
+      },
+      {
+        "name": "TodoWrite",
+        "count": 17
+      },
+      {
+        "name": "Edit",
+        "count": 14
+      },
+      {
+        "name": "Bash",
+        "count": 9
       }
     ]
   },
-  "promptPatterns": {
-    "effective": [
-      "구체적이고 상세한 지시 패턴"
-    ],
-    "conversationFlow": [
-      {
-        "type": "연속적인 후속 지시를 통한 점진적 작업 진행",
-        "description": "연속적인 후속 지시를 통한 점진적 작업 진행"
-      }
-    ]
-  },
-  "toolStats": [
-    {
-      "toolName": "Write",
-      "usageCount": 42,
-      "primaryUse": "파일 생성/작성"
-    },
-    {
-      "toolName": "Read",
-      "usageCount": 18,
-      "primaryUse": "파일 내용 읽기"
-    },
-    {
-      "toolName": "TodoWrite",
-      "usageCount": 17,
-      "primaryUse": "작업 목록 관리"
-    },
-    {
-      "toolName": "Edit",
-      "usageCount": 14,
-      "primaryUse": "파일 내용 수정"
-    },
-    {
-      "toolName": "Bash",
-      "usageCount": 9,
-      "primaryUse": "터미널 명령 실행"
-    },
-    {
-      "toolName": "Glob",
-      "usageCount": 3,
-      "primaryUse": "파일 패턴 검색"
-    },
-    {
-      "toolName": "Skill",
-      "usageCount": 1,
-      "primaryUse": "스킬 호출"
-    },
-    {
-      "toolName": "AskUserQuestion",
-      "usageCount": 1,
-      "primaryUse": "사용자 확인 요청"
-    },
-    {
-      "toolName": "Task",
-      "usageCount": 1,
-      "primaryUse": "서브 에이전트 실행"
-    },
-    {
-      "toolName": "ExitPlanMode",
-      "usageCount": 1,
-      "primaryUse": "계획 모드 종료"
-    }
-  ],
-  "taskTypes": [
-    {
-      "type": "코딩",
-      "count": 1,
-      "description": "100%"
-    },
-    {
-      "type": "수정",
-      "count": 1,
-      "description": "100%"
-    },
-    {
-      "type": "설계/기획",
-      "count": 1,
-      "description": "100%"
-    },
-    {
-      "type": "설정",
-      "count": 1,
-      "description": "100%"
-    },
-    {
-      "type": "탐색/분석",
-      "count": 1,
-      "description": "100%"
-    },
-    {
-      "type": "학습",
-      "count": 1,
-      "description": "100%"
-    },
-    {
-      "type": "스타일링",
-      "count": 1,
-      "description": "100%"
-    },
-    {
-      "type": "문서화",
-      "count": 1,
-      "description": "100%"
-    },
-    {
-      "type": "배포/CI",
-      "count": 1,
-      "description": "100%"
-    },
-    {
-      "type": "보안",
-      "count": 1,
-      "description": "100%"
-    },
-    {
-      "type": "성능 최적화",
-      "count": 1,
-      "description": "100%"
-    },
-    {
-      "type": "데이터/DB",
-      "count": 1,
-      "description": "100%"
-    }
-  ],
-  "sessionDetails": [
-    {
-      "groupName": "세션 1: 코딩 / 수정 / 설계/기획 / 설정 / 탐색/분석 / 학습 / 스타일링 / 문서화 / 배포/CI / 보안 / 성능 최적화 / 데이터/DB",
-      "taskTypes": [
-        "코딩 / 수정 / 설계/기획 / 설정 / 탐색/분석 / 학습 / 스타일링 / 문서화 / 배포/CI / 보안 / 성능 최적화 / 데이터/DB"
-      ],
-      "approach": "Plan 에이전트 활용 / implementation-plan 스킬 사용 / Plan Mode 활용",
-      "mainTasks": "",
-      "changeScale": "4개 파일 유형, 56건 변경"
-    }
-  ],
-  "learningInsights": [
-    "설계/기획 단계에서 체계적 접근법 활용",
-    "새로운 기술/개념 학습 및 탐색",
-    "다양한 프로그래밍 언어를 활용한 폴리글랏 개발"
-  ],
-  "workflowPatterns": [
-    {
-      "name": "Write → Read → TodoWrite → Edit (1회)",
-      "flow": ""
-    }
-  ],
-  "usageEvaluation": {
-    "overallScore": 88,
-    "maxScore": 100,
-    "categories": [
-      {
-        "name": "의도 전달력",
+  "scoring": {
+    "total": 88,
+    "grade": "A",
+    "categories": {
+      "intent": {
         "score": 19,
-        "maxScore": 25,
-        "description": "양호"
+        "max": 25
       },
-      {
-        "name": "작업 효율성",
+      "efficiency": {
         "score": 27,
-        "maxScore": 30,
-        "description": "우수"
+        "max": 30
       },
-      {
-        "name": "도구 적합성",
+      "fitness": {
         "score": 25,
-        "maxScore": 25,
-        "description": "우수"
+        "max": 25
       },
-      {
-        "name": "워크플로우 성숙도",
+      "workflow": {
         "score": 17,
-        "maxScore": 20,
-        "description": "우수"
+        "max": 20
       }
-    ],
+    }
+  },
+  "feedback": {
     "strengths": [
       "명확한 의도 전달로 수정 지시가 거의 없었습니다",
       "파일 수정을 한번에 정확하게 수행하여 재작업이 적었습니다",
@@ -278,6 +116,22 @@
     ],
     "improvements": [
       "현재 활용도가 높습니다. 새로운 스킬이나 기능을 탐색해보세요"
+    ],
+    "context_tips": [
+      "CLAUDE.md 강화: 코드 패턴, 체크리스트, 자주 하는 실수 추가",
+      "auto-memory 활성화: 세션 간 학습 축적"
     ]
-  }
+  },
+  "error_summary": {
+    "rate": 1.9,
+    "total": 2,
+    "main_types": [
+      "other"
+    ],
+    "recovery": {
+      "immediate_fix": 0,
+      "alternative": 2
+    }
+  },
+  "main_workflow": "Write → Write → Write"
 }

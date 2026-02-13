@@ -1,38 +1,38 @@
 {
   "date_range": {
-    "start": "2026-01-28T00:00:00",
-    "end": "2026-01-28T23:59:59.999999"
+    "start": "2026-02-05T00:00:00",
+    "end": "2026-02-05T23:59:59.999999"
   },
   "summary": {
-    "sessions": 8,
-    "avg_messages": 55.0,
-    "avg_tool_calls": 15.6,
+    "sessions": 7,
+    "avg_messages": 57.4,
+    "avg_tool_calls": 19.3,
     "main_tasks": [
       "Deployment",
-      "Debugging",
+      "Coding",
       "Modification"
     ]
   },
   "usage_style": {
     "prompt_stats": {
-      "avg_length": 481.8,
-      "avg_words": 68,
+      "avg_length": 434.2,
+      "avg_words": 80,
       "distribution": {
-        "command": 5,
-        "descriptive": 23,
+        "command": 3,
+        "descriptive": 28,
         "plan_based": 5
       }
     },
     "session_scale": {
       "small": {
-        "count": 8,
-        "avg_turns": 4.1
+        "count": 7,
+        "avg_turns": 5.1
       }
     },
     "correction_ratio": {
-      "initial": 8,
-      "followup": 6,
-      "ratio": 0.75
+      "initial": 7,
+      "followup": 5,
+      "ratio": 0.71
     }
   },
   "tool_usage": {
@@ -40,41 +40,52 @@
     "agents": [
       {
         "type": "Explore",
-        "count": 6,
+        "count": 3,
         "description": "코드베이스 탐색 및 파일/키워드 검색"
       },
       {
-        "type": "claude-code-guide",
+        "type": "Plan",
         "count": 1,
-        "description": "Claude Code 기능 및 사용법 안내"
+        "description": "구현 전략 설계 및 아키텍처 계획"
       }
     ],
-    "commands": [],
+    "commands": [
+      {
+        "name": "/sync-context",
+        "count": 2,
+        "description": "컨텍스트 동기화"
+      },
+      {
+        "name": "/retrospective",
+        "count": 1,
+        "description": "세션 회고 및 개선 분석"
+      }
+    ],
     "top_tools": [
       {
+        "name": "Bash",
+        "count": 47
+      },
+      {
         "name": "Read",
-        "count": 59
+        "count": 37
+      },
+      {
+        "name": "TaskUpdate",
+        "count": 14
       },
       {
         "name": "Edit",
-        "count": 32
+        "count": 10
       },
       {
-        "name": "ExitPlanMode",
-        "count": 8
-      },
-      {
-        "name": "Task",
+        "name": "Write",
         "count": 7
-      },
-      {
-        "name": "Glob",
-        "count": 6
       }
     ]
   },
   "scoring": {
-    "total": 77,
+    "total": 80,
     "grade": "A",
     "categories": {
       "intent": {
@@ -82,7 +93,7 @@
         "max": 25
       },
       "efficiency": {
-        "score": 21,
+        "score": 27,
         "max": 30
       },
       "fitness": {
@@ -90,18 +101,18 @@
         "max": 25
       },
       "workflow": {
-        "score": 20,
+        "score": 17,
         "max": 20
       }
     }
   },
   "feedback": {
     "strengths": [
-      "도구 호출 성공률이 95.2%로 높습니다",
+      "도구 호출 성공률이 96.3%로 높습니다",
       "에러 발생 시 적응적으로 접근법을 변경했습니다"
     ],
     "improvements": [
-      "재작업 비율이 40.0%입니다. 수정 전 파일을 먼저 Read로 확인하면 재작업을 줄일 수 있습니다"
+      "/commit 또는 /granular-commit 스킬을 활용하면 커밋 작업을 자동화할 수 있습니다"
     ],
     "context_tips": [
       "CLAUDE.md 강화: 코드 패턴, 체크리스트, 자주 하는 실수 추가",
@@ -109,15 +120,16 @@
     ]
   },
   "error_summary": {
-    "rate": 4.8,
-    "total": 6,
+    "rate": 3.7,
+    "total": 5,
     "main_types": [
-      "other"
+      "other",
+      "command_not_found"
     ],
     "recovery": {
-      "immediate_fix": 1,
+      "immediate_fix": 0,
       "alternative": 0
     }
   },
-  "main_workflow": "Read → Read → Read"
+  "main_workflow": "Bash → Bash → Bash"
 }

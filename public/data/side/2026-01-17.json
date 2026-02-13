@@ -1,1055 +1,208 @@
 {
-  "date": "2026-01-17",
-  "identifier": "side",
-  "filename": "side/2026-01-17",
-  "overview": {
-    "totalSessions": 79,
-    "totalToolCalls": 0,
-    "projectCount": 0,
-    "avgMessagesPerSession": 71.6,
-    "avgToolCallsPerSession": 21.5
+  "date_range": {
+    "start": "2026-01-17T00:00:00",
+    "end": "2026-01-17T23:59:59.999999"
   },
-  "projectSessions": [],
-  "techStack": {
-    "languages": [
-      {
-        "name": "TypeScript"
-      },
-      {
-        "name": "JavaScript"
-      },
-      {
-        "name": "HTML/CSS"
-      },
-      {
-        "name": "Shell"
-      },
-      {
-        "name": "Python"
-      }
-    ],
-    "frameworks": [
-      {
-        "name": "React"
-      },
-      {
-        "name": "Next.js"
-      },
-      {
-        "name": "Angular"
-      },
-      {
-        "name": "Tailwind CSS"
-      },
-      {
-        "name": "shadcn/ui"
-      }
-    ],
-    "tools": []
+  "summary": {
+    "sessions": 79,
+    "avg_messages": 73.8,
+    "avg_tool_calls": 21.5,
+    "main_tasks": [
+      "Deployment",
+      "Coding",
+      "Modification"
+    ]
   },
-  "claudeUsage": {
-    "modes": [
-      {
-        "name": "Plan Mode (59개 세션)",
-        "description": "Plan Mode (59개 세션)"
-      },
-      {
-        "name": "일반 모드",
-        "description": "일반 모드"
+  "usage_style": {
+    "prompt_stats": {
+      "avg_length": 707.7,
+      "avg_words": 117,
+      "distribution": {
+        "command": 27,
+        "descriptive": 342,
+        "plan_based": 70
       }
-    ],
-    "features": [],
-    "delegationStyle": [
-      "에이전트 위임을 활용한 작업 분배",
-      "Plan Mode를 통한 체계적 작업 계획",
-      "단계별 지시를 통한 상호작용 위주"
-    ],
-    "slashCommands": [
+    },
+    "session_scale": {
+      "small": {
+        "count": 79,
+        "avg_turns": 5.6
+      }
+    },
+    "correction_ratio": {
+      "initial": 79,
+      "followup": 42,
+      "ratio": 0.53
+    }
+  },
+  "tool_usage": {
+    "skills": [
       {
-        "command": "article-guide",
+        "name": "/article-guide",
         "count": 2,
-        "description": "커스텀 스킬"
+        "description": "기술 문서 작성 가이드"
+      }
+    ],
+    "agents": [
+      {
+        "type": "Explore",
+        "count": 55,
+        "description": "코드베이스 탐색 및 파일/키워드 검색"
       },
       {
-        "command": "/article-guide",
+        "type": "Plan",
+        "count": 29,
+        "description": "구현 전략 설계 및 아키텍처 계획"
+      },
+      {
+        "type": "claude-code-guide",
+        "count": 2,
+        "description": "Claude Code 기능 및 사용법 안내"
+      },
+      {
+        "type": "general-purpose",
+        "count": 1,
+        "description": "범용 리서치 및 멀티스텝 작업"
+      }
+    ],
+    "commands": [
+      {
+        "name": "/commit",
         "count": 9,
-        "description": "/article-guide"
-      },
-      {
-        "command": "/commit",
-        "count": 7,
         "description": "Git 커밋 자동화"
       },
       {
-        "command": "/notion-to-article",
+        "name": "/article-guide",
+        "count": 8,
+        "description": "기술 문서 가이드 실행"
+      },
+      {
+        "name": "/private",
+        "count": 5,
+        "description": "프라이빗 모드 전환"
+      },
+      {
+        "name": "/articles",
+        "count": 5,
+        "description": "기술 글 관리"
+      },
+      {
+        "name": "/skills",
+        "count": 4,
+        "description": "스킬 목록 관리"
+      },
+      {
+        "name": "/notion-to-article",
         "count": 3,
-        "description": "/notion-to-article"
+        "description": "Notion 문서를 기술 글로 변환"
       },
       {
-        "command": "/llmstxt-to-skill",
-        "count": 1,
-        "description": "/llmstxt-to-skill"
-      }
-    ],
-    "subAgentUsages": [
-      {
-        "agentType": "Explore",
-        "count": 55,
-        "description": "코드베이스 탐색 및 검색"
-      },
-      {
-        "agentType": "Plan",
-        "count": 29,
-        "description": "구현 전략 설계 및 계획 수립"
-      },
-      {
-        "agentType": "claude-code-guide",
+        "name": "/llmstxt-to-skill",
         "count": 2,
-        "description": "claude-code-guide 에이전트"
+        "description": "LLMs.txt를 스킬로 변환"
       },
       {
-        "agentType": "general-purpose",
+        "name": "/api",
         "count": 1,
-        "description": "범용 멀티스텝 작업 처리"
+        "description": "API 관련 작업"
+      },
+      {
+        "name": "/accounts",
+        "count": 1,
+        "description": "계정 관리 작업"
+      },
+      {
+        "name": "/transactions",
+        "count": 1,
+        "description": "거래 관련 작업"
+      },
+      {
+        "name": "/holdings",
+        "count": 1,
+        "description": "보유 자산 관련 작업"
+      },
+      {
+        "name": "/import",
+        "count": 1,
+        "description": "데이터 가져오기"
+      },
+      {
+        "name": "/settings",
+        "count": 1,
+        "description": "설정 관리"
+      },
+      {
+        "name": "/doctor",
+        "count": 1,
+        "description": "Claude Code 환경 진단"
+      },
+      {
+        "name": "/nextjs-docs",
+        "count": 1,
+        "description": "Next.js 문서 참조"
+      },
+      {
+        "name": "/commit-push-pr",
+        "count": 1,
+        "description": "커밋, 푸시, PR 일괄 수행"
+      },
+      {
+        "name": "/permissions를",
+        "count": 1,
+        "description": "권한 설정 관련 작업"
+      },
+      {
+        "name": "/anthropic-api",
+        "count": 1,
+        "description": "Anthropic API 관련 작업"
       }
-    ]
-  },
-  "promptPatterns": {
-    "effective": [
-      "구체적이고 상세한 지시 패턴"
     ],
-    "conversationFlow": [
+    "top_tools": [
       {
-        "type": "연속적인 후속 지시를 통한 점진적 작업 진행",
-        "description": "연속적인 후속 지시를 통한 점진적 작업 진행"
+        "name": "Read",
+        "count": 344
+      },
+      {
+        "name": "Bash",
+        "count": 266
+      },
+      {
+        "name": "Write",
+        "count": 254
+      },
+      {
+        "name": "Edit",
+        "count": 251
+      },
+      {
+        "name": "TodoWrite",
+        "count": 229
       }
     ]
   },
-  "toolStats": [
-    {
-      "toolName": "Read",
-      "usageCount": 344,
-      "primaryUse": "파일 내용 읽기"
-    },
-    {
-      "toolName": "Bash",
-      "usageCount": 266,
-      "primaryUse": "터미널 명령 실행"
-    },
-    {
-      "toolName": "Write",
-      "usageCount": 254,
-      "primaryUse": "파일 생성/작성"
-    },
-    {
-      "toolName": "Edit",
-      "usageCount": 251,
-      "primaryUse": "파일 내용 수정"
-    },
-    {
-      "toolName": "TodoWrite",
-      "usageCount": 229,
-      "primaryUse": "작업 목록 관리"
-    },
-    {
-      "toolName": "Task",
-      "usageCount": 87,
-      "primaryUse": "서브 에이전트 실행"
-    },
-    {
-      "toolName": "ExitPlanMode",
-      "usageCount": 75,
-      "primaryUse": "계획 모드 종료"
-    },
-    {
-      "toolName": "Glob",
-      "usageCount": 66,
-      "primaryUse": "파일 패턴 검색"
-    },
-    {
-      "toolName": "AskUserQuestion",
-      "usageCount": 45,
-      "primaryUse": "사용자 확인 요청"
-    },
-    {
-      "toolName": "mcp__notion__API-get-block-children",
-      "usageCount": 37,
-      "primaryUse": "기타 작업"
-    },
-    {
-      "toolName": "WebFetch",
-      "usageCount": 25,
-      "primaryUse": "웹 페이지 내용 가져오기"
-    },
-    {
-      "toolName": "WebSearch",
-      "usageCount": 4,
-      "primaryUse": "웹 검색"
-    },
-    {
-      "toolName": "mcp__notion__API-retrieve-a-page",
-      "usageCount": 4,
-      "primaryUse": "기타 작업"
-    },
-    {
-      "toolName": "TaskOutput",
-      "usageCount": 3,
-      "primaryUse": "기타 작업"
-    },
-    {
-      "toolName": "Grep",
-      "usageCount": 3,
-      "primaryUse": "코드 내용 검색"
-    }
-  ],
-  "taskTypes": [
-    {
-      "type": "코딩",
-      "count": 73,
-      "description": "92%"
-    },
-    {
-      "type": "설계/기획",
-      "count": 68,
-      "description": "86%"
-    },
-    {
-      "type": "수정",
-      "count": 61,
-      "description": "77%"
-    },
-    {
-      "type": "배포/CI",
-      "count": 60,
-      "description": "76%"
-    },
-    {
-      "type": "스타일링",
-      "count": 58,
-      "description": "73%"
-    },
-    {
-      "type": "탐색/분석",
-      "count": 48,
-      "description": "61%"
-    },
-    {
-      "type": "성능 최적화",
-      "count": 39,
-      "description": "49%"
-    },
-    {
-      "type": "디버깅",
-      "count": 35,
-      "description": "44%"
-    },
-    {
-      "type": "설정",
-      "count": 32,
-      "description": "41%"
-    },
-    {
-      "type": "학습",
-      "count": 30,
-      "description": "38%"
-    },
-    {
-      "type": "문서화",
-      "count": 25,
-      "description": "32%"
-    },
-    {
-      "type": "데이터/DB",
-      "count": 21,
-      "description": "27%"
-    },
-    {
-      "type": "테스트",
-      "count": 21,
-      "description": "27%"
-    },
-    {
-      "type": "리팩토링",
-      "count": 13,
-      "description": "16%"
-    },
-    {
-      "type": "보안",
-      "count": 11,
-      "description": "14%"
-    }
-  ],
-  "sessionDetails": [
-    {
-      "groupName": "세션 1: 코딩 / 수정 / 스타일링 / 배포/CI / 데이터/DB",
-      "taskTypes": [
-        "코딩 / 수정 / 스타일링 / 배포/CI / 데이터/DB"
-      ],
-      "approach": "직접 대화를 통한 작업 수행",
-      "mainTasks": "",
-      "changeScale": "1개 파일 유형, 3건 변경"
-    },
-    {
-      "groupName": "세션 2: 코딩 / 디버깅 / 수정 / 테스트 / 설계/기획 / 설정 / 탐색/분석 / 스타일링 / 배포/CI / 성능 최적화",
-      "taskTypes": [
-        "코딩 / 디버깅 / 수정 / 테스트 / 설계/기획 / 설정 / 탐색/분석 / 스타일링 / 배포/CI / 성능 최적화"
-      ],
-      "approach": "Plan Mode 활용",
-      "mainTasks": "",
-      "changeScale": "5개 파일 유형, 22건 변경"
-    },
-    {
-      "groupName": "세션 3: 코딩 / 수정 / 설계/기획 / 학습 / 데이터/DB",
-      "taskTypes": [
-        "코딩 / 수정 / 설계/기획 / 학습 / 데이터/DB"
-      ],
-      "approach": "Explore, Plan 에이전트 활용 / Plan Mode 활용",
-      "mainTasks": "",
-      "changeScale": "1개 파일 유형, 2건 변경"
-    },
-    {
-      "groupName": "세션 4: 코딩 / 디버깅 / 리팩토링 / 수정 / 설계/기획 / 스타일링 / 배포/CI / 성능 최적화 / 데이터/DB",
-      "taskTypes": [
-        "코딩 / 디버깅 / 리팩토링 / 수정 / 설계/기획 / 스타일링 / 배포/CI / 성능 최적화 / 데이터/DB"
-      ],
-      "approach": "Explore, Plan 에이전트 활용 / Plan Mode 활용",
-      "mainTasks": "",
-      "changeScale": "3개 파일 유형, 39건 변경"
-    },
-    {
-      "groupName": "세션 5: 코딩 / 설계/기획 / 스타일링 / 배포/CI",
-      "taskTypes": [
-        "코딩 / 설계/기획 / 스타일링 / 배포/CI"
-      ],
-      "approach": "Explore, Plan 에이전트 활용 / Plan Mode 활용",
-      "mainTasks": "",
-      "changeScale": "2개 파일 유형, 1건 변경"
-    },
-    {
-      "groupName": "세션 6: 코딩 / 설계/기획 / 스타일링",
-      "taskTypes": [
-        "코딩 / 설계/기획 / 스타일링"
-      ],
-      "approach": "Explore, Plan 에이전트 활용 / Plan Mode 활용",
-      "mainTasks": "",
-      "changeScale": "2개 파일 유형, 1건 변경"
-    },
-    {
-      "groupName": "세션 7: 코딩 / 수정 / 설계/기획 / 스타일링 / 배포/CI / 데이터/DB",
-      "taskTypes": [
-        "코딩 / 수정 / 설계/기획 / 스타일링 / 배포/CI / 데이터/DB"
-      ],
-      "approach": "Explore, Plan 에이전트 활용 / Plan Mode 활용",
-      "mainTasks": "",
-      "changeScale": "3개 파일 유형, 1건 변경"
-    },
-    {
-      "groupName": "세션 8: 코딩 / 수정 / 설계/기획 / 스타일링 / 배포/CI / 성능 최적화 / 데이터/DB",
-      "taskTypes": [
-        "코딩 / 수정 / 설계/기획 / 스타일링 / 배포/CI / 성능 최적화 / 데이터/DB"
-      ],
-      "approach": "Explore, Plan 에이전트 활용 / Plan Mode 활용",
-      "mainTasks": "",
-      "changeScale": "3개 파일 유형, 16건 변경"
-    },
-    {
-      "groupName": "세션 9: 코딩 / 디버깅 / 수정 / 설계/기획 / 탐색/분석 / 학습 / 스타일링 / 문서화 / 데이터/DB",
-      "taskTypes": [
-        "코딩 / 디버깅 / 수정 / 설계/기획 / 탐색/분석 / 학습 / 스타일링 / 문서화 / 데이터/DB"
-      ],
-      "approach": "Explore, Plan 에이전트 활용 / Plan Mode 활용",
-      "mainTasks": "",
-      "changeScale": "5개 파일 유형, 55건 변경"
-    },
-    {
-      "groupName": "세션 10: 코딩 / 디버깅 / 수정 / 설계/기획 / 탐색/분석 / 스타일링 / 배포/CI / 데이터/DB",
-      "taskTypes": [
-        "코딩 / 디버깅 / 수정 / 설계/기획 / 탐색/분석 / 스타일링 / 배포/CI / 데이터/DB"
-      ],
-      "approach": "Explore, Plan 에이전트 활용 / Plan Mode 활용",
-      "mainTasks": "",
-      "changeScale": "2개 파일 유형, 5건 변경"
-    },
-    {
-      "groupName": "세션 11: 코딩 / 설계/기획",
-      "taskTypes": [
-        "코딩 / 설계/기획"
-      ],
-      "approach": "Explore, Plan 에이전트 활용 / Plan Mode 활용",
-      "mainTasks": "",
-      "changeScale": "3개 파일 유형, 1건 변경"
-    },
-    {
-      "groupName": "세션 12: 코딩 / 디버깅 / 수정 / 설계/기획 / 설정 / 스타일링 / 문서화 / 배포/CI / 성능 최적화",
-      "taskTypes": [
-        "코딩 / 디버깅 / 수정 / 설계/기획 / 설정 / 스타일링 / 문서화 / 배포/CI / 성능 최적화"
-      ],
-      "approach": "Explore, Plan 에이전트 활용 / Plan Mode 활용",
-      "mainTasks": "",
-      "changeScale": "3개 파일 유형, 6건 변경"
-    },
-    {
-      "groupName": "세션 13: 코딩 / 리팩토링 / 수정 / 탐색/분석 / 스타일링 / 배포/CI / 보안 / 성능 최적화",
-      "taskTypes": [
-        "코딩 / 리팩토링 / 수정 / 탐색/분석 / 스타일링 / 배포/CI / 보안 / 성능 최적화"
-      ],
-      "approach": "직접 대화를 통한 작업 수행",
-      "mainTasks": "",
-      "changeScale": "0개 파일 유형, 0건 변경"
-    },
-    {
-      "groupName": "세션 14: 코딩 / 수정 / 설계/기획 / 탐색/분석 / 학습 / 스타일링 / 문서화 / 배포/CI",
-      "taskTypes": [
-        "코딩 / 수정 / 설계/기획 / 탐색/분석 / 학습 / 스타일링 / 문서화 / 배포/CI"
-      ],
-      "approach": "Plan Mode 활용",
-      "mainTasks": "",
-      "changeScale": "2개 파일 유형, 5건 변경"
-    },
-    {
-      "groupName": "세션 15: 코딩 / 디버깅 / 수정 / 설계/기획 / 탐색/분석 / 스타일링 / 성능 최적화 / 데이터/DB",
-      "taskTypes": [
-        "코딩 / 디버깅 / 수정 / 설계/기획 / 탐색/분석 / 스타일링 / 성능 최적화 / 데이터/DB"
-      ],
-      "approach": "Plan Mode 활용",
-      "mainTasks": "",
-      "changeScale": "3개 파일 유형, 13건 변경"
-    },
-    {
-      "groupName": "세션 16: 코딩 / 리팩토링 / 수정 / 설계/기획 / 설정 / 배포/CI / 보안",
-      "taskTypes": [
-        "코딩 / 리팩토링 / 수정 / 설계/기획 / 설정 / 배포/CI / 보안"
-      ],
-      "approach": "Explore 에이전트 활용 / Plan Mode 활용",
-      "mainTasks": "",
-      "changeScale": "1개 파일 유형, 3건 변경"
-    },
-    {
-      "groupName": "세션 17: 코딩 / 디버깅 / 수정 / 설계/기획 / 설정 / 학습 / 배포/CI / 성능 최적화",
-      "taskTypes": [
-        "코딩 / 디버깅 / 수정 / 설계/기획 / 설정 / 학습 / 배포/CI / 성능 최적화"
-      ],
-      "approach": "Explore, Plan 에이전트 활용 / Plan Mode 활용",
-      "mainTasks": "",
-      "changeScale": "2개 파일 유형, 5건 변경"
-    },
-    {
-      "groupName": "세션 18: 코딩 / 수정 / 설계/기획 / 학습 / 스타일링 / 배포/CI / 성능 최적화",
-      "taskTypes": [
-        "코딩 / 수정 / 설계/기획 / 학습 / 스타일링 / 배포/CI / 성능 최적화"
-      ],
-      "approach": "Explore, Plan 에이전트 활용 / Plan Mode 활용",
-      "mainTasks": "",
-      "changeScale": "3개 파일 유형, 1건 변경"
-    },
-    {
-      "groupName": "세션 19: 코딩 / 디버깅 / 수정 / 설계/기획 / 학습 / 스타일링 / 문서화 / 배포/CI",
-      "taskTypes": [
-        "코딩 / 디버깅 / 수정 / 설계/기획 / 학습 / 스타일링 / 문서화 / 배포/CI"
-      ],
-      "approach": "Explore, Plan 에이전트 활용 / Plan Mode 활용",
-      "mainTasks": "",
-      "changeScale": "1개 파일 유형, 2건 변경"
-    },
-    {
-      "groupName": "세션 20: 코딩 / 설계/기획 / 학습 / 배포/CI",
-      "taskTypes": [
-        "코딩 / 설계/기획 / 학습 / 배포/CI"
-      ],
-      "approach": "Explore, Plan 에이전트 활용 / Plan Mode 활용",
-      "mainTasks": "",
-      "changeScale": "1개 파일 유형, 1건 변경"
-    },
-    {
-      "groupName": "세션 21: 코딩 / 설계/기획 / 탐색/분석 / 스타일링 / 문서화 / 배포/CI",
-      "taskTypes": [
-        "코딩 / 설계/기획 / 탐색/분석 / 스타일링 / 문서화 / 배포/CI"
-      ],
-      "approach": "Explore, Plan 에이전트 활용 / Plan Mode 활용",
-      "mainTasks": "",
-      "changeScale": "1개 파일 유형, 1건 변경"
-    },
-    {
-      "groupName": "세션 22: 코딩 / 디버깅 / 리팩토링 / 수정 / 설계/기획 / 설정 / 스타일링 / 배포/CI / 성능 최적화",
-      "taskTypes": [
-        "코딩 / 디버깅 / 리팩토링 / 수정 / 설계/기획 / 설정 / 스타일링 / 배포/CI / 성능 최적화"
-      ],
-      "approach": "Explore, Plan 에이전트 활용 / Plan Mode 활용",
-      "mainTasks": "",
-      "changeScale": "3개 파일 유형, 16건 변경"
-    },
-    {
-      "groupName": "세션 23: 코딩 / 설계/기획 / 탐색/분석 / 스타일링 / 문서화",
-      "taskTypes": [
-        "코딩 / 설계/기획 / 탐색/분석 / 스타일링 / 문서화"
-      ],
-      "approach": "Explore 에이전트 활용 / Plan Mode 활용",
-      "mainTasks": "",
-      "changeScale": "1개 파일 유형, 1건 변경"
-    },
-    {
-      "groupName": "세션 24: 코딩 / 디버깅 / 수정 / 설계/기획 / 설정 / 탐색/분석 / 스타일링 / 배포/CI / 성능 최적화 / 데이터/DB",
-      "taskTypes": [
-        "코딩 / 디버깅 / 수정 / 설계/기획 / 설정 / 탐색/분석 / 스타일링 / 배포/CI / 성능 최적화 / 데이터/DB"
-      ],
-      "approach": "Plan Mode 활용",
-      "mainTasks": "",
-      "changeScale": "4개 파일 유형, 8건 변경"
-    },
-    {
-      "groupName": "세션 25: 코딩 / 디버깅 / 수정 / 탐색/분석 / 스타일링 / 배포/CI / 성능 최적화",
-      "taskTypes": [
-        "코딩 / 디버깅 / 수정 / 탐색/분석 / 스타일링 / 배포/CI / 성능 최적화"
-      ],
-      "approach": "직접 대화를 통한 작업 수행",
-      "mainTasks": "",
-      "changeScale": "0개 파일 유형, 0건 변경"
-    },
-    {
-      "groupName": "세션 26: 코딩 / 디버깅 / 수정 / 설계/기획 / 설정 / 학습 / 스타일링 / 배포/CI / 보안 / 성능 최적화",
-      "taskTypes": [
-        "코딩 / 디버깅 / 수정 / 설계/기획 / 설정 / 학습 / 스타일링 / 배포/CI / 보안 / 성능 최적화"
-      ],
-      "approach": "직접 대화를 통한 작업 수행",
-      "mainTasks": "",
-      "changeScale": "1개 파일 유형, 4건 변경"
-    },
-    {
-      "groupName": "세션 27: 코딩 / 수정 / 테스트 / 설계/기획 / 탐색/분석 / 스타일링 / 문서화 / 배포/CI",
-      "taskTypes": [
-        "코딩 / 수정 / 테스트 / 설계/기획 / 탐색/분석 / 스타일링 / 문서화 / 배포/CI"
-      ],
-      "approach": "Explore, Plan 에이전트 활용 / Plan Mode 활용",
-      "mainTasks": "",
-      "changeScale": "1개 파일 유형, 2건 변경"
-    },
-    {
-      "groupName": "세션 28: 코딩 / 설계/기획 / 스타일링 / 문서화 / 배포/CI / 성능 최적화",
-      "taskTypes": [
-        "코딩 / 설계/기획 / 스타일링 / 문서화 / 배포/CI / 성능 최적화"
-      ],
-      "approach": "Explore, Plan 에이전트 활용 / Plan Mode 활용",
-      "mainTasks": "",
-      "changeScale": "2개 파일 유형, 1건 변경"
-    },
-    {
-      "groupName": "세션 29: 코딩 / 디버깅 / 수정 / 설계/기획 / 학습 / 스타일링 / 배포/CI / 성능 최적화",
-      "taskTypes": [
-        "코딩 / 디버깅 / 수정 / 설계/기획 / 학습 / 스타일링 / 배포/CI / 성능 최적화"
-      ],
-      "approach": "article-guide 스킬 사용",
-      "mainTasks": "",
-      "changeScale": "1개 파일 유형, 1건 변경"
-    },
-    {
-      "groupName": "세션 30: 코딩 / 디버깅 / 수정 / 설계/기획 / 학습 / 스타일링 / 배포/CI / 성능 최적화",
-      "taskTypes": [
-        "코딩 / 디버깅 / 수정 / 설계/기획 / 학습 / 스타일링 / 배포/CI / 성능 최적화"
-      ],
-      "approach": "Explore 에이전트 활용 / Plan Mode 활용",
-      "mainTasks": "",
-      "changeScale": "4개 파일 유형, 3건 변경"
-    },
-    {
-      "groupName": "세션 31: 코딩 / 수정 / 설계/기획 / 설정 / 탐색/분석 / 스타일링 / 문서화 / 배포/CI",
-      "taskTypes": [
-        "코딩 / 수정 / 설계/기획 / 설정 / 탐색/분석 / 스타일링 / 문서화 / 배포/CI"
-      ],
-      "approach": "Plan Mode 활용",
-      "mainTasks": "",
-      "changeScale": "1개 파일 유형, 2건 변경"
-    },
-    {
-      "groupName": "세션 32: 수정 / 테스트 / 설계/기획 / 설정 / 탐색/분석",
-      "taskTypes": [
-        "수정 / 테스트 / 설계/기획 / 설정 / 탐색/분석"
-      ],
-      "approach": "claude-code-guide 에이전트 활용",
-      "mainTasks": "",
-      "changeScale": "1개 파일 유형, 1건 변경"
-    },
-    {
-      "groupName": "세션 33: 코딩 / 수정 / 설계/기획 / 탐색/분석 / 스타일링 / 배포/CI",
-      "taskTypes": [
-        "코딩 / 수정 / 설계/기획 / 탐색/분석 / 스타일링 / 배포/CI"
-      ],
-      "approach": "Plan Mode 활용",
-      "mainTasks": "",
-      "changeScale": "1개 파일 유형, 1건 변경"
-    },
-    {
-      "groupName": "세션 34: 코딩 / 수정 / 테스트 / 설계/기획 / 설정 / 탐색/분석 / 학습 / 스타일링 / 보안",
-      "taskTypes": [
-        "코딩 / 수정 / 테스트 / 설계/기획 / 설정 / 탐색/분석 / 학습 / 스타일링 / 보안"
-      ],
-      "approach": "Plan Mode 활용",
-      "mainTasks": "",
-      "changeScale": "3개 파일 유형, 3건 변경"
-    },
-    {
-      "groupName": "세션 35: 코딩 / 디버깅 / 수정 / 설계/기획 / 설정 / 탐색/분석 / 스타일링 / 성능 최적화",
-      "taskTypes": [
-        "코딩 / 디버깅 / 수정 / 설계/기획 / 설정 / 탐색/분석 / 스타일링 / 성능 최적화"
-      ],
-      "approach": "Plan Mode 활용",
-      "mainTasks": "",
-      "changeScale": "3개 파일 유형, 8건 변경"
-    },
-    {
-      "groupName": "세션 36: 코딩 / 수정 / 설계/기획 / 스타일링 / 배포/CI / 성능 최적화",
-      "taskTypes": [
-        "코딩 / 수정 / 설계/기획 / 스타일링 / 배포/CI / 성능 최적화"
-      ],
-      "approach": "Plan Mode 활용",
-      "mainTasks": "",
-      "changeScale": "2개 파일 유형, 4건 변경"
-    },
-    {
-      "groupName": "세션 37: 코딩 / 테스트 / 설계/기획 / 탐색/분석 / 스타일링 / 문서화 / 배포/CI",
-      "taskTypes": [
-        "코딩 / 테스트 / 설계/기획 / 탐색/분석 / 스타일링 / 문서화 / 배포/CI"
-      ],
-      "approach": "Explore 에이전트 활용",
-      "mainTasks": "",
-      "changeScale": "1개 파일 유형, 1건 변경"
-    },
-    {
-      "groupName": "세션 38: 코딩 / 설정 / 학습 / 문서화 / 배포/CI / 보안",
-      "taskTypes": [
-        "코딩 / 설정 / 학습 / 문서화 / 배포/CI / 보안"
-      ],
-      "approach": "직접 대화를 통한 작업 수행",
-      "mainTasks": "",
-      "changeScale": "1개 파일 유형, 0건 변경"
-    },
-    {
-      "groupName": "세션 39: 코딩 / 수정 / 배포/CI",
-      "taskTypes": [
-        "코딩 / 수정 / 배포/CI"
-      ],
-      "approach": "직접 대화를 통한 작업 수행",
-      "mainTasks": "",
-      "changeScale": "2개 파일 유형, 2건 변경"
-    },
-    {
-      "groupName": "세션 40: 코딩 / 테스트 / 설계/기획 / 탐색/분석 / 문서화 / 배포/CI",
-      "taskTypes": [
-        "코딩 / 테스트 / 설계/기획 / 탐색/분석 / 문서화 / 배포/CI"
-      ],
-      "approach": "Explore, Plan 에이전트 활용 / Plan Mode 활용",
-      "mainTasks": "",
-      "changeScale": "1개 파일 유형, 1건 변경"
-    },
-    {
-      "groupName": "세션 41: 코딩 / 디버깅 / 수정 / 설계/기획 / 탐색/분석 / 스타일링 / 성능 최적화 / 데이터/DB",
-      "taskTypes": [
-        "코딩 / 디버깅 / 수정 / 설계/기획 / 탐색/분석 / 스타일링 / 성능 최적화 / 데이터/DB"
-      ],
-      "approach": "Explore 에이전트 활용 / Plan Mode 활용",
-      "mainTasks": "",
-      "changeScale": "3개 파일 유형, 17건 변경"
-    },
-    {
-      "groupName": "세션 42: 코딩 / 디버깅 / 수정 / 테스트 / 설계/기획 / 설정 / 탐색/분석 / 학습 / 스타일링 / 문서화 / 배포/CI / 데이터/DB",
-      "taskTypes": [
-        "코딩 / 디버깅 / 수정 / 테스트 / 설계/기획 / 설정 / 탐색/분석 / 학습 / 스타일링 / 문서화 / 배포/CI / 데이터/DB"
-      ],
-      "approach": "Explore, Plan 에이전트 활용 / Plan Mode 활용",
-      "mainTasks": "",
-      "changeScale": "2개 파일 유형, 3건 변경"
-    },
-    {
-      "groupName": "세션 43: 수정",
-      "taskTypes": [
-        "수정"
-      ],
-      "approach": "직접 대화를 통한 작업 수행",
-      "mainTasks": "",
-      "changeScale": "1개 파일 유형, 1건 변경"
-    },
-    {
-      "groupName": "세션 44: 수정 / 스타일링 / 배포/CI",
-      "taskTypes": [
-        "수정 / 스타일링 / 배포/CI"
-      ],
-      "approach": "직접 대화를 통한 작업 수행",
-      "mainTasks": "",
-      "changeScale": "1개 파일 유형, 1건 변경"
-    },
-    {
-      "groupName": "세션 45: 코딩 / 수정 / 설계/기획 / 탐색/분석 / 학습 / 스타일링 / 문서화 / 배포/CI / 성능 최적화",
-      "taskTypes": [
-        "코딩 / 수정 / 설계/기획 / 탐색/분석 / 학습 / 스타일링 / 문서화 / 배포/CI / 성능 최적화"
-      ],
-      "approach": "Plan Mode 활용",
-      "mainTasks": "",
-      "changeScale": "2개 파일 유형, 6건 변경"
-    },
-    {
-      "groupName": "세션 46: 코딩 / 설계/기획 / 학습 / 스타일링 / 문서화 / 배포/CI",
-      "taskTypes": [
-        "코딩 / 설계/기획 / 학습 / 스타일링 / 문서화 / 배포/CI"
-      ],
-      "approach": "Explore, Plan 에이전트 활용 / Plan Mode 활용",
-      "mainTasks": "",
-      "changeScale": "2개 파일 유형, 1건 변경"
-    },
-    {
-      "groupName": "세션 47: 코딩 / 디버깅 / 리팩토링 / 수정 / 테스트 / 설계/기획 / 설정 / 탐색/분석 / 스타일링 / 배포/CI / 성능 최적화",
-      "taskTypes": [
-        "코딩 / 디버깅 / 리팩토링 / 수정 / 테스트 / 설계/기획 / 설정 / 탐색/분석 / 스타일링 / 배포/CI / 성능 최적화"
-      ],
-      "approach": "Plan Mode 활용",
-      "mainTasks": "",
-      "changeScale": "1개 파일 유형, 7건 변경"
-    },
-    {
-      "groupName": "세션 48: 코딩 / 디버깅 / 수정 / 테스트 / 설계/기획 / 설정 / 탐색/분석 / 학습 / 스타일링 / 문서화 / 배포/CI / 성능 최적화 / 데이터/DB",
-      "taskTypes": [
-        "코딩 / 디버깅 / 수정 / 테스트 / 설계/기획 / 설정 / 탐색/분석 / 학습 / 스타일링 / 문서화 / 배포/CI / 성능 최적화 / 데이터/DB"
-      ],
-      "approach": "Explore, Plan 에이전트 활용 / Plan Mode 활용",
-      "mainTasks": "",
-      "changeScale": "2개 파일 유형, 3건 변경"
-    },
-    {
-      "groupName": "세션 49: 코딩 / 수정 / 테스트 / 설계/기획 / 배포/CI",
-      "taskTypes": [
-        "코딩 / 수정 / 테스트 / 설계/기획 / 배포/CI"
-      ],
-      "approach": "Explore 에이전트 활용 / Plan Mode 활용",
-      "mainTasks": "",
-      "changeScale": "2개 파일 유형, 3건 변경"
-    },
-    {
-      "groupName": "세션 50: 코딩 / 설계/기획 / 배포/CI",
-      "taskTypes": [
-        "코딩 / 설계/기획 / 배포/CI"
-      ],
-      "approach": "Explore 에이전트 활용 / Plan Mode 활용",
-      "mainTasks": "",
-      "changeScale": "1개 파일 유형, 1건 변경"
-    },
-    {
-      "groupName": "세션 51: 디버깅 / 수정 / 테스트 / 설정 / 탐색/분석",
-      "taskTypes": [
-        "디버깅 / 수정 / 테스트 / 설정 / 탐색/분석"
-      ],
-      "approach": "직접 대화를 통한 작업 수행",
-      "mainTasks": "",
-      "changeScale": "1개 파일 유형, 0건 변경"
-    },
-    {
-      "groupName": "세션 52: 코딩 / 디버깅 / 수정 / 설계/기획 / 탐색/분석 / 스타일링 / 성능 최적화",
-      "taskTypes": [
-        "코딩 / 디버깅 / 수정 / 설계/기획 / 탐색/분석 / 스타일링 / 성능 최적화"
-      ],
-      "approach": "Explore 에이전트 활용 / Plan Mode 활용",
-      "mainTasks": "",
-      "changeScale": "4개 파일 유형, 6건 변경"
-    },
-    {
-      "groupName": "세션 53: 코딩 / 수정 / 설계/기획 / 학습 / 스타일링 / 배포/CI / 성능 최적화",
-      "taskTypes": [
-        "코딩 / 수정 / 설계/기획 / 학습 / 스타일링 / 배포/CI / 성능 최적화"
-      ],
-      "approach": "Explore, Plan 에이전트 활용 / Plan Mode 활용",
-      "mainTasks": "",
-      "changeScale": "3개 파일 유형, 1건 변경"
-    },
-    {
-      "groupName": "세션 54: 코딩 / 리팩토링 / 수정 / 탐색/분석 / 스타일링 / 배포/CI / 보안 / 성능 최적화",
-      "taskTypes": [
-        "코딩 / 리팩토링 / 수정 / 탐색/분석 / 스타일링 / 배포/CI / 보안 / 성능 최적화"
-      ],
-      "approach": "직접 대화를 통한 작업 수행",
-      "mainTasks": "",
-      "changeScale": "1개 파일 유형, 0건 변경"
-    },
-    {
-      "groupName": "세션 55: 코딩 / 테스트 / 탐색/분석 / 스타일링 / 문서화 / 배포/CI",
-      "taskTypes": [
-        "코딩 / 테스트 / 탐색/분석 / 스타일링 / 문서화 / 배포/CI"
-      ],
-      "approach": "직접 대화를 통한 작업 수행",
-      "mainTasks": "",
-      "changeScale": "1개 파일 유형, 1건 변경"
-    },
-    {
-      "groupName": "세션 56: 코딩 / 리팩토링 / 설계/기획 / 설정 / 탐색/분석 / 배포/CI",
-      "taskTypes": [
-        "코딩 / 리팩토링 / 설계/기획 / 설정 / 탐색/분석 / 배포/CI"
-      ],
-      "approach": "Plan Mode 활용",
-      "mainTasks": "",
-      "changeScale": "1개 파일 유형, 1건 변경"
-    },
-    {
-      "groupName": "세션 57: 디버깅 / 수정 / 테스트 / 설계/기획 / 설정 / 탐색/분석 / 스타일링 / 배포/CI / 보안 / 성능 최적화 / 데이터/DB",
-      "taskTypes": [
-        "디버깅 / 수정 / 테스트 / 설계/기획 / 설정 / 탐색/분석 / 스타일링 / 배포/CI / 보안 / 성능 최적화 / 데이터/DB"
-      ],
-      "approach": "general-purpose 에이전트 활용",
-      "mainTasks": "",
-      "changeScale": "1개 파일 유형, 1건 변경"
-    },
-    {
-      "groupName": "세션 58: 코딩 / 수정 / 설계/기획 / 탐색/분석 / 학습 / 스타일링 / 배포/CI / 성능 최적화",
-      "taskTypes": [
-        "코딩 / 수정 / 설계/기획 / 탐색/분석 / 학습 / 스타일링 / 배포/CI / 성능 최적화"
-      ],
-      "approach": "Plan Mode 활용",
-      "mainTasks": "",
-      "changeScale": "5개 파일 유형, 1건 변경"
-    },
-    {
-      "groupName": "세션 59: 코딩 / 디버깅 / 수정 / 설계/기획 / 탐색/분석 / 스타일링 / 문서화 / 배포/CI / 성능 최적화 / 데이터/DB",
-      "taskTypes": [
-        "코딩 / 디버깅 / 수정 / 설계/기획 / 탐색/분석 / 스타일링 / 문서화 / 배포/CI / 성능 최적화 / 데이터/DB"
-      ],
-      "approach": "Explore, Plan 에이전트 활용 / Plan Mode 활용",
-      "mainTasks": "",
-      "changeScale": "2개 파일 유형, 5건 변경"
-    },
-    {
-      "groupName": "세션 60: 코딩 / 디버깅 / 리팩토링 / 수정 / 설계/기획 / 설정 / 탐색/분석 / 학습 / 스타일링 / 문서화 / 배포/CI",
-      "taskTypes": [
-        "코딩 / 디버깅 / 리팩토링 / 수정 / 설계/기획 / 설정 / 탐색/분석 / 학습 / 스타일링 / 문서화 / 배포/CI"
-      ],
-      "approach": "Explore, Plan 에이전트 활용 / Plan Mode 활용",
-      "mainTasks": "",
-      "changeScale": "1개 파일 유형, 7건 변경"
-    },
-    {
-      "groupName": "세션 61: 코딩 / 디버깅 / 리팩토링 / 수정 / 테스트 / 설계/기획 / 설정 / 스타일링 / 배포/CI / 성능 최적화 / 데이터/DB",
-      "taskTypes": [
-        "코딩 / 디버깅 / 리팩토링 / 수정 / 테스트 / 설계/기획 / 설정 / 스타일링 / 배포/CI / 성능 최적화 / 데이터/DB"
-      ],
-      "approach": "Plan Mode 활용",
-      "mainTasks": "",
-      "changeScale": "3개 파일 유형, 12건 변경"
-    },
-    {
-      "groupName": "세션 62: 코딩 / 디버깅 / 리팩토링 / 수정 / 설계/기획 / 탐색/분석 / 학습 / 스타일링 / 성능 최적화",
-      "taskTypes": [
-        "코딩 / 디버깅 / 리팩토링 / 수정 / 설계/기획 / 탐색/분석 / 학습 / 스타일링 / 성능 최적화"
-      ],
-      "approach": "Plan Mode 활용",
-      "mainTasks": "",
-      "changeScale": "1개 파일 유형, 3건 변경"
-    },
-    {
-      "groupName": "세션 63: 코딩 / 수정 / 설계/기획 / 설정 / 탐색/분석 / 학습 / 스타일링 / 성능 최적화 / 데이터/DB",
-      "taskTypes": [
-        "코딩 / 수정 / 설계/기획 / 설정 / 탐색/분석 / 학습 / 스타일링 / 성능 최적화 / 데이터/DB"
-      ],
-      "approach": "Explore 에이전트 활용 / Plan Mode 활용",
-      "mainTasks": "",
-      "changeScale": "1개 파일 유형, 2건 변경"
-    },
-    {
-      "groupName": "세션 64: 코딩 / 수정 / 설계/기획 / 설정 / 탐색/분석 / 스타일링 / 배포/CI / 성능 최적화",
-      "taskTypes": [
-        "코딩 / 수정 / 설계/기획 / 설정 / 탐색/분석 / 스타일링 / 배포/CI / 성능 최적화"
-      ],
-      "approach": "Explore, Plan 에이전트 활용 / Plan Mode 활용",
-      "mainTasks": "",
-      "changeScale": "3개 파일 유형, 23건 변경"
-    },
-    {
-      "groupName": "세션 65: 코딩 / 수정 / 설계/기획 / 설정 / 탐색/분석 / 학습 / 스타일링 / 배포/CI / 성능 최적화",
-      "taskTypes": [
-        "코딩 / 수정 / 설계/기획 / 설정 / 탐색/분석 / 학습 / 스타일링 / 배포/CI / 성능 최적화"
-      ],
-      "approach": "Plan Mode 활용",
-      "mainTasks": "",
-      "changeScale": "5개 파일 유형, 3건 변경"
-    },
-    {
-      "groupName": "세션 66: 코딩 / 디버깅 / 수정 / 설계/기획 / 설정 / 탐색/분석 / 스타일링 / 배포/CI / 성능 최적화 / 데이터/DB",
-      "taskTypes": [
-        "코딩 / 디버깅 / 수정 / 설계/기획 / 설정 / 탐색/분석 / 스타일링 / 배포/CI / 성능 최적화 / 데이터/DB"
-      ],
-      "approach": "Explore 에이전트 활용 / Plan Mode 활용",
-      "mainTasks": "",
-      "changeScale": "3개 파일 유형, 31건 변경"
-    },
-    {
-      "groupName": "세션 67: 코딩 / 수정 / 테스트 / 설계/기획 / 탐색/분석 / 학습 / 스타일링",
-      "taskTypes": [
-        "코딩 / 수정 / 테스트 / 설계/기획 / 탐색/분석 / 학습 / 스타일링"
-      ],
-      "approach": "Plan Mode 활용",
-      "mainTasks": "",
-      "changeScale": "3개 파일 유형, 2건 변경"
-    },
-    {
-      "groupName": "세션 68: 코딩 / 디버깅 / 수정 / 테스트 / 설계/기획 / 설정 / 탐색/분석 / 스타일링 / 문서화 / 성능 최적화 / 데이터/DB",
-      "taskTypes": [
-        "코딩 / 디버깅 / 수정 / 테스트 / 설계/기획 / 설정 / 탐색/분석 / 스타일링 / 문서화 / 성능 최적화 / 데이터/DB"
-      ],
-      "approach": "Explore 에이전트 활용 / Plan Mode 활용",
-      "mainTasks": "",
-      "changeScale": "2개 파일 유형, 4건 변경"
-    },
-    {
-      "groupName": "세션 69: 코딩 / 설계/기획 / 탐색/분석 / 학습 / 배포/CI / 보안",
-      "taskTypes": [
-        "코딩 / 설계/기획 / 탐색/분석 / 학습 / 배포/CI / 보안"
-      ],
-      "approach": "Explore, Plan 에이전트 활용 / Plan Mode 활용",
-      "mainTasks": "",
-      "changeScale": "1개 파일 유형, 2건 변경"
-    },
-    {
-      "groupName": "세션 70: 코딩 / 설계/기획 / 배포/CI",
-      "taskTypes": [
-        "코딩 / 설계/기획 / 배포/CI"
-      ],
-      "approach": "Explore 에이전트 활용 / Plan Mode 활용",
-      "mainTasks": "",
-      "changeScale": "1개 파일 유형, 1건 변경"
-    },
-    {
-      "groupName": "세션 71: 수정 / 탐색/분석 / 배포/CI",
-      "taskTypes": [
-        "수정 / 탐색/분석 / 배포/CI"
-      ],
-      "approach": "Explore 에이전트 활용",
-      "mainTasks": "",
-      "changeScale": "1개 파일 유형, 7건 변경"
-    },
-    {
-      "groupName": "세션 72: 코딩 / 디버깅 / 리팩토링 / 수정 / 테스트 / 설계/기획 / 설정 / 탐색/분석 / 학습 / 스타일링 / 문서화 / 배포/CI / 성능 최적화",
-      "taskTypes": [
-        "코딩 / 디버깅 / 리팩토링 / 수정 / 테스트 / 설계/기획 / 설정 / 탐색/분석 / 학습 / 스타일링 / 문서화 / 배포/CI / 성능 최적화"
-      ],
-      "approach": "article-guide 스킬 사용",
-      "mainTasks": "",
-      "changeScale": "1개 파일 유형, 6건 변경"
-    },
-    {
-      "groupName": "세션 73: 코딩 / 디버깅 / 리팩토링 / 수정 / 설계/기획 / 설정 / 탐색/분석 / 학습 / 스타일링 / 성능 최적화 / 데이터/DB",
-      "taskTypes": [
-        "코딩 / 디버깅 / 리팩토링 / 수정 / 설계/기획 / 설정 / 탐색/분석 / 학습 / 스타일링 / 성능 최적화 / 데이터/DB"
-      ],
-      "approach": "Explore 에이전트 활용 / Plan Mode 활용",
-      "mainTasks": "",
-      "changeScale": "1개 파일 유형, 4건 변경"
-    },
-    {
-      "groupName": "세션 74: 코딩 / 설계/기획 / 학습 / 배포/CI / 성능 최적화",
-      "taskTypes": [
-        "코딩 / 설계/기획 / 학습 / 배포/CI / 성능 최적화"
-      ],
-      "approach": "Plan Mode 활용",
-      "mainTasks": "",
-      "changeScale": "3개 파일 유형, 1건 변경"
-    },
-    {
-      "groupName": "세션 75: 코딩 / 디버깅 / 수정 / 테스트 / 설계/기획 / 설정 / 탐색/분석 / 학습 / 스타일링 / 문서화 / 배포/CI / 보안 / 성능 최적화",
-      "taskTypes": [
-        "코딩 / 디버깅 / 수정 / 테스트 / 설계/기획 / 설정 / 탐색/분석 / 학습 / 스타일링 / 문서화 / 배포/CI / 보안 / 성능 최적화"
-      ],
-      "approach": "Explore, Plan 에이전트 활용 / Plan Mode 활용",
-      "mainTasks": "",
-      "changeScale": "2개 파일 유형, 75건 변경"
-    },
-    {
-      "groupName": "세션 76: 코딩 / 디버깅 / 테스트 / 설계/기획 / 설정 / 탐색/분석 / 문서화 / 배포/CI / 보안 / 데이터/DB",
-      "taskTypes": [
-        "코딩 / 디버깅 / 테스트 / 설계/기획 / 설정 / 탐색/분석 / 문서화 / 배포/CI / 보안 / 데이터/DB"
-      ],
-      "approach": "직접 대화를 통한 작업 수행",
-      "mainTasks": "",
-      "changeScale": "3개 파일 유형, 4건 변경"
-    },
-    {
-      "groupName": "세션 77: 코딩 / 디버깅 / 수정 / 테스트 / 설계/기획 / 설정 / 탐색/분석 / 배포/CI / 보안",
-      "taskTypes": [
-        "코딩 / 디버깅 / 수정 / 테스트 / 설계/기획 / 설정 / 탐색/분석 / 배포/CI / 보안"
-      ],
-      "approach": "직접 대화를 통한 작업 수행",
-      "mainTasks": "",
-      "changeScale": "2개 파일 유형, 1건 변경"
-    },
-    {
-      "groupName": "세션 78: 코딩 / 디버깅 / 수정 / 테스트 / 설계/기획 / 설정 / 탐색/분석 / 학습 / 스타일링 / 문서화 / 배포/CI / 성능 최적화",
-      "taskTypes": [
-        "코딩 / 디버깅 / 수정 / 테스트 / 설계/기획 / 설정 / 탐색/분석 / 학습 / 스타일링 / 문서화 / 배포/CI / 성능 최적화"
-      ],
-      "approach": "직접 대화를 통한 작업 수행",
-      "mainTasks": "",
-      "changeScale": "1개 파일 유형, 1건 변경"
-    },
-    {
-      "groupName": "세션 79: 코딩 / 디버깅 / 리팩토링 / 수정 / 설계/기획 / 설정 / 탐색/분석 / 학습 / 문서화 / 데이터/DB",
-      "taskTypes": [
-        "코딩 / 디버깅 / 리팩토링 / 수정 / 설계/기획 / 설정 / 탐색/분석 / 학습 / 문서화 / 데이터/DB"
-      ],
-      "approach": "Plan Mode 활용",
-      "mainTasks": "",
-      "changeScale": "1개 파일 유형, 15건 변경"
-    }
-  ],
-  "learningInsights": [
-    "디버깅 세션에서 문제 해결 경험 축적",
-    "설계/기획 단계에서 체계적 접근법 활용",
-    "코드 품질 개선을 위한 리팩토링 수행",
-    "새로운 기술/개념 학습 및 탐색",
-    "다양한 프로그래밍 언어를 활용한 폴리글랏 개발"
-  ],
-  "workflowPatterns": [
-    {
-      "name": "Task → Read → Write → ExitPlanMode (5회)",
-      "flow": ""
-    },
-    {
-      "name": "Task → AskUserQuestion → Write → ExitPlanMode (2회)",
-      "flow": ""
-    },
-    {
-      "name": "Read → Write → TodoWrite → Edit (2회)",
-      "flow": ""
-    },
-    {
-      "name": "Read → Edit → TodoWrite → Bash (2회)",
-      "flow": ""
-    },
-    {
-      "name": "TodoWrite → Read → Write → Glob (2회)",
-      "flow": ""
-    }
-  ],
-  "usageEvaluation": {
-    "overallScore": 80,
-    "maxScore": 100,
-    "categories": [
-      {
-        "name": "의도 전달력",
+  "scoring": {
+    "total": 80,
+    "grade": "A",
+    "categories": {
+      "intent": {
         "score": 19,
-        "maxScore": 25,
-        "description": "양호"
+        "max": 25
       },
-      {
-        "name": "작업 효율성",
+      "efficiency": {
         "score": 27,
-        "maxScore": 30,
-        "description": "우수"
+        "max": 30
       },
-      {
-        "name": "도구 적합성",
+      "fitness": {
         "score": 18,
-        "maxScore": 25,
-        "description": "양호"
+        "max": 25
       },
-      {
-        "name": "워크플로우 성숙도",
+      "workflow": {
         "score": 16,
-        "maxScore": 20,
-        "description": "우수"
+        "max": 20
       }
-    ],
+    }
+  },
+  "feedback": {
     "strengths": [
       "명확한 의도 전달로 수정 지시가 거의 없었습니다",
       "도구 호출 성공률이 94.1%로 높습니다",
@@ -1058,6 +211,23 @@
     "improvements": [
       "Bash에서 grep/cat/find 등을 62회 사용했습니다. Grep/Read/Glob 전용 도구를 사용하면 더 효율적입니다",
       "같은 도구로 연속 실패한 경우가 있습니다. 다른 접근법을 시도하면 더 빠르게 해결할 수 있습니다"
+    ],
+    "context_tips": [
+      "CLAUDE.md 강화: 코드 패턴, 체크리스트, 자주 하는 실수 추가",
+      "auto-memory 활성화: 세션 간 학습 축적"
     ]
-  }
+  },
+  "error_summary": {
+    "rate": 5.9,
+    "total": 98,
+    "main_types": [
+      "other",
+      "command_not_found"
+    ],
+    "recovery": {
+      "immediate_fix": 5,
+      "alternative": 68
+    }
+  },
+  "main_workflow": "Edit → Edit → Edit"
 }
