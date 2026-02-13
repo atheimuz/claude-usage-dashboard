@@ -1,139 +1,131 @@
-import type { DailyReport, AggregatedStats, ToolStat, TaskType, DailyTrendPoint, UsageEvaluation, EvaluationCategory } from "@/types"
+import type { DailyReport, AggregatedStats, ToolStat, DailyTrendPoint, Scoring } from "@/types"
 
 export function aggregateReports(reports: DailyReport[]): AggregatedStats {
   const dates = new Set<string>()
-  const projects = new Set<string>()
   let totalSessions = 0
   let totalToolCalls = 0
-  const toolMap = new Map<string, { usageCount: number; primaryUse: string }>()
-  const taskMap = new Map<string, { count: number; description: string }>()
-  const techFreq: Record<string, Set<string>> = {}
-  const trendMap = new Map<string, { reportCount: number; sessions: number; toolCalls: number }>()
+  const toolMap = new Map<string, number>()
+  const taskSet = new Set<string>()
+  const trendMap = new Map<string, { reportCount: number; sessions: number; toolCalls: number; scores: number[] }>()
 
-  // Evaluation aggregation
-  const evaluationScores: number[] = []
-  let latestEvaluation: UsageEvaluation | undefined
+  // Scoring aggregation
+  const scoringScores: number[] = []
+  let latestScoring: Scoring | undefined
   let latestDate = ""
-  const categoryScoreMap = new Map<string, { totalScore: number; totalMax: number; count: number }>()
+  const categoryScores = {
+    intent: { total: 0, count: 0 },
+    efficiency: { total: 0, count: 0 },
+    fitness: { total: 0, count: 0 },
+    workflow: { total: 0, count: 0 },
+  }
 
   for (const report of reports) {
     dates.add(report.date)
-    totalSessions += report.overview.totalSessions
-    totalToolCalls += report.overview.totalToolCalls
+    totalSessions += report.summary.sessions
 
-    for (const ps of report.projectSessions) {
-      projects.add(ps.projectName)
+    // tool_usage.top_tools에서 도구 사용 횟수 집계
+    const reportToolCalls = report.tool_usage.top_tools.reduce((sum, t) => sum + t.count, 0)
+    totalToolCalls += reportToolCalls
+
+    for (const tool of report.tool_usage.top_tools) {
+      const name = tool.name || "Unknown"
+      const existing = toolMap.get(name) || 0
+      toolMap.set(name, existing + tool.count)
     }
 
-    for (const ts of report.toolStats) {
-      const existing = toolMap.get(ts.toolName)
-      if (existing) {
-        existing.usageCount += ts.usageCount
-      } else {
-        toolMap.set(ts.toolName, { usageCount: ts.usageCount, primaryUse: ts.primaryUse })
-      }
+    // main_tasks 수집
+    for (const task of report.summary.main_tasks) {
+      taskSet.add(task)
     }
 
-    for (const tt of report.taskTypes) {
-      const existing = taskMap.get(tt.type)
-      if (existing) {
-        existing.count += tt.count
-      } else {
-        taskMap.set(tt.type, { count: tt.count, description: tt.description })
-      }
-    }
-
-    const allTech = [
-      ...report.techStack.languages.map(item => item.name),
-      ...report.techStack.frameworks.map(item => item.name),
-      ...report.techStack.tools.map(item => item.name),
-    ]
-    for (const tech of allTech) {
-      if (!techFreq[tech]) techFreq[tech] = new Set()
-      techFreq[tech].add(report.filename)
-    }
-
+    // 일별 트렌드
     const trend = trendMap.get(report.date)
     if (trend) {
       trend.reportCount += 1
-      trend.sessions += report.overview.totalSessions
-      trend.toolCalls += report.overview.totalToolCalls
+      trend.sessions += report.summary.sessions
+      trend.toolCalls += reportToolCalls
+      if (report.scoring?.total > 0) trend.scores.push(report.scoring.total)
     } else {
+      const scores: number[] = []
+      if (report.scoring?.total > 0) scores.push(report.scoring.total)
       trendMap.set(report.date, {
         reportCount: 1,
-        sessions: report.overview.totalSessions,
-        toolCalls: report.overview.totalToolCalls,
+        sessions: report.summary.sessions,
+        toolCalls: reportToolCalls,
+        scores,
       })
     }
 
-    // Aggregate evaluation data
-    if (report.usageEvaluation && report.usageEvaluation.overallScore > 0) {
-      evaluationScores.push(report.usageEvaluation.overallScore)
+    // Scoring 집계
+    if (report.scoring && report.scoring.total > 0) {
+      scoringScores.push(report.scoring.total)
 
       if (report.date > latestDate) {
         latestDate = report.date
-        latestEvaluation = report.usageEvaluation
+        latestScoring = report.scoring
       }
 
-      for (const cat of report.usageEvaluation.categories) {
-        const existing = categoryScoreMap.get(cat.name)
-        if (existing) {
-          existing.totalScore += cat.score
-          existing.totalMax += cat.maxScore
-          existing.count += 1
-        } else {
-          categoryScoreMap.set(cat.name, { totalScore: cat.score, totalMax: cat.maxScore, count: 1 })
-        }
+      const cats = report.scoring.categories
+      if (cats.intent) {
+        categoryScores.intent.total += cats.intent.score
+        categoryScores.intent.count += 1
+      }
+      if (cats.efficiency) {
+        categoryScores.efficiency.total += cats.efficiency.score
+        categoryScores.efficiency.count += 1
+      }
+      if (cats.fitness) {
+        categoryScores.fitness.total += cats.fitness.score
+        categoryScores.fitness.count += 1
+      }
+      if (cats.workflow) {
+        categoryScores.workflow.total += cats.workflow.score
+        categoryScores.workflow.count += 1
       }
     }
   }
 
   const toolUsageAggregated: ToolStat[] = Array.from(toolMap.entries())
-    .map(([toolName, data]) => ({ toolName, ...data }))
+    .map(([toolName, usageCount]) => ({ toolName, usageCount }))
     .sort((a, b) => b.usageCount - a.usageCount)
 
-  const taskTypeRaw = Array.from(taskMap.entries())
-    .map(([type, data]) => ({ type, ...data }))
-    .sort((a, b) => b.count - a.count)
-  const taskTotal = taskTypeRaw.reduce((sum, t) => sum + t.count, 0)
-  const taskTypeAggregated: TaskType[] = taskTypeRaw.map((t) => ({
-    ...t,
-    percentage: taskTotal > 0 ? Math.round((t.count / taskTotal) * 100) : 0,
-  }))
-
-  const techStackFrequency: Record<string, number> = {}
-  for (const [tech, fileSet] of Object.entries(techFreq)) {
-    techStackFrequency[tech] = fileSet.size
-  }
+  const mainTasks = Array.from(taskSet)
 
   const dailyTrend: DailyTrendPoint[] = Array.from(trendMap.entries())
-    .map(([date, data]) => ({ date, ...data }))
+    .map(([date, data]) => ({
+      date,
+      reportCount: data.reportCount,
+      sessions: data.sessions,
+      toolCalls: data.toolCalls,
+      score: data.scores.length > 0
+        ? Math.round(data.scores.reduce((a, b) => a + b, 0) / data.scores.length)
+        : undefined,
+    }))
     .sort((a, b) => a.date.localeCompare(b.date))
 
-  // Compute evaluation averages
-  const averageEvaluationScore = evaluationScores.length > 0
-    ? Math.round(evaluationScores.reduce((a, b) => a + b, 0) / evaluationScores.length)
+  // Scoring 평균 계산
+  const averageEvaluationScore = scoringScores.length > 0
+    ? Math.round(scoringScores.reduce((a, b) => a + b, 0) / scoringScores.length)
     : undefined
 
-  const evaluationCategoryAverages: EvaluationCategory[] | undefined = categoryScoreMap.size > 0
-    ? Array.from(categoryScoreMap.entries()).map(([name, data]) => ({
-        name,
-        score: Math.round(data.totalScore / data.count),
-        maxScore: Math.round(data.totalMax / data.count),
-      }))
+  const scoringCategoryAverages = categoryScores.intent.count > 0
+    ? {
+        intent: Math.round(categoryScores.intent.total / categoryScores.intent.count),
+        efficiency: Math.round(categoryScores.efficiency.total / categoryScores.efficiency.count),
+        fitness: Math.round(categoryScores.fitness.total / categoryScores.fitness.count),
+        workflow: Math.round(categoryScores.workflow.total / categoryScores.workflow.count),
+      }
     : undefined
 
   return {
     totalDays: dates.size,
     totalSessions,
     totalToolCalls,
-    totalProjects: projects.size,
     toolUsageAggregated,
-    taskTypeAggregated,
-    techStackFrequency,
+    mainTasks,
     dailyTrend,
     averageEvaluationScore,
-    latestEvaluation,
-    evaluationCategoryAverages,
+    latestScoring,
+    scoringCategoryAverages,
   }
 }

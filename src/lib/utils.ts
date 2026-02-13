@@ -10,7 +10,7 @@ const FILENAME_REGEX_PATH = /^([^/]+)\/(\d{4}-\d{2}-\d{2})$/
 const FILENAME_REGEX_FLAT = /^(\d{4}-\d{2}-\d{2})-(.+)$/
 
 export function parseFilename(filename: string): { date: string; identifier: string; filename: string } {
-  const clean = filename.replace(/\.md$/, "")
+  const clean = filename.replace(/\.(md|json)$/, "")
   const pathMatch = clean.match(FILENAME_REGEX_PATH)
   if (pathMatch) return { date: pathMatch[2], identifier: pathMatch[1], filename: clean }
   const flatMatch = clean.match(FILENAME_REGEX_FLAT)
@@ -60,7 +60,7 @@ export function groupByDate(reports: DailyReport[]): Map<string, DailyReport[]> 
 }
 
 function extractDateFromPath(file: string): string {
-  const clean = file.replace(/\.md$/, "")
+  const clean = file.replace(/\.(md|json)$/, "")
   if (clean.includes("/")) {
     return clean.split("/")[1] || ""
   }
@@ -82,13 +82,13 @@ export function getNextPrevFilename(
   files: string[],
 ): { prev?: string; next?: string } {
   const sorted = sortFilesByDate(files)
-  const currentWithExt = currentFilename.endsWith(".md")
+  const currentWithExt = currentFilename.endsWith(".json")
     ? currentFilename
-    : `${currentFilename}.md`
+    : `${currentFilename}.json`
   const idx = sorted.indexOf(currentWithExt)
   return {
-    prev: idx < sorted.length - 1 ? sorted[idx + 1].replace(/\.md$/, "") : undefined,
-    next: idx > 0 ? sorted[idx - 1].replace(/\.md$/, "") : undefined,
+    prev: idx < sorted.length - 1 ? sorted[idx + 1].replace(/\.(md|json)$/, "") : undefined,
+    next: idx > 0 ? sorted[idx - 1].replace(/\.(md|json)$/, "") : undefined,
   }
 }
 

@@ -1,5 +1,6 @@
 import { useQuery, useQueries } from "@tanstack/react-query"
 import type { DailyReport, FileEntry } from "@/types"
+import { parseFilename } from "@/lib/utils"
 
 async function fetchFileList(): Promise<string[]> {
   const res = await fetch(`${import.meta.env.BASE_URL}data/index.json`)
@@ -9,10 +10,26 @@ async function fetchFileList(): Promise<string[]> {
   return entries.map((f) => `${f.location}/${f.name}`)
 }
 
+function extractDateFromRange(dateRangeStart: string): string {
+  // "2026-02-12T00:00:00" → "2026-02-12"
+  return dateRangeStart.split("T")[0]
+}
+
 async function fetchReport(file: string): Promise<DailyReport> {
   const res = await fetch(`${import.meta.env.BASE_URL}data/${file}`)
   if (!res.ok) throw new Error(`파일을 찾을 수 없습니다: ${file}`)
-  return res.json()
+  const data = await res.json()
+
+  // 파일 경로에서 메타 정보 추출
+  const { identifier, filename } = parseFilename(file)
+  const date = extractDateFromRange(data.date_range.start)
+
+  return {
+    ...data,
+    identifier,
+    filename,
+    date,
+  }
 }
 
 export function useFileList() {
