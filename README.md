@@ -1,13 +1,13 @@
 # Claude Usage Dashboard
 
-Claude Code 사용 일지를 시각화하는 웹 대시보드. 마크다운으로 작성한 일지를 JSON으로 변환하고, 종합 통계/차트/일별 상세 정보를 제공한다.
+Claude Code 사용 패턴을 분석하고, 활용 방식을 개선하여 컨텍스트 비용을 효율적으로 관리하기 위한 웹 대시보드. JSON 데이터 파일(WeeklyReport)을 fetch하여 종합 통계, 주간 상세 일지, 일지 목록을 제공한다.
 
 ## 주요 기능
 
-- **종합 대시보드** - 전체 통계 카드, 도구 사용량 차트, 기술 스택 클라우드, 최근 활동
-- **일지 목록** - 달력 뷰 / 리스트 뷰 전환
-- **일지 상세** - 세션별 상세 정보, 작업 유형 분포, 프롬프트 패턴, 학습 인사이트
-- **다크 모드** - 시스템 설정 연동 및 수동 전환
+- **종합 대시보드** — 활용도 점수 추이, 게이지, 카테고리 레이더, 도구 사용량, 최근 활동
+- **주간 일지 목록** — 달력 뷰 / 리스트 뷰 전환
+- **주간 일지 상세** — 사용 스타일, 도구 통계, 워크플로우, 점수 평가, 설정 변경 이력
+- **다크 모드** — 시스템 설정 연동 및 수동 전환
 
 ## 기술 스택
 
@@ -19,7 +19,6 @@ Claude Code 사용 일지를 시각화하는 웹 대시보드. 마크다운으�
 | 라우팅 | React Router v7 |
 | 차트 | Recharts |
 | 테스트 | Playwright (E2E) |
-| 데이터 변환 | unified + remark-parse (MD → JSON) |
 
 ## 시작하기
 
@@ -38,38 +37,34 @@ npm run preview
 
 # 린트
 npm run lint
+
+# session-analyzer 보고서 동기화
+npm run sync-reports
 ```
 
 ## 새 일지 추가
 
-1. `public/data/{location}/YYYY-MM-DD.md` 파일 작성 (location: `work` 또는 `side`)
-2. `public/data/index.json`에 항목 추가:
-   ```json
-   { "name": "YYYY-MM-DD.md", "location": "work" }
-   ```
-3. 변환 스크립트 실행:
-   ```bash
-   npm run md-to-json
-   ```
+1. `/session-analyzer` 스킬 실행 → `~/.claude/summaries/weekly/`에 주간 보고서 생성
+2. `npm run sync-reports` 실행 → 주간 파일을 그대로 복사 + `index.json` 자동 업데이트
+3. `npm run sync-reports -- work`로 location 지정 가능 (기본값: `side`)
 
 ## 프로젝트 구조
 
 ```
 src/
-├── pages/              # 페이지 컴포넌트 (Home, DailyList, DailyDetail)
+├── pages/              # 페이지 컴포넌트 (Home, WeeklyList, WeeklyDetail)
 ├── components/
 │   ├── ui/             # shadcn/ui 컴포넌트
 │   ├── layout/         # Header, Layout
 │   ├── dashboard/      # 홈 대시보드 전용
-│   ├── daily/          # 일지 상세 페이지 전용
-│   ├── daily-list/     # 일지 목록 페이지 전용
-│   └── shared/         # 공통 컴포넌트
+│   ├── weekly/         # 주간 일지 상세 페이지 전용
+│   └── weekly-list/    # 주간 일지 목록 페이지 전용
 ├── hooks/              # useReports, useTheme
-├── lib/                # aggregator, utils, constants
+├── lib/                # aggregator, utils
 └── types/              # TypeScript 인터페이스
 
-public/data/            # 일지 데이터 (MD 원본 + JSON)
-scripts/                # MD → JSON 변환 스크립트
+public/data/            # 주간 일지 데이터 (JSON)
+scripts/                # sync-reports 스크립트
 tests/                  # E2E 테스트 (Playwright)
 ```
 
@@ -78,21 +73,25 @@ tests/                  # E2E 테스트 (Playwright)
 | 경로 | 페이지 | 설명 |
 |------|--------|------|
 | `/` | HomePage | 종합 대시보드 |
-| `/daily` | DailyListPage | 일지 목록 (달력/리스트 뷰) |
-| `/daily/:location/:name` | DailyDetailPage | 일지 상세 |
+| `/weekly` | WeeklyListPage | 주간 일지 목록 (달력/리스트 뷰) |
+| `/weekly/:location/:name` | WeeklyDetailPage | 주간 일지 상세 |
 
 ## 데이터 흐름
 
 ```
-[빌드 타임]
-public/data/*.md → npm run md-to-json → public/data/*.json
+[동기화]
+~/.claude/summaries/weekly/*.json → npm run sync-reports → public/data/{location}/*.json
 
 [런타임]
-index.json (파일 목록)
-    → useFileList() (TanStack Query)
-    → useAllReports() (병렬 fetch)
-    → aggregateReports() (통계 집계)
-    → 페이지 렌더링
+public/data/index.json (파일 목록)
+         ↓
+public/data/{location}/*.json (WeeklyReport[] 배열, 주간 단위)
+         ↓
+hooks/useReports.ts (fetch → JSON 직접 소비, TanStack Query 캐싱)
+         ↓
+lib/aggregator.ts (여러 일지를 집계 → AggregatedStats)
+         ↓
+페이지 컴포넌트
 ```
 
 ## E2E 테스트
