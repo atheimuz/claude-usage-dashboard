@@ -65,11 +65,11 @@ lib/aggregator.ts (여러 일지를 집계 → AggregatedStats)
 
 ### Routing
 
-| 경로 | 페이지 | 설명 |
-|------|--------|------|
-| `/` | HomePage | 종합 대시보드 (통계 카드, 차트, 최근 활동) |
-| `/weekly` | WeeklyListPage | 주간 일지 목록 (달력/리스트 뷰) |
-| `/weekly/:location/:name` | WeeklyDetailPage | 주간 일지 상세 |
+| 경로                      | 페이지           | 설명                                       |
+| ------------------------- | ---------------- | ------------------------------------------ |
+| `/`                       | HomePage         | 종합 대시보드 (통계 카드, 차트, 최근 활동) |
+| `/weekly`                 | WeeklyListPage   | 주간 일지 목록 (달력/리스트 뷰)            |
+| `/weekly/:location/:name` | WeeklyDetailPage | 주간 일지 상세                             |
 
 ### Key Directories
 
@@ -96,7 +96,11 @@ src/
 JSON 파일 위치: `public/data/{location}/YYYY-MM-WN.json` (WeeklyReport[] 배열, 주간 단위)
 소스: `~/.claude/summaries/weekly/*.json` (session-analyzer가 생성하는 주간 배열)
 
+주요 필드: `date_range`, `summary`, `usage_style`, `tool_usage`, `scoring`, `feedback`, `error_summary`, `main_workflow`, `config_changes`
+- `config_changes`: 해당 주에 변경한 skill, command, CLAUDE.md, settings 등의 설정 변경 이력 (`ConfigChange[]`, optional)
+
 파일 목록 관리: `public/data/index.json`
+
 ```json
 { "files": [{ "name": "2026-02-W2.json", "location": "side" }] }
 ```
@@ -112,8 +116,8 @@ JSON 파일 위치: `public/data/{location}/YYYY-MM-WN.json` (WeeklyReport[] 배
 - **아이콘**: lucide-react 사용 (마크다운의 이모지는 파싱용으로만 사용, UI에 표시하지 않음)
 - **스타일링**: Tailwind CSS + shadcn/ui 컴포넌트
 - **CSS 변수 색상**: Tailwind CSS v4에서 CSS 변수는 완전한 oklch 값을 포함함 (예: `--chart-1: oklch(0.54 0.19 264)`)
-  - SVG에서는 Tailwind 클래스 사용: `className="stroke-success"`, `className="fill-chart-1"`
-  - Recharts/인라인 스타일에서는 wrapper 없이 직접 사용: `var(--chart-1)` (NOT `hsl(var(...))` 또는 `oklch(var(...))`)
+    - SVG에서는 Tailwind 클래스 사용: `className="stroke-success"`, `className="fill-chart-1"`
+    - Recharts/인라인 스타일에서는 wrapper 없이 직접 사용: `var(--chart-1)` (NOT `hsl(var(...))` 또는 `oklch(var(...))`)
 - **데이터 캐싱**: staleTime/gcTime을 Infinity로 설정 (정적 데이터)
 - **E2E 테스트**: Page Object 패턴, 목업 데이터로 API 인터셉트
 - **테스트명**: 한글로 작성, "~해야 한다" 형식
@@ -139,6 +143,7 @@ JSON 파일 위치: `public/data/{location}/YYYY-MM-WN.json` (WeeklyReport[] 배
 ## E2E Testing
 
 테스트 디렉토리 구조:
+
 ```
 tests/
 ├── claude-usage-dashboard/  # 기능별 테스트 스펙
