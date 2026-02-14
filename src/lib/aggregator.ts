@@ -1,4 +1,24 @@
-import type { WeeklyReport, AggregatedStats, ToolStat, WeeklyTrendPoint, Scoring, FrequentToolItem } from "@/types"
+import type { WeeklyReport, AggregatedStats, ToolStat, WeeklyTrendPoint, Scoring, FrequentToolItem, ToolUsageItem } from "@/types"
+
+function accumulateFrequentTools(
+  map: Map<string, FrequentToolItem>,
+  items: ToolUsageItem[],
+  category: 'agent' | 'command' | 'skill',
+) {
+  for (const item of items) {
+    const name = (category === 'agent' ? item.type : item.name) || "Unknown"
+    const key = `${category}::${name}`
+    const existing = map.get(key)
+    if (existing) {
+      existing.totalCount += item.count
+      if (!existing.description && item.description) {
+        existing.description = item.description
+      }
+    } else {
+      map.set(key, { name, category, totalCount: item.count, description: item.description })
+    }
+  }
+}
 
 export function aggregateReports(reports: WeeklyReport[]): AggregatedStats {
   const dates = new Set<string>()
@@ -68,69 +88,19 @@ export function aggregateReports(reports: WeeklyReport[]): AggregatedStats {
         latestScoring = report.scoring
       }
 
-      const cats = report.scoring.categories
-      if (cats.intent) {
-        categoryScores.intent.total += cats.intent.score
-        categoryScores.intent.count += 1
-      }
-      if (cats.efficiency) {
-        categoryScores.efficiency.total += cats.efficiency.score
-        categoryScores.efficiency.count += 1
-      }
-      if (cats.fitness) {
-        categoryScores.fitness.total += cats.fitness.score
-        categoryScores.fitness.count += 1
-      }
-      if (cats.workflow) {
-        categoryScores.workflow.total += cats.workflow.score
-        categoryScores.workflow.count += 1
+      const scoringCategories = report.scoring.categories
+      for (const key of ['intent', 'efficiency', 'fitness', 'workflow'] as const) {
+        if (scoringCategories[key]) {
+          categoryScores[key].total += scoringCategories[key].score
+          categoryScores[key].count += 1
+        }
       }
     }
 
-    // FrequentTools 집계: agents
-    for (const agent of report.tool_usage.agents) {
-      const name = agent.type || "Unknown"
-      const key = `agent::${name}`
-      const existing = frequentToolsMap.get(key)
-      if (existing) {
-        existing.totalCount += agent.count
-        if (!existing.description && agent.description) {
-          existing.description = agent.description
-        }
-      } else {
-        frequentToolsMap.set(key, { name, category: 'agent', totalCount: agent.count, description: agent.description })
-      }
-    }
-
-    // FrequentTools 집계: commands
-    for (const command of report.tool_usage.commands) {
-      const name = command.name || "Unknown"
-      const key = `command::${name}`
-      const existing = frequentToolsMap.get(key)
-      if (existing) {
-        existing.totalCount += command.count
-        if (!existing.description && command.description) {
-          existing.description = command.description
-        }
-      } else {
-        frequentToolsMap.set(key, { name, category: 'command', totalCount: command.count, description: command.description })
-      }
-    }
-
-    // FrequentTools 집계: skills
-    for (const skill of report.tool_usage.skills) {
-      const name = skill.name || "Unknown"
-      const key = `skill::${name}`
-      const existing = frequentToolsMap.get(key)
-      if (existing) {
-        existing.totalCount += skill.count
-        if (!existing.description && skill.description) {
-          existing.description = skill.description
-        }
-      } else {
-        frequentToolsMap.set(key, { name, category: 'skill', totalCount: skill.count, description: skill.description })
-      }
-    }
+    // FrequentTools 집계
+    accumulateFrequentTools(frequentToolsMap, report.tool_usage.agents, 'agent')
+    accumulateFrequentTools(frequentToolsMap, report.tool_usage.commands, 'command')
+    accumulateFrequentTools(frequentToolsMap, report.tool_usage.skills, 'skill')
   }
 
   const toolUsageAggregated: ToolStat[] = Array.from(toolMap.entries())
