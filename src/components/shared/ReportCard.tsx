@@ -14,6 +14,7 @@ export function ReportCard({ report, showDate }: Props) {
         <Link
             to={`/weekly/${report.filename}`}
             className="flex items-center gap-4 rounded-lg border p-3 transition-colors hover:bg-accent/50"
+            aria-label={`${showDate ? formatWeekLabel(report.date) + " " : ""}${report.identifier} - ${report.summary.sessions}개 세션`}
         >
             <div className="flex-1 space-y-2">
                 {showDate && (

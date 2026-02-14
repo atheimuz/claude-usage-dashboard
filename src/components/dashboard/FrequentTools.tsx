@@ -61,7 +61,14 @@ export function FrequentTools({ frequentTools }: Props) {
                                 <span className="min-w-[4rem] text-sm text-right">
                                     {formatNumber(item.totalCount)}회
                                 </span>
-                                <div className="h-2 w-24 rounded-full bg-muted">
+                                <div
+                                    className="h-2 w-24 rounded-full bg-muted"
+                                    role="progressbar"
+                                    aria-valuenow={item.totalCount}
+                                    aria-valuemin={0}
+                                    aria-valuemax={maxCount}
+                                    aria-label={`${item.name} 사용 비율`}
+                                >
                                     <div
                                         className="h-full rounded-full bg-primary"
                                         style={{

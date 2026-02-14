@@ -20,7 +20,7 @@ export function Header() {
           <Link to="/" className="text-lg font-bold">
             Claude Usage Dashboard
           </Link>
-          <nav className="flex items-center gap-4">
+          <nav aria-label="메인 네비게이션" className="flex items-center gap-4">
             {NAV_ITEMS.map((item) => {
               const isActive =
                 item.path === "/"

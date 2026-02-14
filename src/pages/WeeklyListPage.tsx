@@ -52,9 +52,11 @@ export function WeeklyListPage() {
     )
   }
 
-  const selectedLabel = selectedMonth
-    ? `${selectedMonth.split("-")[0]}년 ${selectedMonth.split("-")[1]}월`
-    : null
+  const selectedLabel = useMemo(() => {
+    if (!selectedMonth) return null
+    const [year, month] = selectedMonth.split("-")
+    return `${year}년 ${month}월`
+  }, [selectedMonth])
 
   return (
     <div className="space-y-6">
@@ -65,7 +67,7 @@ export function WeeklyListPage() {
         </div>
         <Popover>
           <PopoverTrigger asChild>
-            <Button variant="outline" size="sm" className="gap-1">
+            <Button variant="outline" size="sm" className="gap-1" aria-label="달력에서 월 선택하기">
               <Calendar className="h-4 w-4" />
               달력 보기
             </Button>
@@ -80,14 +82,16 @@ export function WeeklyListPage() {
         </Popover>
       </div>
 
-      {selectedLabel && (
-        <div className="flex items-center gap-2">
-          <Badge variant="secondary">{selectedLabel}</Badge>
-          <Button variant="ghost" size="icon" className="h-6 w-6" onClick={() => setSelectedMonth(null)}>
-            <X className="h-3 w-3" />
-          </Button>
-        </div>
-      )}
+      <div aria-live="polite">
+        {selectedLabel && (
+          <div className="flex items-center gap-2">
+            <Badge variant="secondary">{selectedLabel}</Badge>
+            <Button variant="ghost" size="icon" className="h-6 w-6" onClick={() => setSelectedMonth(null)} aria-label="월 필터 해제">
+              <X className="h-3 w-3" />
+            </Button>
+          </div>
+        )}
+      </div>
 
       <ListView reports={filteredReports} />
     </div>

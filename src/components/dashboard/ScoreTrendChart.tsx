@@ -40,7 +40,7 @@ export function ScoreTrendChart({ weeklyTrend }: ScoreTrendChartProps) {
             </CardHeader>
             <CardContent className="flex flex-1 items-center">
                 <ChartContainer config={chartConfig} className="h-[180px] w-full">
-                    <AreaChart data={chartData} margin={{ top: 10, right: 10, bottom: 0, left: 0 }}>
+                    <AreaChart data={chartData} margin={{ top: 10, right: 10, bottom: 0, left: 0 }} accessibilityLayer>
                         <XAxis
                             dataKey="date"
                             tickLine={false}

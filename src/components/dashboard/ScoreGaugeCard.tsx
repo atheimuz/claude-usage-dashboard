@@ -58,7 +58,7 @@ export function ScoreGaugeCard({
             </CardHeader>
             <CardContent className="flex flex-1 flex-col items-center justify-center">
                 <div className="relative h-32 w-32">
-                    <svg className="h-32 w-32 -rotate-90" viewBox="0 0 120 120">
+                    <svg className="h-32 w-32 -rotate-90" viewBox="0 0 120 120" role="img" aria-label={`${label ?? "활용도 점수"}: ${score}/${maxScore}`}>
                         <circle
                             cx="60"
                             cy="60"

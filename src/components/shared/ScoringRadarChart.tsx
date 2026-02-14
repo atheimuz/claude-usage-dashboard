@@ -60,7 +60,7 @@ export function ScoringRadarChart({
 
     return (
         <ResponsiveContainer width="100%" height={height}>
-            <RadarChart data={chartData}>
+            <RadarChart data={chartData} accessibilityLayer>
                 <PolarGrid gridType="polygon" stroke="var(--muted)" />
                 <PolarAngleAxis
                     dataKey="label"

@@ -81,7 +81,7 @@ export function UsageScoreCard({
                     {/* Score gauge */}
                     <div className="flex flex-col items-center gap-2">
                         <div className={cn("relative", gaugeSize)}>
-                            <svg className={cn(gaugeSize, "-rotate-90")} viewBox="0 0 120 120">
+                            <svg className={cn(gaugeSize, "-rotate-90")} viewBox="0 0 120 120" role="img" aria-label={`${title ?? "활용도 점수"}: ${score}/${maxScore}`}>
                                 <circle
                                     cx="60"
                                     cy="60"
