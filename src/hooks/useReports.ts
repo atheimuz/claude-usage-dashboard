@@ -1,5 +1,5 @@
 import { useQuery, useQueries } from "@tanstack/react-query"
-import type { DailyReport, FileEntry } from "@/types"
+import type { WeeklyReport, FileEntry } from "@/types"
 import { parseFilename } from "@/lib/utils"
 
 async function fetchFileList(): Promise<string[]> {
@@ -15,14 +15,14 @@ function extractDateFromRange(dateRangeStart: string): string {
   return dateRangeStart.split("T")[0]
 }
 
-async function fetchReport(file: string): Promise<DailyReport> {
+async function fetchReport(file: string): Promise<WeeklyReport> {
   const res = await fetch(`${import.meta.env.BASE_URL}data/${file}`)
   if (!res.ok) throw new Error(`파일을 찾을 수 없습니다: ${file}`)
   const data = await res.json()
 
   // 파일 경로에서 메타 정보 추출
-  const { identifier, filename } = parseFilename(file)
-  const date = extractDateFromRange(data.date_range.start)
+  const { date: fileDate, identifier, filename } = parseFilename(file)
+  const date = fileDate || extractDateFromRange(data.date_range.start)
 
   return {
     ...data,
@@ -41,7 +41,7 @@ export function useFileList() {
   })
 }
 
-export function useDailyReport(filename: string) {
+export function useWeeklyReport(filename: string) {
   return useQuery({
     queryKey: ["report", filename],
     queryFn: () => fetchReport(`${filename}.json`),
@@ -65,7 +65,7 @@ export function useAllReports() {
 
   const data = queries
     .map((q) => q.data)
-    .filter((d): d is DailyReport => d !== undefined)
+    .filter((d): d is WeeklyReport => d !== undefined)
 
   const isLoading = filesLoading || queries.some((q) => q.isLoading)
   const isError = filesError || queries.some((q) => q.isError)

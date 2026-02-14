@@ -99,11 +99,11 @@ export interface ErrorSummary {
     recovery: RecoveryStats;
 }
 
-export interface DailyReport {
+export interface WeeklyReport {
     // 메타 (런타임에 추가)
     identifier: string;
     filename: string;
-    date: string; // date_range.start에서 추출
+    date: string; // 파일명에서 추출한 주간 키 (예: "2026-02-W2")
 
     // JSON 원본 필드
     date_range: DateRange;
@@ -137,7 +137,7 @@ export interface AggregatedStats {
     totalToolCalls: number;
     toolUsageAggregated: ToolStat[];
     mainTasks: string[];
-    dailyTrend: DailyTrendPoint[];
+    weeklyTrend: WeeklyTrendPoint[];
     averageEvaluationScore?: number;
     latestScoring?: Scoring;
     scoringCategoryAverages?: {
@@ -149,7 +149,7 @@ export interface AggregatedStats {
     frequentTools: FrequentToolItem[];
 }
 
-export interface DailyTrendPoint {
+export interface WeeklyTrendPoint {
     date: string;
     reportCount: number;
     sessions: number;

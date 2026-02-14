@@ -1,14 +1,22 @@
-import { Calendar, AlertCircle, FileText } from "lucide-react"
+import { useMemo, useState } from "react"
+import { Calendar, AlertCircle, FileText, X } from "lucide-react"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { Skeleton } from "@/components/ui/skeleton"
 import { Button } from "@/components/ui/button"
+import { Badge } from "@/components/ui/badge"
 import { Popover, PopoverTrigger, PopoverContent } from "@/components/ui/popover"
 import { useAllReports } from "@/hooks/useReports"
-import { CalendarView } from "@/components/daily-list/CalendarView"
-import { ListView } from "@/components/daily-list/ListView"
+import { CalendarView } from "@/components/weekly-list/CalendarView"
+import { ListView } from "@/components/weekly-list/ListView"
 
-export function DailyListPage() {
+export function WeeklyListPage() {
   const { data: reports, isLoading, isError } = useAllReports()
+  const [selectedMonth, setSelectedMonth] = useState<string | null>(null)
+
+  const filteredReports = useMemo(() => {
+    if (!selectedMonth) return reports
+    return reports.filter((r) => r.date.startsWith(selectedMonth))
+  }, [reports, selectedMonth])
 
   if (isLoading) {
     return (
@@ -39,17 +47,21 @@ export function DailyListPage() {
       <div className="flex flex-col items-center justify-center py-20">
         <FileText className="mb-4 h-16 w-16 text-muted-foreground" />
         <p className="text-lg font-semibold">기록된 사용 일지가 없습니다.</p>
-        <p className="text-sm text-muted-foreground">public/data/ 디렉토리에 마크다운 파일을 추가해 주세요.</p>
+        <p className="text-sm text-muted-foreground">public/data/ 디렉토리에 주간 데이터 파일을 추가해 주세요.</p>
       </div>
     )
   }
+
+  const selectedLabel = selectedMonth
+    ? `${selectedMonth.split("-")[0]}년 ${selectedMonth.split("-")[1]}월`
+    : null
 
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold">Daily Logs</h1>
-          <p className="text-muted-foreground">날짜별 클로드 코드 사용 일지</p>
+          <h1 className="text-3xl font-bold">Weekly Logs</h1>
+          <p className="text-muted-foreground">주간별 클로드 코드 사용 일지</p>
         </div>
         <Popover>
           <PopoverTrigger asChild>
@@ -58,13 +70,26 @@ export function DailyListPage() {
               달력 보기
             </Button>
           </PopoverTrigger>
-          <PopoverContent align="end">
-            <CalendarView reports={reports} />
+          <PopoverContent align="end" className="w-auto">
+            <CalendarView
+              reports={reports}
+              selectedMonth={selectedMonth}
+              onSelectMonth={setSelectedMonth}
+            />
           </PopoverContent>
         </Popover>
       </div>
 
-      <ListView reports={reports} />
+      {selectedLabel && (
+        <div className="flex items-center gap-2">
+          <Badge variant="secondary">{selectedLabel}</Badge>
+          <Button variant="ghost" size="icon" className="h-6 w-6" onClick={() => setSelectedMonth(null)}>
+            <X className="h-3 w-3" />
+          </Button>
+        </div>
+      )}
+
+      <ListView reports={filteredReports} />
     </div>
   )
 }

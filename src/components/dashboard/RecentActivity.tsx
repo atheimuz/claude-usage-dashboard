@@ -3,10 +3,10 @@ import { Link } from "react-router-dom"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { ReportCard } from "@/components/shared/ReportCard"
-import type { DailyReport } from "@/types"
+import type { WeeklyReport } from "@/types"
 
 interface Props {
-  reports: DailyReport[]
+  reports: WeeklyReport[]
 }
 
 export function RecentActivity({ reports }: Props) {
@@ -24,7 +24,7 @@ export function RecentActivity({ reports }: Props) {
       <CardHeader className="flex flex-row items-center justify-between pb-2">
         <CardTitle className="text-lg">최근 활동</CardTitle>
         <Button variant="link" size="sm" asChild>
-          <Link to="/daily">전체 보기</Link>
+          <Link to="/weekly">전체 보기</Link>
         </Button>
       </CardHeader>
       <CardContent className="space-y-2">

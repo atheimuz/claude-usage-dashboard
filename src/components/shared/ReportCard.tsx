@@ -1,24 +1,29 @@
 import { Link } from "react-router-dom";
 import { ChevronRight } from "lucide-react";
-import { formatDate } from "@/lib/utils";
+import { formatWeekLabel, formatWeekRange } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
-import type { DailyReport } from "@/types";
+import type { WeeklyReport } from "@/types";
 
 interface Props {
-    report: DailyReport;
+    report: WeeklyReport;
     showDate?: boolean;
 }
 
 export function ReportCard({ report, showDate }: Props) {
     return (
         <Link
-            to={`/daily/${report.filename}`}
+            to={`/weekly/${report.filename}`}
             className="flex items-center gap-4 rounded-lg border p-3 transition-colors hover:bg-accent/50"
         >
             <div className="flex-1 space-y-2">
                 {showDate && (
                     <div className="flex items-center gap-2">
-                        <span className="font-semibold">{formatDate(report.date)}</span>
+                        <span className="font-semibold">
+                            {formatWeekLabel(report.date)}{" "}
+                            <span className="text-sm font-normal text-muted-foreground">
+                                ({formatWeekRange(report.date_range.start, report.date_range.end)})
+                            </span>
+                        </span>
                         <Badge variant="outline" className="text-xs">
                             {report.identifier}
                         </Badge>

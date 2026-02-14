@@ -8,8 +8,8 @@ import { aggregateReports } from "@/lib/aggregator";
 import { ScoreTrendChart } from "@/components/dashboard/ScoreTrendChart";
 import { ScoreGaugeCard } from "@/components/dashboard/ScoreGaugeCard";
 import { CategoryRadarCard } from "@/components/dashboard/CategoryRadarCard";
-import { ToolStatsTable } from "@/components/daily/ToolStatsTable";
-import { TaskTypeGrid } from "@/components/daily/TaskTypeGrid";
+import { ToolStatsTable } from "@/components/weekly/ToolStatsTable";
+import { TaskTypeGrid } from "@/components/weekly/TaskTypeGrid";
 import { RecentActivity } from "@/components/dashboard/RecentActivity";
 import { FrequentTools } from "@/components/dashboard/FrequentTools";
 
@@ -67,7 +67,7 @@ export function HomePage() {
                 <p className="text-muted-foreground">클로드 코드 활용도 종합</p>
             </div>
             <div className="grid grid-cols-1 gap-3 md:grid-cols-3">
-                <ScoreTrendChart dailyTrend={stats.dailyTrend} />
+                <ScoreTrendChart weeklyTrend={stats.weeklyTrend} />
                 <ScoreGaugeCard
                     score={stats.averageEvaluationScore ?? stats.latestScoring?.total ?? 0}
                     maxScore={100}
