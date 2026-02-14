@@ -6,14 +6,14 @@
 tests/
 ├── claude-usage-dashboard/   # 기능별 테스트 스펙
 │   ├── home.spec.ts          # 홈 대시보드 (10개 시나리오)
-│   ├── daily-list.spec.ts    # 일지 목록 (기존 유지)
-│   ├── daily-detail.spec.ts  # 일지 상세 (17개 시나리오)
+│   ├── weekly-list.spec.ts   # 주간 일지 목록
+│   ├── weekly-detail.spec.ts # 주간 일지 상세 (17개 시나리오)
 │   └── common.spec.ts        # 공통 기능 (네비게이션, 다크모드, 반응형)
 ├── page-objects/             # Page Object 클래스
 │   ├── base.page.ts          # BasePage (navigate, waitForPageLoad, waitForSelector)
 │   ├── home.page.ts
-│   ├── daily-list.page.ts
-│   └── daily-detail.page.ts
+│   ├── weekly-list.page.ts
+│   └── weekly-detail.page.ts
 └── mocks/
     └── claude-usage-dashboard.mock.ts
 ```
@@ -77,3 +77,13 @@ test.beforeEach(async ({ page }) => {
 3. 필요한 목업 데이터를 `mocks/claude-usage-dashboard.mock.ts`에 추가
 4. `beforeEach`에서 API 인터셉트 설정 (위 패턴 복사)
 5. Given-When-Then 시나리오 패턴으로 테스트 작성
+
+## 소스 변경 시 테스트 동기화 범위
+
+소스의 타입/폴더/라우트가 변경되면 다음 테스트 파일도 함께 업데이트:
+
+| 영역 | 파일 | 업데이트 항목 |
+|------|------|--------------|
+| Page Objects | `page-objects/*.page.ts` | 클래스명, 프로퍼티명, 메서드명, 셀렉터(getByRole/getByText의 텍스트), 라우트 경로 |
+| Spec 파일 | `claude-usage-dashboard/*.spec.ts` | import 경로, 변수명, `navigateTo*` 호출, `waitForURL` 경로, 텍스트 매칭 |
+| Mock 파일 | `mocks/*.mock.ts` | 타입 import (`WeeklyReport` 등), 변수명 (`weeklyTrend` 등), 주석 |

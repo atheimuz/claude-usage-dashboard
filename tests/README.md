@@ -8,15 +8,15 @@
 tests/
 ├── claude-usage-dashboard/     # 기능별 테스트 스펙
 │   ├── home.spec.ts            # 홈 대시보드 테스트
-│   ├── daily-list.spec.ts      # 일지 목록 페이지 테스트
-│   ├── daily-detail.spec.ts    # 일지 상세 페이지 테스트
+│   ├── weekly-list.spec.ts     # 주간 일지 목록 페이지 테스트
+│   ├── weekly-detail.spec.ts  # 주간 일지 상세 페이지 테스트
 │   ├── common.spec.ts          # 공통 기능 테스트
 │   └── data-fetching.spec.ts   # 데이터 Fetching 테스트
 ├── page-objects/               # Page Object 클래스
 │   ├── base.page.ts            # BasePage 클래스
 │   ├── home.page.ts            # HomePage 클래스
-│   ├── daily-list.page.ts      # DailyListPage 클래스
-│   └── daily-detail.page.ts    # DailyDetailPage 클래스
+│   ├── weekly-list.page.ts     # WeeklyListPage 클래스
+│   └── weekly-detail.page.ts  # WeeklyDetailPage 클래스
 ├── mocks/                      # 목업 데이터
 │   └── claude-usage-dashboard.mock.ts
 └── README.md
@@ -36,11 +36,11 @@ npx playwright test
 # 홈 대시보드 테스트
 npx playwright test tests/claude-usage-dashboard/home.spec.ts
 
-# 일지 목록 테스트
-npx playwright test tests/claude-usage-dashboard/daily-list.spec.ts
+# 주간 일지 목록 테스트
+npx playwright test tests/claude-usage-dashboard/weekly-list.spec.ts
 
-# 일지 상세 테스트
-npx playwright test tests/claude-usage-dashboard/daily-detail.spec.ts
+# 주간 일지 상세 테스트
+npx playwright test tests/claude-usage-dashboard/weekly-detail.spec.ts
 
 # 공통 기능 테스트
 npx playwright test tests/claude-usage-dashboard/common.spec.ts
@@ -82,8 +82,8 @@ npx playwright test --project=webkit
 ## 테스트 우선순위
 
 ### High Priority (Phase 1)
-- 일지 상세 페이지 전체 (daily-detail.spec.ts)
-- 일지 목록 페이지 리스트 뷰 (daily-list.spec.ts)
+- 주간 일지 상세 페이지 전체 (weekly-detail.spec.ts)
+- 주간 일지 목록 페이지 리스트 뷰 (weekly-list.spec.ts)
 - 데이터 Fetching (data-fetching.spec.ts)
 
 ### Medium Priority (Phase 2)
@@ -91,7 +91,7 @@ npx playwright test --project=webkit
 - 홈 대시보드 차트 (home.spec.ts)
 
 ### Low Priority (Phase 3)
-- 달력 뷰 (daily-list.spec.ts)
+- 달력 뷰 (weekly-list.spec.ts)
 - 다크 모드 (common.spec.ts)
 - 반응형 (common.spec.ts)
 

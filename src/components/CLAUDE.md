@@ -7,8 +7,8 @@
 | `ui/` | shadcn/ui 자동 생성 컴포넌트 (직접 수정하지 않음) | accordion, alert, badge, button, card, input, popover, separator, skeleton, table, tabs, toggle, toggle-group, tooltip |
 | `layout/` | 전체 레이아웃 | `Header.tsx` (sticky 헤더, NAV_ITEMS 배열로 네비게이션 관리), `Layout.tsx` (Outlet 기반, max-w-7xl), `ScrollToTop.tsx` (페이지 이동 시 스크롤 리셋) |
 | `dashboard/` | 홈 대시보드 전용 | `RecentActivity.tsx` (최근 7개 일지), `SummaryCard.tsx` (집계 통계 요약 카드) |
-| `daily/` | 일지 상세 페이지 전용 | 9개 섹션 컴포넌트 (별도 CLAUDE.md 참조) |
-| `daily-list/` | 일지 목록 페이지 전용 | `CalendarView.tsx` (월 기반 달력), `ListView.tsx` (groupByDate 후 날짜역순) |
+| `weekly/` | 주간 일지 상세 페이지 전용 | 9개 섹션 컴포넌트 + `WeeklyHeader.tsx` |
+| `weekly-list/` | 주간 일지 목록 페이지 전용 | `CalendarView.tsx` (월 선택기), `ListView.tsx` (groupByDate 후 날짜역순) |
 | `shared/` | 여러 페이지에서 공유 | `ReportCard.tsx`, `StatusBadge.tsx`, `UsageScoreCard.tsx` |
 
 ## 컴포넌트 작성 컨벤션
@@ -22,7 +22,7 @@
 ## shared/ 의존성 맵
 
 ```
-ReportCard (report: DailyReport)
+ReportCard (report: WeeklyReport)
   └─ 일지 목록, 최근 활동에서 사용
 
 StatusBadge ({ status: 'success' | 'warning' | 'error' | 'info' })
@@ -30,7 +30,7 @@ StatusBadge ({ status: 'success' | 'warning' | 'error' | 'info' })
 
 UsageScoreCard (score, maxScore, categories, grade?, taskComplexity?, ...)
   ├─ HomePage: size="lg", label="평균 활용도 점수", 집계 데이터
-  └─ DailyDetailPage: size="sm", featured, title="활용도 평가", 단일 리포트
+  └─ WeeklyDetailPage: size="sm", featured, title="활용도 평가", 단일 리포트
 ```
 
 ## shadcn/ui 컴포넌트 추가

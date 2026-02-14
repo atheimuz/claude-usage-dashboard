@@ -5,8 +5,8 @@
 | 페이지 | 라우트 | Hook | 핵심 컴포넌트 |
 |--------|--------|------|--------------|
 | `HomePage` | `/` | `useAllReports` + `aggregateReports` | UsageScoreCard, ToolStatsTable, TaskTypeGrid, SummaryCard, RecentActivity |
-| `DailyListPage` | `/daily` | `useAllReports` | CalendarView (collapsible), ListView |
-| `DailyDetailPage` | `/daily/:location/:name` | `useDailyReport` + `useFileList` | DailyHeader + 9개 섹션 컴포넌트 (daily/CLAUDE.md 참조) |
+| `WeeklyListPage` | `/weekly` | `useAllReports` | CalendarView (월 선택기), ListView |
+| `WeeklyDetailPage` | `/weekly/:location/:name` | `useWeeklyReport` + `useFileList` | WeeklyHeader + 9개 섹션 컴포넌트 (weekly/ 참조) |
 
 ## 공통 3단계 상태 처리 패턴
 
@@ -26,11 +26,11 @@ const HomePage = lazy(() => import("@/pages/HomePage").then(m => ({ default: m.H
 
 `<Suspense fallback={<PageFallback />}>`로 감싸며, Layout 컴포넌트가 `<Outlet />`으로 페이지 렌더링.
 
-## DailyDetailPage URL 파라미터 검증
+## WeeklyDetailPage URL 파라미터 검증
 
 ```ts
 const LOCATION_PATTERN = /^[a-z0-9_-]+$/i   // location: "work", "side" 등
-const NAME_PATTERN = /^\d{4}-\d{2}-\d{2}$/   // name: "2026-02-08"
+const NAME_PATTERN = /^\d{4}-\d{2}-W\d+$/   // name: "2026-02-W2"
 ```
 
 검증 실패 시 `enabled: false`로 데이터를 fetch하지 않음.

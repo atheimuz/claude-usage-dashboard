@@ -13,7 +13,7 @@
 | `formatDateShort(dateStr)` | `"2026-02-08"` → `"02-08"` |
 | `formatNumber(num)` | `1234` → `"1,234"` (ko-KR 로케일) |
 | `formatPercent(value, total)` | 퍼센트 문자열 반환 |
-| `groupByDate(reports)` | `DailyReport[]` → `Map<date, DailyReport[]>` |
+| `groupByDate(reports)` | `WeeklyReport[]` → `Map<date, WeeklyReport[]>` |
 | `sortFilesByDate(files)` | 파일명 배열을 날짜 역순 정렬 |
 | `getNextPrevFilename(current, files)` | `{ prev?, next? }` 반환 |
 | `getDaysInMonth(year, month)` | 달력 뷰용 |
@@ -22,9 +22,9 @@
 
 ### aggregator.ts — 다중 일지 집계
 
-`aggregateReports(reports: DailyReport[]): AggregatedStats`
+`aggregateReports(reports: WeeklyReport[]): AggregatedStats`
 
-집계 항목: totalDays, totalSessions, totalToolCalls, totalProjects, toolUsageAggregated, taskTypeAggregated (percentage 포함), techStackFrequency (파일 단위 카운트), dailyTrend, averageEvaluationScore, latestEvaluation, evaluationCategoryAverages
+집계 항목: totalDays, totalSessions, totalToolCalls, totalProjects, toolUsageAggregated, taskTypeAggregated (percentage 포함), techStackFrequency (파일 단위 카운트), weeklyTrend, averageEvaluationScore, latestEvaluation, evaluationCategoryAverages
 
 **확장 패턴**: Map 기반 누적 → `Array.from(map.entries()).map(...)` → `.sort(...)`
 

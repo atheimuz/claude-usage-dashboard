@@ -7,8 +7,8 @@
 | Hook | queryKey | 반환 타입 | 비고 |
 |------|----------|-----------|------|
 | `useFileList()` | `["fileList"]` | `string[]` (파일 경로 목록) | `/data/index.json` fetch |
-| `useDailyReport(filename)` | `["report", filename]` | `DailyReport` | `enabled: !!filename` |
-| `useAllReports()` | `["fileList"]` + 각 `["report", ...]` | `{ data: DailyReport[], isLoading, isError }` | useFileList + useQueries 병렬 |
+| `useWeeklyReport(filename)` | `["report", filename]` | `WeeklyReport` | `enabled: !!filename` |
+| `useAllReports()` | `["fileList"]` + 각 `["report", ...]` | `{ data: WeeklyReport[], isLoading, isError }` | useFileList + useQueries 병렬 |
 
 모든 쿼리: `staleTime: Infinity, gcTime: Infinity` (정적 데이터, 한 번 로드 후 재요청 없음)
 
@@ -30,13 +30,13 @@ localStorage 키: `"theme"`, document.documentElement에 `dark` 클래스 토글
     ↓ useFileList()
 ["work/2026-02-08.json", "side/2026-02-08.json", ...]
     ↓ useAllReports() → useQueries로 각 파일 병렬 fetch
-DailyReport[]
+WeeklyReport[]
     ↓ aggregateReports() (lib/aggregator.ts)
 AggregatedStats → HomePage 렌더링
 
 /data/{location}/{name}.json
-    ↓ useDailyReport("work/2026-02-08")
-DailyReport → DailyDetailPage 렌더링
+    ↓ useWeeklyReport("work/2026-02-W2")
+WeeklyReport → WeeklyDetailPage 렌더링
 ```
 
 ## 새 hook 추가 시
