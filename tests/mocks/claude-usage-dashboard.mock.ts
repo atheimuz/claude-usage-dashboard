@@ -431,7 +431,7 @@ export const MOCK_AGGREGATED_STATS = {
         { type: "Content Creation", count: 8, description: "문서 작성" },
         { type: "Debugging", count: 3, description: "버그 수정, 테스트 실패 분석" }
     ],
-    dailyTrend: [
+    weeklyTrend: [
         {
             date: "2026-02-08",
             reportCount: 2,

@@ -6,7 +6,7 @@ export class HomePage extends BasePage {
     readonly serviceName: Locator;
     readonly darkModeToggle: Locator;
     readonly dashboardLink: Locator;
-    readonly dailyLogsLink: Locator;
+    readonly weeklyLogsLink: Locator;
 
     // Stats Cards
     readonly statsCards: Locator;
@@ -46,7 +46,7 @@ export class HomePage extends BasePage {
         this.serviceName = page.getByRole("link", { name: /Claude Usage Dashboard/i });
         this.darkModeToggle = page.getByRole("button", { name: /dark mode|light mode/i });
         this.dashboardLink = page.getByRole("link", { name: "Dashboard" });
-        this.dailyLogsLink = page.getByRole("link", { name: "Daily Logs" });
+        this.weeklyLogsLink = page.getByRole("link", { name: "Weekly Logs" });
 
         // Stats Cards - role 기반 접근
         this.statsCards = page.getByRole("region", { name: /stats|통계/i }).locator("[role='article']");
@@ -88,7 +88,7 @@ export class HomePage extends BasePage {
         await expect(this.serviceName).toBeVisible();
         await expect(this.darkModeToggle).toBeVisible();
         await expect(this.dashboardLink).toBeVisible();
-        await expect(this.dailyLogsLink).toBeVisible();
+        await expect(this.weeklyLogsLink).toBeVisible();
     }
 
     async expectStatsCardsVisible() {

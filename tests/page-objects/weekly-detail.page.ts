@@ -1,14 +1,14 @@
 import { Page, Locator, expect } from "@playwright/test";
 import { BasePage } from "./base.page";
 
-export class DailyDetailPage extends BasePage {
+export class WeeklyDetailPage extends BasePage {
     // Page Header
     readonly dateTitle: Locator;
     readonly identifierBadge: Locator;
     readonly generatedDate: Locator;
     readonly backToListLink: Locator;
-    readonly prevDailyButton: Locator;
-    readonly nextDailyButton: Locator;
+    readonly prevWeeklyButton: Locator;
+    readonly nextWeeklyButton: Locator;
 
     // Overview Stats Cards
     readonly statsCards: Locator;
@@ -68,12 +68,12 @@ export class DailyDetailPage extends BasePage {
         super(page);
 
         // Page Header
-        this.dateTitle = page.getByRole("heading", { name: /2026-\d{2}-\d{2}/i, level: 1 });
+        this.dateTitle = page.getByRole("heading", { name: /\d{4}년.*\d+주차/i, level: 1 });
         this.identifierBadge = page.locator("[data-identifier-badge], .identifier-badge").first();
         this.generatedDate = page.getByText(/자동 생성:/i);
         this.backToListLink = page.getByRole("link", { name: /목록/i });
-        this.prevDailyButton = page.getByRole("button", { name: /이전|previous/i }).first();
-        this.nextDailyButton = page.getByRole("button", { name: /다음|next/i }).first();
+        this.prevWeeklyButton = page.getByRole("button", { name: /이전|previous/i }).first();
+        this.nextWeeklyButton = page.getByRole("button", { name: /다음|next/i }).first();
 
         // Overview Stats Cards
         this.statsCards = page.locator("[role='region'][aria-label*='통계'], .stats-cards").locator("[role='article']");
@@ -127,11 +127,11 @@ export class DailyDetailPage extends BasePage {
 
         // Error States
         this.errorAlert = page.getByRole("alert");
-        this.notFoundMessage = page.getByText(/해당 날짜의 일지가 없습니다/i);
+        this.notFoundMessage = page.getByText(/해당 주차의 일지가 없습니다/i);
     }
 
-    async navigateToDailyDetail(filename: string) {
-        await this.navigate(`/daily/${filename}`);
+    async navigateToWeeklyDetail(filename: string) {
+        await this.navigate(`/weekly/${filename}`);
     }
 
     async expectPageHeaderVisible() {
@@ -142,24 +142,24 @@ export class DailyDetailPage extends BasePage {
     }
 
     async expectNavigationButtonsVisible() {
-        await expect(this.prevDailyButton).toBeVisible();
-        await expect(this.nextDailyButton).toBeVisible();
+        await expect(this.prevWeeklyButton).toBeVisible();
+        await expect(this.nextWeeklyButton).toBeVisible();
     }
 
     async expectPrevButtonDisabled() {
-        await expect(this.prevDailyButton).toBeDisabled();
+        await expect(this.prevWeeklyButton).toBeDisabled();
     }
 
     async expectNextButtonDisabled() {
-        await expect(this.nextDailyButton).toBeDisabled();
+        await expect(this.nextWeeklyButton).toBeDisabled();
     }
 
-    async clickPrevDaily() {
-        await this.prevDailyButton.click();
+    async clickPrevWeekly() {
+        await this.prevWeeklyButton.click();
     }
 
-    async clickNextDaily() {
-        await this.nextDailyButton.click();
+    async clickNextWeekly() {
+        await this.nextWeeklyButton.click();
     }
 
     async clickBackToList() {

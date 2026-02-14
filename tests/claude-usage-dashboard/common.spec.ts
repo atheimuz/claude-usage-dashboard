@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 import { HomePage } from "../page-objects/home.page";
-import { DailyListPage } from "../page-objects/daily-list.page";
+import { WeeklyListPage } from "../page-objects/weekly-list.page";
 import {
     MOCK_INDEX_JSON,
     MOCK_MARKDOWN_FILES,
@@ -113,8 +113,8 @@ test.describe("공통 기능", () => {
 
     test.describe("4-2. 네비게이션", () => {
         test("헤더의 서비스명 클릭 시 홈 페이지로 이동해야 한다", async ({ page }) => {
-            const dailyListPage = new DailyListPage(page);
-            await dailyListPage.navigateToDailyList();
+            const weeklyListPage = new WeeklyListPage(page);
+            await weeklyListPage.navigateToWeeklyList();
 
             const serviceName = page.getByRole("link", { name: /Claude Usage Dashboard/i });
             await serviceName.click();
@@ -123,8 +123,8 @@ test.describe("공통 기능", () => {
         });
 
         test("헤더의 Dashboard 링크 클릭 시 홈 페이지로 이동해야 한다", async ({ page }) => {
-            const dailyListPage = new DailyListPage(page);
-            await dailyListPage.navigateToDailyList();
+            const weeklyListPage = new WeeklyListPage(page);
+            await weeklyListPage.navigateToWeeklyList();
 
             const dashboardLink = page.getByRole("link", { name: "Dashboard" });
             await dashboardLink.click();
@@ -132,14 +132,14 @@ test.describe("공통 기능", () => {
             expect(page.url()).toMatch(/\/$|\/\?/);
         });
 
-        test("헤더의 Daily Logs 링크 클릭 시 일지 목록 페이지로 이동해야 한다", async ({ page }) => {
+        test("헤더의 Weekly Logs 링크 클릭 시 주간 일지 목록 페이지로 이동해야 한다", async ({ page }) => {
             const homePage = new HomePage(page);
             await homePage.navigateToHome();
 
-            const dailyLogsLink = page.getByRole("link", { name: "Daily Logs" });
-            await dailyLogsLink.click();
-            await page.waitForURL("/daily");
-            expect(page.url()).toContain("/daily");
+            const weeklyLogsLink = page.getByRole("link", { name: "Weekly Logs" });
+            await weeklyLogsLink.click();
+            await page.waitForURL("/weekly");
+            expect(page.url()).toContain("/weekly");
         });
 
         test("현재 페이지에 해당하는 네비게이션 링크가 활성 상태로 표시되어야 한다", async ({ page }) => {
@@ -149,11 +149,11 @@ test.describe("공통 기능", () => {
             const dashboardClass = await dashboardLink.getAttribute("class");
             expect(dashboardClass).toMatch(/active|current/i);
 
-            await page.goto("/daily");
+            await page.goto("/weekly");
 
-            const dailyLogsLink = page.getByRole("link", { name: "Daily Logs" });
-            const dailyLogsClass = await dailyLogsLink.getAttribute("class");
-            expect(dailyLogsClass).toMatch(/active|current/i);
+            const weeklyLogsLink = page.getByRole("link", { name: "Weekly Logs" });
+            const weeklyLogsClass = await weeklyLogsLink.getAttribute("class");
+            expect(weeklyLogsClass).toMatch(/active|current/i);
         });
     });
 
@@ -231,7 +231,7 @@ test.describe("공통 기능", () => {
         test("모바일 화면에서 작업 유형 카드가 1열로 표시되어야 한다", async ({ page }) => {
             await page.setViewportSize({ width: 375, height: 667 });
 
-            await page.goto("/daily/work/2026-02-08");
+            await page.goto("/weekly/work/2026-02-08");
 
             const taskTypeCards = page.locator("[role='region'][aria-label*='작업 유형'] [role='article']");
             const firstCard = taskTypeCards.first();

@@ -119,8 +119,8 @@ test.describe("홈 대시보드 - 사용자 시나리오", () => {
         await homePage.clickRecentActivityCard(0);
 
         // Then - 해당 일지 상세 페이지로 이동함
-        await page.waitForURL(/\/daily\/.+/);
-        expect(page.url()).toMatch(/\/daily\/.+/);
+        await page.waitForURL(/\/weekly\/.+/);
+        expect(page.url()).toMatch(/\/weekly\/.+/);
     });
 
     test("사용자가 최근 활동에서 전체 일지 목록으로 이동할 수 있다", async ({ page }) => {
@@ -132,8 +132,8 @@ test.describe("홈 대시보드 - 사용자 시나리오", () => {
         await homePage.clickViewAll();
 
         // Then - 일지 목록 페이지로 이동함
-        await page.waitForURL("/daily");
-        expect(page.url()).toContain("/daily");
+        await page.waitForURL("/weekly");
+        expect(page.url()).toContain("/weekly");
     });
 
     test.describe("로딩 및 에러 상태", () => {

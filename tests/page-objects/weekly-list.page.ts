@@ -1,7 +1,7 @@
 import { Page, Locator, expect } from "@playwright/test";
 import { BasePage } from "./base.page";
 
-export class DailyListPage extends BasePage {
+export class WeeklyListPage extends BasePage {
     // Page Header
     readonly pageTitle: Locator;
     readonly pageSubtitle: Locator;
@@ -36,16 +36,16 @@ export class DailyListPage extends BasePage {
         super(page);
 
         // Page Header
-        this.pageTitle = page.getByRole("heading", { name: "Daily Logs", level: 1 });
-        this.pageSubtitle = page.getByText(/날짜별 클로드 코드 사용 일지/i);
+        this.pageTitle = page.getByRole("heading", { name: "Weekly Logs", level: 1 });
+        this.pageSubtitle = page.getByText(/주간별 클로드 코드 사용 일지/i);
         this.viewToggle = page.getByRole("group", { name: /view toggle|뷰 전환/i });
         this.listViewButton = page.getByRole("button", { name: /list|리스트/i });
         this.calendarViewButton = page.getByRole("button", { name: /calendar|달력/i });
 
         // List View
         this.listView = page.locator("[data-view='list'], .list-view");
-        this.listCards = page.locator("[role='article'][data-type='daily-log'], .daily-log-card");
-        this.dateHeadings = page.getByRole("heading", { name: /2026-\d{2}-\d{2}/i });
+        this.listCards = page.locator("[role='article'][data-type='weekly-log'], .weekly-log-card");
+        this.dateHeadings = page.getByRole("heading", { name: /\d{4}년.*\d+주차/i });
 
         // Calendar View
         this.calendarView = page.locator("[data-view='calendar'], .calendar-view");
@@ -66,8 +66,8 @@ export class DailyListPage extends BasePage {
         this.emptyStateMessage = page.getByText(/기록된 사용 일지가 없습니다/i);
     }
 
-    async navigateToDailyList() {
-        await this.navigate("/daily");
+    async navigateToWeeklyList() {
+        await this.navigate("/weekly");
     }
 
     async expectPageHeaderVisible() {
