@@ -66,6 +66,12 @@ export function HomePage() {
                 <h1 className="text-3xl font-bold">Dashboard</h1>
                 <p className="text-muted-foreground">클로드 코드 활용도 종합</p>
             </div>
+            <div className="rounded-lg border bg-muted/50 p-4 text-sm text-muted-foreground">
+                <p>
+                    Claude Code 사용 패턴을 분석하고, 활용 방식을 개선하여 컨텍스트 비용을 효율적으로
+                    관리하기 위한 대시보드입니다.
+                </p>
+            </div>
             <div className="grid grid-cols-1 gap-3 md:grid-cols-3">
                 <ScoreTrendChart weeklyTrend={stats.weeklyTrend} />
                 <ScoreGaugeCard
