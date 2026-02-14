@@ -6,7 +6,7 @@
 |--------|--------|------|--------------|
 | `HomePage` | `/` | `useAllReports` + `aggregateReports` | UsageScoreCard, ToolStatsTable, TaskTypeGrid, SummaryCard, RecentActivity |
 | `WeeklyListPage` | `/weekly` | `useAllReports` | CalendarView (월 선택기), ListView |
-| `WeeklyDetailPage` | `/weekly/:location/:name` | `useWeeklyReport` + `useFileList` | WeeklyHeader + 9개 섹션 컴포넌트 (weekly/ 참조) |
+| `WeeklyDetailPage` | `/weekly/:location/:name` | `useWeeklyReport` + `useFileList` | WeeklyHeader + 10개 섹션 컴포넌트 (weekly/ 참조) |
 
 ## 공통 3단계 상태 처리 패턴
 

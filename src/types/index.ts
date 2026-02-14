@@ -99,6 +99,14 @@ export interface ErrorSummary {
     recovery: RecoveryStats;
 }
 
+export interface ConfigChange {
+    category: string;
+    name: string;
+    action: string;
+    changes: number;
+    details: string[];
+}
+
 export interface WeeklyReport {
     // 메타 (런타임에 추가)
     identifier: string;
@@ -114,6 +122,7 @@ export interface WeeklyReport {
     feedback: Feedback;
     error_summary: ErrorSummary;
     main_workflow: string;
+    config_changes?: ConfigChange[];
 }
 
 export type EvaluationGrade = 'S' | 'A' | 'B' | 'C' | 'D' | 'F';

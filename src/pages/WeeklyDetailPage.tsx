@@ -15,6 +15,7 @@ import { TaskTypeGrid } from "@/components/weekly/TaskTypeGrid";
 import { ErrorSummarySection } from "@/components/weekly/ErrorSummarySection";
 import { LearningInsights } from "@/components/weekly/LearningInsights";
 import { WorkflowPatterns } from "@/components/weekly/WorkflowPatterns";
+import { ConfigChangesSection } from "@/components/weekly/ConfigChangesSection";
 
 const LOCATION_PATTERN = /^[a-z0-9_-]+$/i;
 const NAME_PATTERN = /^\d{4}-\d{2}-W\d+$/;
@@ -102,6 +103,7 @@ export function WeeklyDetailPage() {
             </div>
 
             <ClaudeUsageSection toolUsage={report.tool_usage} />
+            <ConfigChangesSection configChanges={report.config_changes} />
 
             <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
                 <ToolStatsTable toolStats={report.tool_usage.top_tools} />
