@@ -47,11 +47,6 @@
                 "name": "/retrospective",
                 "count": 8,
                 "description": "개발 세션 후 회고를 수행하여 CLAUDE.md, 에이전트 프롬프트, 스킬 프롬프트를 개선."
-            },
-            {
-                "name": "/rate-limit-options",
-                "count": 1,
-                "description": ""
             }
         ],
         "custom_commands": [
@@ -186,16 +181,6 @@
             },
             {
                 "name": "/plugin",
-                "count": 1,
-                "description": ""
-            },
-            {
-                "name": "/upgrade",
-                "count": 1,
-                "description": ""
-            },
-            {
-                "name": "/weekly폴더에",
                 "count": 1,
                 "description": ""
             },
