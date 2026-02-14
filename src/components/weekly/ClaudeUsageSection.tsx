@@ -8,7 +8,49 @@ import {
     TableHeader,
     TableRow
 } from "@/components/ui/table";
-import type { ToolUsage } from "@/types";
+import type { ToolUsage, ToolUsageItem } from "@/types";
+
+interface ToolUsageTableProps {
+    title: string;
+    nameHeader: string;
+    items: ToolUsageItem[];
+    getName: (item: ToolUsageItem) => string | undefined;
+    mono?: boolean;
+}
+
+function ToolUsageTable({ title, nameHeader, items, getName, mono }: ToolUsageTableProps) {
+    if (items.length === 0) return null;
+    const hasDescription = items.some((item) => item.description);
+    return (
+        <div>
+            <p className="mb-2 text-sm font-medium text-muted-foreground">{title}</p>
+            <Table>
+                <TableHeader>
+                    <TableRow>
+                        <TableHead>{nameHeader}</TableHead>
+                        {hasDescription && <TableHead>설명</TableHead>}
+                        <TableHead className="text-right">횟수</TableHead>
+                    </TableRow>
+                </TableHeader>
+                <TableBody>
+                    {items.map((item) => (
+                        <TableRow key={getName(item)}>
+                            <TableCell className={mono ? "font-mono font-medium" : "font-medium"}>
+                                {getName(item)}
+                            </TableCell>
+                            {hasDescription && (
+                                <TableCell className="text-muted-foreground">
+                                    {item.description}
+                                </TableCell>
+                            )}
+                            <TableCell className="text-right">{item.count}회</TableCell>
+                        </TableRow>
+                    ))}
+                </TableBody>
+            </Table>
+        </div>
+    );
+}
 
 interface Props {
     toolUsage: ToolUsage;
@@ -19,10 +61,6 @@ export function ClaudeUsageSection({ toolUsage }: Props) {
     const hasAny = agents.length > 0 || commands.length > 0 || skills.length > 0;
     if (!hasAny) return null;
 
-    const hasAgentDescription = agents.some((a) => a.description);
-    const hasCommandDescription = commands.some((c) => c.description);
-    const hasSkillDescription = skills.some((s) => s.description);
-
     return (
         <Card>
             <CardHeader>
@@ -32,107 +70,26 @@ export function ClaudeUsageSection({ toolUsage }: Props) {
                 </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
-                {agents.length > 0 && (
-                    <div>
-                        <p className="mb-2 text-sm font-medium text-muted-foreground">
-                            Sub Agent 위임
-                        </p>
-                        <Table>
-                            <TableHeader>
-                                <TableRow>
-                                    <TableHead>Agent 유형</TableHead>
-                                    {hasAgentDescription && (
-                                        <TableHead>설명</TableHead>
-                                    )}
-                                    <TableHead className="text-right">횟수</TableHead>
-                                </TableRow>
-                            </TableHeader>
-                            <TableBody>
-                                {agents.map((agent) => (
-                                    <TableRow key={agent.type}>
-                                        <TableCell className="font-medium">
-                                            {agent.type}
-                                        </TableCell>
-                                        {hasAgentDescription && (
-                                            <TableCell className="text-muted-foreground">
-                                                {agent.description}
-                                            </TableCell>
-                                        )}
-                                        <TableCell className="text-right">
-                                            {agent.count}회
-                                        </TableCell>
-                                    </TableRow>
-                                ))}
-                            </TableBody>
-                        </Table>
-                    </div>
-                )}
-                {commands.length > 0 && (
-                    <div>
-                        <p className="mb-2 text-sm font-medium text-muted-foreground">
-                            슬래시 커맨드
-                        </p>
-                        <Table>
-                            <TableHeader>
-                                <TableRow>
-                                    <TableHead>커맨드</TableHead>
-                                    {hasCommandDescription && (
-                                        <TableHead>설명</TableHead>
-                                    )}
-                                    <TableHead className="text-right">횟수</TableHead>
-                                </TableRow>
-                            </TableHeader>
-                            <TableBody>
-                                {commands.map((cmd) => (
-                                    <TableRow key={cmd.name}>
-                                        <TableCell className="font-mono font-medium">
-                                            {cmd.name}
-                                        </TableCell>
-                                        {hasCommandDescription && (
-                                            <TableCell className="text-muted-foreground">
-                                                {cmd.description}
-                                            </TableCell>
-                                        )}
-                                        <TableCell className="text-right">{cmd.count}회</TableCell>
-                                    </TableRow>
-                                ))}
-                            </TableBody>
-                        </Table>
-                    </div>
-                )}
-                {skills.length > 0 && (
-                    <div>
-                        <p className="mb-2 text-sm font-medium text-muted-foreground">
-                            사용한 스킬
-                        </p>
-                        <Table>
-                            <TableHeader>
-                                <TableRow>
-                                    <TableHead>스킬</TableHead>
-                                    {hasSkillDescription && (
-                                        <TableHead>설명</TableHead>
-                                    )}
-                                    <TableHead className="text-right">횟수</TableHead>
-                                </TableRow>
-                            </TableHeader>
-                            <TableBody>
-                                {skills.map((skill) => (
-                                    <TableRow key={skill.name}>
-                                        <TableCell className="font-mono font-medium">
-                                            {skill.name}
-                                        </TableCell>
-                                        {hasSkillDescription && (
-                                            <TableCell className="text-muted-foreground">
-                                                {skill.description}
-                                            </TableCell>
-                                        )}
-                                        <TableCell className="text-right">{skill.count}회</TableCell>
-                                    </TableRow>
-                                ))}
-                            </TableBody>
-                        </Table>
-                    </div>
-                )}
+                <ToolUsageTable
+                    title="Sub Agent 위임"
+                    nameHeader="Agent 유형"
+                    items={agents}
+                    getName={(item) => item.type}
+                />
+                <ToolUsageTable
+                    title="슬래시 커맨드"
+                    nameHeader="커맨드"
+                    items={commands}
+                    getName={(item) => item.name}
+                    mono
+                />
+                <ToolUsageTable
+                    title="사용한 스킬"
+                    nameHeader="스킬"
+                    items={skills}
+                    getName={(item) => item.name}
+                    mono
+                />
             </CardContent>
         </Card>
     );
