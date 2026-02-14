@@ -9,9 +9,9 @@ interface Props {
 
 export function ListView({ reports }: Props) {
   const { grouped, sortedKeys } = useMemo(() => {
-    const g = groupByDate(reports)
-    const keys = Array.from(g.keys()).sort((a, b) => b.localeCompare(a))
-    return { grouped: g, sortedKeys: keys }
+    const groupedReports = groupByDate(reports)
+    const keys = Array.from(groupedReports.keys()).sort((a, b) => b.localeCompare(a))
+    return { grouped: groupedReports, sortedKeys: keys }
   }, [reports])
 
   return (
