@@ -25,7 +25,7 @@ test.describe("FrequentTools - 자주 쓰는 도구 섹션", () => {
             })
         );
 
-        // DailyReport JSON 파일 인터셉트
+        // WeeklyReport JSON 파일 인터셉트
         await page.route("**/data/work/2026-02-08.json", (route) =>
             route.fulfill({
                 status: 200,
