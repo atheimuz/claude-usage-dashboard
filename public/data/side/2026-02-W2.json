@@ -1,0 +1,361 @@
+{
+    "date_range": {
+        "start": "2026-02-08T00:00:00",
+        "end": "2026-02-14T23:59:59.999999"
+    },
+    "summary": {
+        "sessions": 165,
+        "avg_messages": 86.7,
+        "avg_tool_calls": 29.6,
+        "main_tasks": ["Coding", "Modification", "Research"]
+    },
+    "usage_style": {
+        "prompt_stats": {
+            "avg_length": 1253.4,
+            "avg_words": 223,
+            "distribution": {
+                "command": 33,
+                "descriptive": 557,
+                "plan_based": 145
+            }
+        },
+        "session_scale": {
+            "small": {
+                "count": 165,
+                "avg_turns": 3.8
+            }
+        },
+        "correction_ratio": {
+            "initial": 165,
+            "followup": 139,
+            "ratio": 0.84
+        }
+    },
+    "tool_usage": {
+        "skills": [
+            {
+                "name": "/session-analyzer",
+                "count": 40,
+                "description": "클로드 코드 세션 로그를 자동으로 분석하여 날짜별 활동 요약을 생성합니다."
+            },
+            {
+                "name": "/granular-commit",
+                "count": 28,
+                "description": "Git 변경사항을 hunk/줄 단위로 분석하여 세밀한 논리적 커밋으로 분리."
+            },
+            {
+                "name": "/retrospective",
+                "count": 8,
+                "description": "개발 세션 후 회고를 수행하여 CLAUDE.md, 에이전트 프롬프트, 스킬 프롬프트를 개선."
+            },
+            {
+                "name": "/rate-limit-options",
+                "count": 1,
+                "description": ""
+            }
+        ],
+        "custom_commands": [
+            {
+                "name": "/feature",
+                "count": 8,
+                "description": ""
+            },
+            {
+                "name": "/code-review",
+                "count": 2,
+                "description": ""
+            }
+        ],
+        "agents": [
+            {
+                "type": "Explore",
+                "count": 139,
+                "description": "프로젝트 구조 및 설정 탐색"
+            },
+            {
+                "type": "Plan",
+                "count": 36,
+                "description": "세션 로그 자동 분석 시스템 설계"
+            },
+            {
+                "type": "general-purpose",
+                "count": 9,
+                "description": "Generate Jan 15-20 markdown summaries"
+            },
+            {
+                "type": "product-spec-writer",
+                "count": 4,
+                "description": "frequent-tools 기능 기획 명세서 작성"
+            },
+            {
+                "type": "ui-designer",
+                "count": 3,
+                "description": "FrequentTools 디자인 명세서 작성"
+            },
+            {
+                "type": "playwright-e2e-tester",
+                "count": 3,
+                "description": "FrequentTools E2E 테스트 작성"
+            },
+            {
+                "type": "code-analyst",
+                "count": 3,
+                "description": "FrequentTools 구현 가이드 작성"
+            },
+            {
+                "type": "architecture-reviewer",
+                "count": 2,
+                "description": "아키텍처 리뷰"
+            },
+            {
+                "type": "security-reviewer",
+                "count": 2,
+                "description": "보안 리뷰"
+            },
+            {
+                "type": "maintainability-reviewer",
+                "count": 2,
+                "description": "유지보수성 리뷰"
+            },
+            {
+                "type": "a11y-reviewer",
+                "count": 2,
+                "description": "접근성 리뷰"
+            },
+            {
+                "type": "performance-reviewer",
+                "count": 2,
+                "description": "성능 리뷰"
+            },
+            {
+                "type": "type-safety-reviewer",
+                "count": 2,
+                "description": "타입 안전성 리뷰"
+            },
+            {
+                "type": "test-consolidator",
+                "count": 2,
+                "description": "테스트 파일 분석 및 정리"
+            },
+            {
+                "type": "claude-code-guide",
+                "count": 1,
+                "description": "Claude Code MCP 설정 방법 확인"
+            }
+        ],
+        "commands": [
+            {
+                "name": "/compact",
+                "count": 30,
+                "description": "대화 컨텍스트 압축"
+            },
+            {
+                "name": "/clear",
+                "count": 29,
+                "description": "대화 기록 초기화"
+            },
+            {
+                "name": "/model",
+                "count": 8,
+                "description": "사용 모델 변경"
+            },
+            {
+                "name": "/help",
+                "count": 8,
+                "description": "도움말 표시"
+            },
+            {
+                "name": "/private",
+                "count": 4,
+                "description": "비공개 모드"
+            },
+            {
+                "name": "/daily",
+                "count": 2,
+                "description": "일일 요약 조회"
+            },
+            {
+                "name": "/doctor",
+                "count": 2,
+                "description": "설정 상태 진단"
+            },
+            {
+                "name": "/admin",
+                "count": 2,
+                "description": "관리자 모드"
+            },
+            {
+                "name": "/plugin",
+                "count": 1,
+                "description": ""
+            },
+            {
+                "name": "/upgrade",
+                "count": 1,
+                "description": ""
+            },
+            {
+                "name": "/weekly폴더에",
+                "count": 1,
+                "description": ""
+            },
+            {
+                "name": "/sync-context",
+                "count": 1,
+                "description": "프로젝트 컨텍스트 동기화"
+            },
+            {
+                "name": "/agents",
+                "count": 1,
+                "description": "에이전트 목록 조회"
+            },
+            {
+                "name": "/memory",
+                "count": 1,
+                "description": "메모리 관리"
+            },
+            {
+                "name": "/skills",
+                "count": 1,
+                "description": "스킬 목록 조회"
+            }
+        ],
+        "top_tools": [
+            {
+                "name": "Read",
+                "count": 1250
+            },
+            {
+                "name": "Bash",
+                "count": 939
+            },
+            {
+                "name": "Edit",
+                "count": 851
+            },
+            {
+                "name": "TodoWrite",
+                "count": 489
+            },
+            {
+                "name": "Write",
+                "count": 464
+            }
+        ]
+    },
+    "scoring": {
+        "total": 73,
+        "grade": "B",
+        "categories": {
+            "intent": {
+                "score": 15,
+                "max": 25
+            },
+            "efficiency": {
+                "score": 24,
+                "max": 30
+            },
+            "fitness": {
+                "score": 18,
+                "max": 25
+            },
+            "workflow": {
+                "score": 16,
+                "max": 20
+            }
+        }
+    },
+    "feedback": {
+        "strengths": [
+            "첫 메시지에서 충분한 컨텍스트를 제공했습니다",
+            "도구 호출 성공률이 94.6%로 높습니다",
+            "커밋 자동화 스킬을 활용하여 반복 작업을 줄였습니다"
+        ],
+        "improvements": [
+            "재작업 비율이 34.1%입니다. 수정 전 파일을 먼저 Read로 확인하면 재작업을 줄일 수 있습니다",
+            "Bash에서 grep/cat/find 등을 189회 사용했습니다. Grep/Read/Glob 전용 도구를 사용하면 더 효율적입니다",
+            "같은 도구로 연속 실패한 경우가 있습니다. 다른 접근법을 시도하면 더 빠르게 해결할 수 있습니다"
+        ],
+        "context_tips": [
+            "CLAUDE.md 강화: 코드 패턴, 체크리스트, 자주 하는 실수 추가",
+            "auto-memory 활성화: 세션 간 학습 축적"
+        ]
+    },
+    "error_summary": {
+        "rate": 5.4,
+        "total": 265,
+        "main_types": ["other", "syntax_error"],
+        "recovery": {
+            "immediate_fix": 71,
+            "alternative": 104
+        }
+    },
+    "main_workflow": "Read → Read → Read",
+    "config_changes": [
+        {
+            "category": "command",
+            "name": "daily-publish",
+            "action": "created/modified",
+            "changes": 1,
+            "details": ["일일 트렌드 블로그 발행, 실행 단계, 트렌드 수집 포함 문서 작성"]
+        },
+        {
+            "category": "command",
+            "name": "write-post",
+            "action": "created/modified",
+            "changes": 1,
+            "details": ["블로그 글 작성, 작성 가이드, 주제 분석 포함 문서 작성"]
+        },
+        {
+            "category": "project_config",
+            "name": "CLAUDE.md",
+            "action": "modified",
+            "changes": 30,
+            "details": [
+                "트렌드 인사이트 블로그, 프로젝트 구조, 커스텀 명령어 포함 문서 작성",
+                "E2E Tests (Playwright), 디렉토리 구조, 테스트 작성 컨벤션 포함 문서 작성",
+                "새 일지 추가 섹션 추가",
+                "CLAUDE.md, Project Overview, Commands 포함 문서 작성",
+                "Components, 디렉토리 배치 규칙, 컴포넌트 작성 컨벤션 포함 문서 작성",
+                "Daily Detail Components, 컴포넌트 Props 레퍼런스, 렌더링 순서 포함 문서 작성",
+                "Lib - 유틸리티 및 집계, 파일별 Export 목록, utils.ts — 범용 유틸리티 포함 문서 작성",
+                "Hooks, Hook 목록, TanStack Query 포함 문서 작성",
+                "Pages, 페이지 매핑, 공통 3단계 상태 처리 패턴 포함 문서 작성"
+            ]
+        },
+        {
+            "category": "skill",
+            "name": "md-to-json",
+            "action": "created/modified",
+            "changes": 1,
+            "details": ["MD → JSON 변환 Skill, 워크플로우, 1단계: 변환 범위 확인 포함 문서 작성"]
+        },
+        {
+            "category": "skill",
+            "name": "retrospective",
+            "action": "modified",
+            "changes": 16,
+            "details": [
+                "개발 세션 후 회고를 수행하여 CLAUDE.md, 에이전트 프롬프트, 스킬 프롬프트를 개선.",
+                "해당 SKILL.md 파일의 적절한 섹션에 규칙/지침 추가",
+                "자동화 추천 항목 섹션 추가",
+                "기존 스킬 확장: 해당 SKILL.md에 워크플로우 단계 추가",
+                "자동화 구현 시 초안만 생성하며, 기존 스킬/설정을 덮어쓰지 않음"
+            ]
+        },
+        {
+            "category": "skill",
+            "name": "session-analyzer",
+            "action": "modified",
+            "changes": 127,
+            "details": [
+                "detail 문자열의 품질 보정: 경로/코드 제거, 불완전 문장 감지, 보안 필터링, 의미적으로 유사한 detail을 제거. threshold 이상 유사도면 중복으로 판단. 추가",
+                "Claude Code 활용도 평가, 종합 점수: [N]/100 섹션 추가",
+                "활용도 평가 점수 계산 로직, 탐지 방법 섹션 추가",
+                "8단계: 마크다운 요약 생성 (선택) 섹션 추가",
+                "ISO 8601 타임스탬프를 datetime으로 변환, 날짜 범위에 해당하는 메인 세션 JSONL 파일 찾기 (subagents 제외), 세션 파일을 분석에 필요한 모든 데이터로 파싱 포함 파일 생성",
+                "2단계: 분석 스크립트 실행, 3단계: Skills/Commands/Sub Agent 섹션 추가"
+            ]
+        }
+    ]
+}

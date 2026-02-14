@@ -1,0 +1,190 @@
+{
+  "date_range": {
+    "start": "2026-01-22T00:00:00",
+    "end": "2026-01-28T23:59:59.999999"
+  },
+  "summary": {
+    "sessions": 93,
+    "avg_messages": 81.5,
+    "avg_tool_calls": 23.1,
+    "main_tasks": [
+      "Deployment",
+      "Modification",
+      "Coding"
+    ]
+  },
+  "usage_style": {
+    "prompt_stats": {
+      "avg_length": 422.9,
+      "avg_words": 63,
+      "distribution": {
+        "command": 34,
+        "descriptive": 396,
+        "plan_based": 82
+      }
+    },
+    "session_scale": {
+      "small": {
+        "count": 93,
+        "avg_turns": 5.5
+      }
+    },
+    "correction_ratio": {
+      "initial": 93,
+      "followup": 49,
+      "ratio": 0.53
+    }
+  },
+  "tool_usage": {
+    "skills": [
+      {
+        "name": "/commit",
+        "count": 4,
+        "description": "Git commit 자동화."
+      },
+      {
+        "name": "/plugin",
+        "count": 2,
+        "description": ""
+      },
+      {
+        "name": "/upgrade",
+        "count": 1,
+        "description": ""
+      }
+    ],
+    "custom_commands": [
+      {
+        "name": "/feature",
+        "count": 2,
+        "description": ""
+      }
+    ],
+    "agents": [
+      {
+        "type": "Explore",
+        "count": 84,
+        "description": "프로젝트 구조 및 설정 탐색"
+      },
+      {
+        "type": "Plan",
+        "count": 24,
+        "description": "홈 페이지 리디자인 계획"
+      },
+      {
+        "type": "product-spec-writer",
+        "count": 1,
+        "description": "기획 명세서 작성"
+      },
+      {
+        "type": "ui-designer",
+        "count": 1,
+        "description": "UI 디자인 명세서 작성"
+      },
+      {
+        "type": "playwright-e2e-tester",
+        "count": 1,
+        "description": "E2E 테스트 시나리오 작성"
+      },
+      {
+        "type": "code-analyst",
+        "count": 1,
+        "description": "구현 가이드 생성"
+      },
+      {
+        "type": "claude-code-guide",
+        "count": 1,
+        "description": "Claude doctor 명령어 설명"
+      }
+    ],
+    "commands": [
+      {
+        "name": "/private",
+        "count": 7,
+        "description": "비공개 모드"
+      },
+      {
+        "name": "/daily",
+        "count": 1,
+        "description": "일일 요약 조회"
+      },
+      {
+        "name": "/users",
+        "count": 1,
+        "description": ""
+      }
+    ],
+    "top_tools": [
+      {
+        "name": "Read",
+        "count": 569
+      },
+      {
+        "name": "Bash",
+        "count": 301
+      },
+      {
+        "name": "Edit",
+        "count": 300
+      },
+      {
+        "name": "Write",
+        "count": 288
+      },
+      {
+        "name": "TodoWrite",
+        "count": 195
+      }
+    ]
+  },
+  "scoring": {
+    "total": 79,
+    "grade": "A",
+    "categories": {
+      "intent": {
+        "score": 14,
+        "max": 25
+      },
+      "efficiency": {
+        "score": 27,
+        "max": 30
+      },
+      "fitness": {
+        "score": 18,
+        "max": 25
+      },
+      "workflow": {
+        "score": 20,
+        "max": 20
+      }
+    }
+  },
+  "feedback": {
+    "strengths": [
+      "도구 호출 성공률이 92.6%로 높습니다",
+      "커밋 자동화 스킬을 활용하여 반복 작업을 줄였습니다",
+      "에러 발생 시 적응적으로 접근법을 변경했습니다"
+    ],
+    "improvements": [
+      "Bash에서 grep/cat/find 등을 88회 사용했습니다. Grep/Read/Glob 전용 도구를 사용하면 더 효율적입니다"
+    ],
+    "context_tips": [
+      "CLAUDE.md 강화: 코드 패턴, 체크리스트, 자주 하는 실수 추가",
+      "auto-memory 활성화: 세션 간 학습 축적"
+    ]
+  },
+  "error_summary": {
+    "rate": 7.4,
+    "total": 154,
+    "main_types": [
+      "other",
+      "file_not_found"
+    ],
+    "recovery": {
+      "immediate_fix": 15,
+      "alternative": 108
+    }
+  },
+  "main_workflow": "Bash → Bash → Bash",
+  "config_changes": []
+}

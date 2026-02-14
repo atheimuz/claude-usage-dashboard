@@ -1,83 +1,23 @@
 {
     "files": [
         {
-            "name": "2026-02-13.json",
+            "name": "2026-02-W2.json",
             "location": "side"
         },
         {
-            "name": "2026-02-12.json",
+            "name": "2026-02-W1.json",
             "location": "side"
         },
         {
-            "name": "2026-02-11.json",
+            "name": "2026-01-W5.json",
             "location": "side"
         },
         {
-            "name": "2026-02-08.json",
+            "name": "2026-01-W4.json",
             "location": "side"
         },
         {
-            "name": "2026-02-05.json",
-            "location": "side"
-        },
-        {
-            "name": "2026-02-04.json",
-            "location": "side"
-        },
-        {
-            "name": "2026-02-03.json",
-            "location": "side"
-        },
-        {
-            "name": "2026-02-02.json",
-            "location": "side"
-        },
-        {
-            "name": "2026-02-01.json",
-            "location": "side"
-        },
-        {
-            "name": "2026-01-31.json",
-            "location": "side"
-        },
-        {
-            "name": "2026-01-30.json",
-            "location": "side"
-        },
-        {
-            "name": "2026-01-28.json",
-            "location": "side"
-        },
-        {
-            "name": "2026-01-27.json",
-            "location": "side"
-        },
-        {
-            "name": "2026-01-26.json",
-            "location": "side"
-        },
-        {
-            "name": "2026-01-25.json",
-            "location": "side"
-        },
-        {
-            "name": "2026-01-20.json",
-            "location": "side"
-        },
-        {
-            "name": "2026-01-18.json",
-            "location": "side"
-        },
-        {
-            "name": "2026-01-17.json",
-            "location": "side"
-        },
-        {
-            "name": "2026-01-16.json",
-            "location": "side"
-        },
-        {
-            "name": "2026-01-15.json",
+            "name": "2026-01-W3.json",
             "location": "side"
         }
     ]
