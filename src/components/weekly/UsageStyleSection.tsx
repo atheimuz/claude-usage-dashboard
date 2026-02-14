@@ -1,6 +1,6 @@
 import { BarChart3 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import type { UsageStyle } from "@/types";
+import type { UsageStyle, SessionScaleItem } from "@/types";
 
 interface Props {
     usageStyle: UsageStyle;
@@ -9,7 +9,9 @@ interface Props {
 export function UsageStyleSection({ usageStyle }: Props) {
     const { session_scale, correction_ratio } = usageStyle;
 
-    const sessionScaleEntries = Object.entries(session_scale);
+    const sessionScaleEntries = Object.entries(session_scale).filter(
+        (entry): entry is [string, SessionScaleItem] => entry[1] !== undefined
+    );
     const hasSessionScale = sessionScaleEntries.length > 0;
     const hasCorrectionData = correction_ratio.initial > 0 || correction_ratio.followup > 0;
 
@@ -23,9 +25,9 @@ export function UsageStyleSection({ usageStyle }: Props) {
     };
 
     const scaleLabels: Record<string, string> = {
-        small: "소형 세션",
-        medium: "중형 세션",
-        large: "대형 세션",
+        small: "소형",
+        medium: "중형",
+        large: "대형",
     };
 
     return (

@@ -1,19 +1,18 @@
 import { Settings } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import {
     Accordion,
     AccordionContent,
     AccordionItem,
     AccordionTrigger
 } from "@/components/ui/accordion";
-import type { ConfigChange } from "@/types";
+import type { ConfigChange, ConfigCategory } from "@/types";
 
 interface Props {
     configChanges?: ConfigChange[];
 }
 
-const CATEGORY_LABELS: Record<string, string> = {
+const CATEGORY_LABELS: Record<ConfigCategory, string> = {
     skill: "스킬",
     command: "커맨드",
     project_config: "프로젝트 설정",
@@ -21,11 +20,11 @@ const CATEGORY_LABELS: Record<string, string> = {
 };
 
 function groupByCategory(changes: ConfigChange[]) {
-    const groups: Record<string, ConfigChange[]> = {};
+    const groups: Partial<Record<ConfigCategory, ConfigChange[]>> = {};
     for (const change of changes) {
         const key = change.category;
         if (!groups[key]) groups[key] = [];
-        groups[key].push(change);
+        groups[key]!.push(change);
     }
     return groups;
 }
@@ -44,10 +43,10 @@ export function ConfigChangesSection({ configChanges }: Props) {
                 </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
-                {Object.entries(grouped).map(([category, changes]) => (
+                {(Object.entries(grouped) as [ConfigCategory, ConfigChange[]][]).map(([category, changes]) => (
                     <div key={category}>
                         <p className="mb-2 text-sm font-medium text-muted-foreground">
-                            {CATEGORY_LABELS[category] ?? category}
+                            {CATEGORY_LABELS[category]}
                         </p>
                         <Accordion type="multiple">
                             {changes.map((change) => (

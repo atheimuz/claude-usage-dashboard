@@ -33,9 +33,9 @@ export interface SessionScaleItem {
     avg_turns: number;
 }
 
-export interface SessionScale {
-    [size: string]: SessionScaleItem;
-}
+export type SessionSizeKey = 'small' | 'medium' | 'large';
+
+export type SessionScale = Partial<Record<SessionSizeKey, SessionScaleItem>>;
 
 export interface CorrectionRatio {
     initial: number;
@@ -99,8 +99,10 @@ export interface ErrorSummary {
     recovery: RecoveryStats;
 }
 
+export type ConfigCategory = 'skill' | 'command' | 'project_config' | 'settings';
+
 export interface ConfigChange {
-    category: string;
+    category: ConfigCategory;
     name: string;
     action: string;
     changes: number;
