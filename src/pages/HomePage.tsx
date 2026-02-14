@@ -8,8 +8,8 @@ import { aggregateReports } from "@/lib/aggregator";
 import { ScoreTrendChart } from "@/components/dashboard/ScoreTrendChart";
 import { ScoreGaugeCard } from "@/components/dashboard/ScoreGaugeCard";
 import { CategoryRadarCard } from "@/components/dashboard/CategoryRadarCard";
-import { ToolStatsTable } from "@/components/weekly/ToolStatsTable";
-import { TaskTypeGrid } from "@/components/weekly/TaskTypeGrid";
+import { ToolStatsTable } from "@/components/shared/ToolStatsTable";
+import { TaskTypeGrid } from "@/components/shared/TaskTypeGrid";
 import { RecentActivity } from "@/components/dashboard/RecentActivity";
 import { FrequentTools } from "@/components/dashboard/FrequentTools";
 

@@ -15,9 +15,13 @@ interface Props {
     toolStats: ToolStat[] | ToolUsageItem[];
 }
 
+function isToolStat(item: ToolStat | ToolUsageItem): item is ToolStat {
+    return 'toolName' in item;
+}
+
 function normalizeToolStats(stats: ToolStat[] | ToolUsageItem[]): { name: string; count: number }[] {
     return stats.map((item) => {
-        if ('toolName' in item) {
+        if (isToolStat(item)) {
             return { name: item.toolName, count: item.usageCount };
         }
         return { name: item.name || "Unknown", count: item.count };
@@ -55,7 +59,14 @@ export function ToolStatsTable({ toolStats }: Props) {
                                         <span className="min-w-[4rem] text-sm">
                                             {formatNumber(ts.count)}회
                                         </span>
-                                        <div className="h-2 flex-1 rounded-full bg-muted">
+                                        <div
+                                            className="h-2 flex-1 rounded-full bg-muted"
+                                            role="progressbar"
+                                            aria-valuenow={ts.count}
+                                            aria-valuemin={0}
+                                            aria-valuemax={maxCount}
+                                            aria-label={`${ts.name} 사용 비율`}
+                                        >
                                             <div
                                                 className="h-full rounded-full bg-primary"
                                                 style={{
