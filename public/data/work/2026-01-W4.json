@@ -1,0 +1,275 @@
+{
+    "date_range": {
+        "start": "2026-01-26T00:00:00",
+        "end": "2026-02-01T23:59:59.999999"
+    },
+    "summary": {
+        "sessions": 97,
+        "avg_messages": 45.8,
+        "avg_tool_calls": 14.8,
+        "main_tasks": ["Deployment", "Coding", "Modification"]
+    },
+    "usage_style": {
+        "prompt_stats": {
+            "avg_length": 550.8,
+            "avg_words": 80,
+            "distribution": {
+                "command": 7,
+                "descriptive": 389,
+                "plan_based": 105
+            }
+        },
+        "session_scale": {
+            "small": {
+                "count": 97,
+                "avg_turns": 5.2
+            }
+        },
+        "correction_ratio": {
+            "initial": 97,
+            "followup": 24,
+            "ratio": 0.25
+        }
+    },
+    "tool_usage": {
+        "skills": [
+            {
+                "name": "/granular-commit",
+                "count": 33,
+                "description": "Git 변경사항을 hunk/줄 단위로 분석하여 세밀한 논리적 커밋으로 분리"
+            },
+            {
+                "name": "/feature-spec",
+                "count": 2,
+                "description": "기획 명세서 작성"
+            }
+        ],
+        "custom_commands": [
+            {
+                "name": "/code-review",
+                "count": 21,
+                "description": "코드 리뷰 수행."
+            },
+            {
+                "name": "/pr",
+                "count": 15,
+                "description": "현재 커밋사항들의 pr 생성"
+            }
+        ],
+        "agents": [
+            {
+                "type": "Explore",
+                "count": 52,
+                "description": "프로젝트 구조 및 설정 탐색"
+            },
+            {
+                "type": "general-purpose",
+                "count": 6,
+                "description": "Add JSDoc to utils files"
+            },
+            {
+                "type": "Plan",
+                "count": 4,
+                "description": "구현 계획 설계"
+            },
+            {
+                "type": "code-simplifier",
+                "count": 4,
+                "description": "Add JSDoc to utils files 1"
+            },
+            {
+                "type": "code-review-expert",
+                "count": 2,
+                "description": "코드 리뷰 수행"
+            },
+            {
+                "type": "claude-code-guide",
+                "count": 2,
+                "description": "Claude Code skill scopes 설명"
+            },
+            {
+                "type": "session-wrap:doc-updater",
+                "count": 1,
+                "description": "문서 업데이트 분석"
+            },
+            {
+                "type": "session-wrap:automation-scout",
+                "count": 1,
+                "description": "자동화 패턴 분석"
+            },
+            {
+                "type": "session-wrap:learning-extractor",
+                "count": 1,
+                "description": "학습 내용 추출"
+            },
+            {
+                "type": "session-wrap:followup-suggester",
+                "count": 1,
+                "description": "후속 작업 제안"
+            },
+            {
+                "type": "session-wrap:duplicate-checker",
+                "count": 1,
+                "description": "중복 검사 및 검증"
+            }
+        ],
+        "commands": [
+            {
+                "name": "/private",
+                "count": 2,
+                "description": "비공개 모드"
+            },
+            {
+                "name": "/feature-spec",
+                "count": 2,
+                "description": "기획 명세서 작성"
+            }
+        ],
+        "top_tools": [
+            {
+                "name": "Bash",
+                "count": 390
+            },
+            {
+                "name": "Read",
+                "count": 311
+            },
+            {
+                "name": "Edit",
+                "count": 150
+            },
+            {
+                "name": "Write",
+                "count": 142
+            },
+            {
+                "name": "AskUserQuestion",
+                "count": 97
+            }
+        ]
+    },
+    "scoring": {
+        "total": 74,
+        "grade": "B",
+        "categories": {
+            "intent": {
+                "score": 19,
+                "max": 25
+            },
+            "efficiency": {
+                "score": 27,
+                "max": 30
+            },
+            "fitness": {
+                "score": 15,
+                "max": 25
+            },
+            "workflow": {
+                "score": 13,
+                "max": 20
+            }
+        }
+    },
+    "feedback": {
+        "strengths": [
+            "명확한 의도 전달로 수정 지시가 거의 없었습니다",
+            "도구 호출 성공률이 96.4%로 높습니다"
+        ],
+        "improvements": [
+            "Bash에서 grep/cat/find 등을 16회 사용했습니다. Grep/Read/Glob 전용 도구를 사용하면 더 효율적입니다",
+            "/granular-commit 스킬을 활용하면 커밋 작업을 자동화할 수 있습니다",
+            "같은 도구로 연속 실패한 경우가 있습니다. 다른 접근법을 시도하면 더 빠르게 해결할 수 있습니다"
+        ],
+        "context_tips": [
+            "CLAUDE.md 강화: 코드 패턴, 체크리스트, 자주 하는 실수 추가",
+            "auto-memory 활성화: 세션 간 학습 축적"
+        ]
+    },
+    "error_summary": {
+        "rate": 3.6,
+        "total": 51,
+        "main_types": ["other", "file_not_found"],
+        "recovery": {
+            "immediate_fix": 4,
+            "alternative": 34
+        }
+    },
+    "main_workflow": "Bash → Bash → Bash",
+    "config_changes": [
+        {
+            "category": "command",
+            "name": "commit-auto",
+            "action": "modified",
+            "changes": 3,
+            "details": [
+                "9. Git Push 여부 확인 섹션 추가",
+                "commit-auto, 컨텍스트, 작업 포함 문서 작성"
+            ]
+        },
+        {
+            "category": "command",
+            "name": "pr",
+            "action": "created/modified",
+            "changes": 1,
+            "details": ["컨텍스트, 작업, 1. 사전 확인 포함 문서 작성"]
+        },
+        {
+            "category": "project_config",
+            "name": "CLAUDE.md",
+            "action": "modified",
+            "changes": 60,
+            "details": [
+                "UI 프리미티브 컴포넌트 가이드, 개요, 컴포넌트 목록 포함 문서 작성",
+                "공용 비즈니스 컴포넌트 가이드, 개요, 기본 UI 컴포넌트 포함 문서 작성",
+                "Schema 가이드, 개요, 파일 구조 포함 문서 작성",
+                "Utils 가이드, 개요, 카테고리별 함수 포함 문서 작성",
+                "timing/ 섹션 추가",
+                "API 서비스 함수 가이드, 폴더 구조, Axios 인스턴스 선택 포함 문서 작성",
+                "useQuery 훅 가이드, 쿼리 키 관리, 기본 useQuery 패턴 포함 문서 작성",
+                "useMutation 훅 가이드, 기본 패턴, mutationFn 패턴 포함 문서 작성",
+                "Hooks 가이드, 디렉토리 구조, 하위 디렉토리별 훅 포함 문서 작성",
+                "Selector 규칙 섹션 추가"
+            ]
+        },
+        {
+            "category": "skill",
+            "name": "api-services",
+            "action": "created/modified",
+            "changes": 1,
+            "details": ["API 서비스 작성 가이드, 트리거, 기본 구조 포함 문서 작성"]
+        },
+        {
+            "category": "skill",
+            "name": "crud-generator",
+            "action": "created/modified",
+            "changes": 1,
+            "details": ["CRUD Generator Skill, 트리거, 입력 정보 포함 문서 작성"]
+        },
+        {
+            "category": "skill",
+            "name": "feature-spec",
+            "action": "modified",
+            "changes": 3,
+            "details": [
+                "3. UI 요소 정의 (data-testid), 네이밍 규칙 섹션 추가",
+                "5. 엣지 케이스 섹션 추가"
+            ]
+        },
+        {
+            "category": "skill",
+            "name": "test-scenario",
+            "action": "modified",
+            "changes": 3,
+            "details": [
+                "{기능명} 테스트 시나리오, 1. 페이지/화면 동작 테스트, 1-1. 초기 렌더링 포함 문서 작성"
+            ]
+        },
+        {
+            "category": "skill",
+            "name": "test-writing-guide",
+            "action": "created/modified",
+            "changes": 1,
+            "details": ["Test Writing Guide, When to Apply, TDD 워크플로우 포함 문서 작성"]
+        }
+    ]
+}

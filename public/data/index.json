@@ -5,8 +5,16 @@
             "location": "side"
         },
         {
+            "name": "2026-02-W2.json",
+            "location": "work"
+        },
+        {
             "name": "2026-02-W1.json",
             "location": "side"
+        },
+        {
+            "name": "2026-02-W1.json",
+            "location": "work"
         },
         {
             "name": "2026-01-W5.json",
@@ -15,6 +23,10 @@
         {
             "name": "2026-01-W4.json",
             "location": "side"
+        },
+        {
+            "name": "2026-01-W4.json",
+            "location": "work"
         },
         {
             "name": "2026-01-W3.json",
