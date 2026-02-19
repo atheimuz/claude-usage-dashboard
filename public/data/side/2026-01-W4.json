@@ -34,16 +34,16 @@
     "tool_usage": {
         "skills": [
             {
-                "name": "/commit",
+                "name": "/granular-commit",
                 "count": 4,
-                "description": "Git commit 자동화."
+                "description": "Git 변경사항을 hunk/줄 단위로 분석하여 세밀한 논리적 커밋으로 분리"
             }
         ],
         "custom_commands": [
             {
                 "name": "/feature",
                 "count": 2,
-                "description": ""
+                "description": "기능 구현 파이프라인."
             }
         ],
         "agents": [
@@ -97,7 +97,7 @@
             {
                 "name": "/users",
                 "count": 1,
-                "description": ""
+                "description": "사용자 관리 명령어."
             }
         ],
         "top_tools": [

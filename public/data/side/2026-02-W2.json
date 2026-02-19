@@ -35,13 +35,13 @@
         "skills": [
             {
                 "name": "/session-analyzer",
-                "count": 40,
+                "count": 20,
                 "description": "클로드 코드 세션 로그를 자동으로 분석하여 날짜별 활동 요약을 생성합니다."
             },
             {
                 "name": "/granular-commit",
                 "count": 28,
-                "description": "Git 변경사항을 hunk/줄 단위로 분석하여 세밀한 논리적 커밋으로 분리."
+                "description": "Git 변경사항을 hunk/줄 단위로 분석하여 세밀한 논리적 커밋으로 분리"
             },
             {
                 "name": "/retrospective",
@@ -53,12 +53,12 @@
             {
                 "name": "/feature",
                 "count": 8,
-                "description": ""
+                "description": "기능 구현 파이프라인."
             },
             {
                 "name": "/code-review",
                 "count": 2,
-                "description": ""
+                "description": "코드 리뷰 수행."
             }
         ],
         "agents": [
@@ -182,7 +182,7 @@
             {
                 "name": "/plugin",
                 "count": 1,
-                "description": ""
+                "description": "플러그인 생성 및 관리"
             },
             {
                 "name": "/sync-context",

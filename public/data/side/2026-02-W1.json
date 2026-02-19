@@ -36,12 +36,12 @@
             {
                 "name": "/granular-commit",
                 "count": 17,
-                "description": "Git 변경사항을 hunk/줄 단위로 분석하여 세밀한 논리적 커밋으로 분리."
+                "description": "Git 변경사항을 hunk/줄 단위로 분석하여 세밀한 논리적 커밋으로 분리"
             },
             {
                 "name": "/menu-manage",
                 "count": 1,
-                "description": ""
+                "description": "카페 메뉴 데이터 관리."
             },
             {
                 "name": "/sequence-diagram",
@@ -87,11 +87,6 @@
                 "name": "/sync-context",
                 "count": 2,
                 "description": "프로젝트 컨텍스트 동기화"
-            },
-            {
-                "name": "/vercel",
-                "count": 1,
-                "description": ""
             },
             {
                 "name": "/login",

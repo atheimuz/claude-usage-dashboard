@@ -36,67 +36,62 @@
             {
                 "name": "/article-guide",
                 "count": 15,
-                "description": ""
+                "description": "아티클 작성 가이드 및 컨벤션 제공"
             },
             {
-                "name": "/commit",
-                "count": 13,
-                "description": "Git commit 자동화."
+                "name": "/granular-commit",
+                "count": 15,
+                "description": "Git 변경사항을 hunk/줄 단위로 분석하여 세밀한 논리적 커밋으로 분리"
             },
             {
                 "name": "/statusline",
                 "count": 7,
-                "description": ""
+                "description": "Claude Code 상태 표시줄 설정 커스터마이징"
             },
             {
                 "name": "/plugin",
                 "count": 5,
-                "description": ""
+                "description": "플러그인 생성 및 관리 가이드"
             },
             {
                 "name": "/skill-creator",
                 "count": 4,
-                "description": ""
+                "description": "새로운 Claude Code 스킬을 생성하는 가이드"
             },
             {
                 "name": "/notion-to-article",
                 "count": 3,
-                "description": ""
+                "description": "Notion 페이지를 아티클 형식으로 변환"
             },
             {
                 "name": "/feature-spec",
                 "count": 2,
-                "description": ""
-            },
-            {
-                "name": "/smart-commit",
-                "count": 2,
-                "description": ""
+                "description": "기획 명세서 작성"
             },
             {
                 "name": "/nextjs",
                 "count": 2,
-                "description": ""
+                "description": "Next.js 개발 컨벤션 및 가이드"
             },
             {
                 "name": "/document-skills:skill-creator",
                 "count": 2,
-                "description": ""
+                "description": "새로운 Claude Code 스킬을 생성하는 가이드"
             },
             {
                 "name": "/implementation-plan",
                 "count": 1,
-                "description": ""
+                "description": "구현 계획 작성"
             },
             {
                 "name": "/implement",
                 "count": 1,
-                "description": ""
+                "description": "계획에 따른 기능 구현 수행"
             },
             {
                 "name": "/llmstxt-to-skill",
                 "count": 1,
-                "description": ""
+                "description": "llms.txt 파일을 Claude Code 스킬로 변환"
             }
         ],
         "custom_commands": [],
@@ -129,19 +124,9 @@
         ],
         "commands": [
             {
-                "name": "/article-guide",
-                "count": 14,
-                "description": ""
-            },
-            {
                 "name": "/private",
                 "count": 6,
                 "description": "비공개 모드"
-            },
-            {
-                "name": "/articles",
-                "count": 5,
-                "description": ""
             },
             {
                 "name": "/skills",
@@ -151,87 +136,27 @@
             {
                 "name": "/implementation-plan",
                 "count": 3,
-                "description": ""
-            },
-            {
-                "name": "/notion-to-article",
-                "count": 3,
-                "description": ""
+                "description": "구현 계획 작성"
             },
             {
                 "name": "/feature-spec",
                 "count": 2,
-                "description": ""
+                "description": "기획 명세서 작성"
             },
             {
-                "name": "/smart-commit",
+                "name": "/granular-commit",
                 "count": 2,
-                "description": ""
-            },
-            {
-                "name": "/about",
-                "count": 2,
-                "description": ""
-            },
-            {
-                "name": "/blog",
-                "count": 2,
-                "description": ""
-            },
-            {
-                "name": "/shop",
-                "count": 2,
-                "description": ""
-            },
-            {
-                "name": "/docs",
-                "count": 2,
-                "description": ""
-            },
-            {
-                "name": "/llmstxt-to-skill",
-                "count": 2,
-                "description": ""
-            },
-            {
-                "name": "/review",
-                "count": 2,
-                "description": ""
+                "description": "Git 변경사항을 hunk/줄 단위로 분석하여 세밀한 논리적 커밋으로 분리"
             },
             {
                 "name": "/implement",
                 "count": 1,
-                "description": ""
+                "description": "계획에 따른 기능 구현 수행"
             },
             {
                 "name": "/test-scenario",
                 "count": 1,
-                "description": ""
-            },
-            {
-                "name": "/accounts",
-                "count": 1,
-                "description": ""
-            },
-            {
-                "name": "/transactions",
-                "count": 1,
-                "description": ""
-            },
-            {
-                "name": "/holdings",
-                "count": 1,
-                "description": ""
-            },
-            {
-                "name": "/import",
-                "count": 1,
-                "description": ""
-            },
-            {
-                "name": "/settings",
-                "count": 1,
-                "description": ""
+                "description": "테스트 시나리오 작성"
             },
             {
                 "name": "/doctor",
@@ -241,32 +166,12 @@
             {
                 "name": "/nextjs-docs",
                 "count": 1,
-                "description": ""
-            },
-            {
-                "name": "/commit-push-pr",
-                "count": 1,
-                "description": ""
-            },
-            {
-                "name": "/permissions를",
-                "count": 1,
-                "description": ""
-            },
-            {
-                "name": "/anthropic-api",
-                "count": 1,
-                "description": ""
+                "description": "Next.js 공식 문서 참조"
             },
             {
                 "name": "/plugin",
                 "count": 1,
-                "description": ""
-            },
-            {
-                "name": "/compact로",
-                "count": 1,
-                "description": ""
+                "description": "플러그인 생성 및 관리"
             }
         ],
         "top_tools": [
