@@ -24,12 +24,12 @@ function ToolUsageTable({ title, nameHeader, items, getName, mono }: ToolUsageTa
     return (
         <div>
             <p className="mb-2 text-sm font-medium text-muted-foreground">{title}</p>
-            <Table>
+            <Table className="table-fixed">
                 <TableHeader>
                     <TableRow>
-                        <TableHead>{nameHeader}</TableHead>
+                        <TableHead className="w-60">{nameHeader}</TableHead>
                         {hasDescription && <TableHead>설명</TableHead>}
-                        <TableHead className="text-right">횟수</TableHead>
+                        <TableHead className="w-15 text-right">횟수</TableHead>
                     </TableRow>
                 </TableHeader>
                 <TableBody>
