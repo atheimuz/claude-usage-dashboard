@@ -1,13 +1,17 @@
 {
     "date_range": {
         "start": "2026-01-26T00:00:00",
-        "end": "2026-02-01T23:59:59.999999"
+        "end": "2026-01-31T23:59:59.999999"
     },
     "summary": {
         "sessions": 97,
         "avg_messages": 45.8,
         "avg_tool_calls": 14.8,
-        "main_tasks": ["Deployment", "Coding", "Modification"]
+        "main_tasks": [
+            "Deployment",
+            "Coding",
+            "Modification"
+        ]
     },
     "usage_style": {
         "prompt_stats": {
@@ -188,7 +192,10 @@
     "error_summary": {
         "rate": 3.6,
         "total": 51,
-        "main_types": ["other", "file_not_found"],
+        "main_types": [
+            "other",
+            "file_not_found"
+        ],
         "recovery": {
             "immediate_fix": 4,
             "alternative": 34
@@ -211,7 +218,9 @@
             "name": "pr",
             "action": "created/modified",
             "changes": 1,
-            "details": ["컨텍스트, 작업, 1. 사전 확인 포함 문서 작성"]
+            "details": [
+                "컨텍스트, 작업, 1. 사전 확인 포함 문서 작성"
+            ]
         },
         {
             "category": "project_config",
@@ -236,14 +245,18 @@
             "name": "api-services",
             "action": "created/modified",
             "changes": 1,
-            "details": ["API 서비스 작성 가이드, 트리거, 기본 구조 포함 문서 작성"]
+            "details": [
+                "API 서비스 작성 가이드, 트리거, 기본 구조 포함 문서 작성"
+            ]
         },
         {
             "category": "skill",
             "name": "crud-generator",
             "action": "created/modified",
             "changes": 1,
-            "details": ["CRUD Generator Skill, 트리거, 입력 정보 포함 문서 작성"]
+            "details": [
+                "CRUD Generator Skill, 트리거, 입력 정보 포함 문서 작성"
+            ]
         },
         {
             "category": "skill",
@@ -269,7 +282,9 @@
             "name": "test-writing-guide",
             "action": "created/modified",
             "changes": 1,
-            "details": ["Test Writing Guide, When to Apply, TDD 워크플로우 포함 문서 작성"]
+            "details": [
+                "Test Writing Guide, When to Apply, TDD 워크플로우 포함 문서 작성"
+            ]
         }
     ]
 }

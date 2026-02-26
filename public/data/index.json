@@ -1,36 +1,20 @@
 {
     "files": [
         {
-            "name": "2026-02-W2.json",
+            "name": "2026-02.json",
             "location": "side"
         },
         {
-            "name": "2026-02-W2.json",
+            "name": "2026-02.json",
             "location": "work"
         },
         {
-            "name": "2026-02-W1.json",
+            "name": "2026-01.json",
             "location": "side"
         },
         {
-            "name": "2026-02-W1.json",
+            "name": "2026-01.json",
             "location": "work"
-        },
-        {
-            "name": "2026-01-W5.json",
-            "location": "side"
-        },
-        {
-            "name": "2026-01-W4.json",
-            "location": "side"
-        },
-        {
-            "name": "2026-01-W4.json",
-            "location": "work"
-        },
-        {
-            "name": "2026-01-W3.json",
-            "location": "side"
         }
     ]
 }
