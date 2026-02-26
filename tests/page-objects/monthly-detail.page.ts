@@ -1,14 +1,13 @@
 import { Page, Locator, expect } from "@playwright/test";
 import { BasePage } from "./base.page";
 
-export class WeeklyDetailPage extends BasePage {
+export class MonthlyDetailPage extends BasePage {
     // Page Header
     readonly dateTitle: Locator;
     readonly identifierBadge: Locator;
-    readonly generatedDate: Locator;
     readonly backToListLink: Locator;
-    readonly prevWeeklyButton: Locator;
-    readonly nextWeeklyButton: Locator;
+    readonly prevMonthlyButton: Locator;
+    readonly nextMonthlyButton: Locator;
 
     // Overview Stats Cards
     readonly statsCards: Locator;
@@ -68,12 +67,11 @@ export class WeeklyDetailPage extends BasePage {
         super(page);
 
         // Page Header
-        this.dateTitle = page.getByRole("heading", { name: /\d{4}년.*\d+주차/i, level: 1 });
+        this.dateTitle = page.getByRole("heading", { name: /\d{4}년\s+\d{1,2}월/i, level: 1 });
         this.identifierBadge = page.locator("[data-identifier-badge], .identifier-badge").first();
-        this.generatedDate = page.getByText(/자동 생성:/i);
         this.backToListLink = page.getByRole("link", { name: /목록/i });
-        this.prevWeeklyButton = page.getByRole("button", { name: /이전|previous/i }).first();
-        this.nextWeeklyButton = page.getByRole("button", { name: /다음|next/i }).first();
+        this.prevMonthlyButton = page.getByRole("button", { name: /이전|previous/i }).first();
+        this.nextMonthlyButton = page.getByRole("button", { name: /다음|next/i }).first();
 
         // Overview Stats Cards
         this.statsCards = page.locator("[role='region'][aria-label*='통계'], .stats-cards").locator("[role='article']");
@@ -127,39 +125,38 @@ export class WeeklyDetailPage extends BasePage {
 
         // Error States
         this.errorAlert = page.getByRole("alert");
-        this.notFoundMessage = page.getByText(/해당 주차의 일지가 없습니다/i);
+        this.notFoundMessage = page.getByText(/해당 월의 일지가 없습니다/i);
     }
 
-    async navigateToWeeklyDetail(filename: string) {
-        await this.navigate(`/weekly/${filename}`);
+    async navigateToMonthlyDetail(filename: string) {
+        await this.navigate(`/monthly/${filename}`);
     }
 
     async expectPageHeaderVisible() {
         await expect(this.dateTitle).toBeVisible();
         await expect(this.identifierBadge).toBeVisible();
-        await expect(this.generatedDate).toBeVisible();
         await expect(this.backToListLink).toBeVisible();
     }
 
     async expectNavigationButtonsVisible() {
-        await expect(this.prevWeeklyButton).toBeVisible();
-        await expect(this.nextWeeklyButton).toBeVisible();
+        await expect(this.prevMonthlyButton).toBeVisible();
+        await expect(this.nextMonthlyButton).toBeVisible();
     }
 
     async expectPrevButtonDisabled() {
-        await expect(this.prevWeeklyButton).toBeDisabled();
+        await expect(this.prevMonthlyButton).toBeDisabled();
     }
 
     async expectNextButtonDisabled() {
-        await expect(this.nextWeeklyButton).toBeDisabled();
+        await expect(this.nextMonthlyButton).toBeDisabled();
     }
 
-    async clickPrevWeekly() {
-        await this.prevWeeklyButton.click();
+    async clickPrevMonthly() {
+        await this.prevMonthlyButton.click();
     }
 
-    async clickNextWeekly() {
-        await this.nextWeeklyButton.click();
+    async clickNextMonthly() {
+        await this.nextMonthlyButton.click();
     }
 
     async clickBackToList() {

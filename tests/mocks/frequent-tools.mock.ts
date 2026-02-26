@@ -2,14 +2,14 @@
  * 목업 데이터: FrequentTools 기능
  *
  * 실제 API 존재 여부와 관계없이 항상 목업 데이터를 사용
- * - WeeklyReport의 tool_usage.agents, commands, skills 데이터
+ * - MonthlyReport의 tool_usage.agents, commands, skills 데이터
  * - FrequentToolItem 집계 결과
  */
 
-import type { WeeklyReport, FrequentToolItem } from "@/types";
+import type { MonthlyReport, FrequentToolItem } from "@/types";
 
-// FrequentTools용 WeeklyReport 목업 데이터 (agents, commands, skills 포함)
-export const MOCK_REPORTS_WITH_TOOLS: Partial<WeeklyReport>[] = [
+// FrequentTools용 MonthlyReport 목업 데이터 (agents, commands, skills 포함)
+export const MOCK_REPORTS_WITH_TOOLS: Partial<MonthlyReport>[] = [
     {
         identifier: "work/2026-02-08",
         filename: "2026-02-08",
@@ -229,7 +229,7 @@ export const MOCK_FREQUENT_TOOLS: FrequentToolItem[] = [
 ];
 
 // 빈 도구 데이터 (FrequentTools 미렌더링 테스트용)
-export const MOCK_REPORTS_EMPTY_TOOLS: Partial<WeeklyReport>[] = [
+export const MOCK_REPORTS_EMPTY_TOOLS: Partial<MonthlyReport>[] = [
     {
         identifier: "work/2026-02-11",
         filename: "2026-02-11",

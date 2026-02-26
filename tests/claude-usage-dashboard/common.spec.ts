@@ -1,9 +1,9 @@
 import { test, expect } from "@playwright/test";
 import { HomePage } from "../page-objects/home.page";
-import { WeeklyListPage } from "../page-objects/weekly-list.page";
+import { MonthlyListPage } from "../page-objects/monthly-list.page";
 import {
     MOCK_INDEX_JSON,
-    MOCK_MARKDOWN_FILES,
+    MOCK_MONTHLY_REPORTS,
     wrapResponse
 } from "../mocks/claude-usage-dashboard.mock";
 
@@ -18,12 +18,12 @@ test.describe("공통 기능", () => {
             })
         );
 
-        for (const [filename, content] of Object.entries(MOCK_MARKDOWN_FILES)) {
-            await page.route(`**/data/${filename}.md`, (route) =>
+        for (const [filename, content] of Object.entries(MOCK_MONTHLY_REPORTS)) {
+            await page.route(`**/data/${filename}.json`, (route) =>
                 route.fulfill({
                     status: 200,
-                    contentType: "text/markdown",
-                    body: content
+                    contentType: "application/json",
+                    body: JSON.stringify(content)
                 })
             );
         }
@@ -113,8 +113,8 @@ test.describe("공통 기능", () => {
 
     test.describe("4-2. 네비게이션", () => {
         test("헤더의 서비스명 클릭 시 홈 페이지로 이동해야 한다", async ({ page }) => {
-            const weeklyListPage = new WeeklyListPage(page);
-            await weeklyListPage.navigateToWeeklyList();
+            const monthlyListPage = new MonthlyListPage(page);
+            await monthlyListPage.navigateToMonthlyList();
 
             const serviceName = page.getByRole("link", { name: /Claude Usage Dashboard/i });
             await serviceName.click();
@@ -123,23 +123,23 @@ test.describe("공통 기능", () => {
         });
 
         test("헤더의 Dashboard 링크 클릭 시 홈 페이지로 이동해야 한다", async ({ page }) => {
-            const weeklyListPage = new WeeklyListPage(page);
-            await weeklyListPage.navigateToWeeklyList();
+            const monthlyListPage = new MonthlyListPage(page);
+            await monthlyListPage.navigateToMonthlyList();
 
             const dashboardLink = page.getByRole("link", { name: "Dashboard" });
             await dashboardLink.click();
             await page.waitForURL("/");
-            expect(page.url()).toMatch(/\/$|\/\?/);
+            expect(page.url()).toMatch(/\/$/);
         });
 
-        test("헤더의 Weekly Logs 링크 클릭 시 주간 일지 목록 페이지로 이동해야 한다", async ({ page }) => {
+        test("헤더의 Monthly Logs 링크 클릭 시 월간 일지 목록 페이지로 이동해야 한다", async ({ page }) => {
             const homePage = new HomePage(page);
             await homePage.navigateToHome();
 
-            const weeklyLogsLink = page.getByRole("link", { name: "Weekly Logs" });
-            await weeklyLogsLink.click();
-            await page.waitForURL("/weekly");
-            expect(page.url()).toContain("/weekly");
+            const monthlyLogsLink = page.getByRole("link", { name: "Monthly Logs" });
+            await monthlyLogsLink.click();
+            await page.waitForURL("/monthly");
+            expect(page.url()).toContain("/monthly");
         });
 
         test("현재 페이지에 해당하는 네비게이션 링크가 활성 상태로 표시되어야 한다", async ({ page }) => {
@@ -149,11 +149,11 @@ test.describe("공통 기능", () => {
             const dashboardClass = await dashboardLink.getAttribute("class");
             expect(dashboardClass).toMatch(/active|current/i);
 
-            await page.goto("/weekly");
+            await page.goto("/monthly");
 
-            const weeklyLogsLink = page.getByRole("link", { name: "Weekly Logs" });
-            const weeklyLogsClass = await weeklyLogsLink.getAttribute("class");
-            expect(weeklyLogsClass).toMatch(/active|current/i);
+            const monthlyLogsLink = page.getByRole("link", { name: "Monthly Logs" });
+            const monthlyLogsClass = await monthlyLogsLink.getAttribute("class");
+            expect(monthlyLogsClass).toMatch(/active|current/i);
         });
     });
 
@@ -231,7 +231,7 @@ test.describe("공통 기능", () => {
         test("모바일 화면에서 작업 유형 카드가 1열로 표시되어야 한다", async ({ page }) => {
             await page.setViewportSize({ width: 375, height: 667 });
 
-            await page.goto("/weekly/work/2026-02-08");
+            await page.goto("/monthly/work/2026-02");
 
             const taskTypeCards = page.locator("[role='region'][aria-label*='작업 유형'] [role='article']");
             const firstCard = taskTypeCards.first();

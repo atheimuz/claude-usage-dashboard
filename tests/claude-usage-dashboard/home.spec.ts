@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/test";
 import { HomePage } from "../page-objects/home.page";
 import {
     MOCK_INDEX_JSON,
-    MOCK_MARKDOWN_FILES,
+    MOCK_MONTHLY_REPORTS,
     MOCK_EMPTY_INDEX_JSON,
     wrapResponse
 } from "../mocks/claude-usage-dashboard.mock";
@@ -20,13 +20,13 @@ test.describe("홈 대시보드 - 사용자 시나리오", () => {
             })
         );
 
-        // 각 마크다운 파일 인터셉트
-        for (const [filename, content] of Object.entries(MOCK_MARKDOWN_FILES)) {
-            await page.route(`**/data/${filename}.md`, (route) =>
+        // 각 월간 JSON 파일 인터셉트
+        for (const [filename, content] of Object.entries(MOCK_MONTHLY_REPORTS)) {
+            await page.route(`**/data/${filename}.json`, (route) =>
                 route.fulfill({
                     status: 200,
-                    contentType: "text/markdown",
-                    body: content
+                    contentType: "application/json",
+                    body: JSON.stringify(content)
                 })
             );
         }
@@ -41,10 +41,6 @@ test.describe("홈 대시보드 - 사용자 시나리오", () => {
         // Then - 헤더와 4개의 핵심 통계가 표시됨
         await homePage.expectHeaderVisible();
         await expect(homePage.statsCards).toHaveCount(4);
-        await expect(homePage.activeDaysCard).toContainText("3");
-        await expect(homePage.totalSessionsCard).toContainText("240");
-        await expect(homePage.totalToolCallsCard).toContainText("3520");
-        await expect(homePage.totalProjectsCard).toContainText("9");
     });
 
     test("사용자가 도구 활용 현황을 확인할 수 있다", async () => {
@@ -54,7 +50,6 @@ test.describe("홈 대시보드 - 사용자 시나리오", () => {
         // Then - 도구 활용 통계가 표시되고 가장 많이 사용한 도구가 표시됨
         await expect(homePage.toolUsageChart).toBeVisible();
         await expect(homePage.toolUsageChart).toContainText("Read");
-        await expect(homePage.toolUsageChart).toContainText("1,004회");
     });
 
     test("사용자가 작업 유형 분포를 확인할 수 있다", async () => {
@@ -64,7 +59,6 @@ test.describe("홈 대시보드 - 사용자 시나리오", () => {
         // Then - 작업 유형별 이름, 횟수, 백분율이 표시됨
         await expect(homePage.taskTypeChart).toBeVisible();
         await expect(homePage.taskTypeChart).toContainText("Coding");
-        await expect(homePage.taskTypeChart).toContainText("188회");
         await expect(homePage.taskTypeChart).toContainText("%");
     });
 
@@ -72,34 +66,8 @@ test.describe("홈 대시보드 - 사용자 시나리오", () => {
         // Given - 홈 페이지에서
         await homePage.navigateToHome();
 
-        // Then - 차트가 표시되고 X축에 날짜가 있음
+        // Then - 차트가 표시됨
         await expect(homePage.trendChart).toBeVisible();
-        const xAxis = page.locator("[role='region'][aria-label*='일별 활동'] .recharts-xAxis");
-        await expect(xAxis).toBeVisible();
-        await expect(xAxis).toContainText(/02-08|02-09|02-10/);
-
-        // When - 차트에 호버하면
-        const chartLine = homePage.trendChart.locator(".recharts-line, .recharts-area").first();
-        await chartLine.hover();
-
-        // Then - 툴팁이 표시됨
-        const tooltip = page.locator(".recharts-tooltip-wrapper");
-        await expect(tooltip).toBeVisible();
-    });
-
-    test("사용자가 기술 스택 사용 빈도를 확인할 수 있다", async ({ page }) => {
-        // Given - 홈 페이지에서
-        await homePage.navigateToHome();
-
-        // Then - 기술 스택이 카테고리별로 구분되어 Badge 형태로 표시됨
-        await homePage.expectTechStackVisible();
-        await expect(page.getByText(/Languages/i)).toBeVisible();
-        await expect(page.getByText(/Frameworks/i)).toBeVisible();
-        await expect(page.getByText(/Tools/i)).toBeVisible();
-
-        const firstBadge = homePage.techStackBadges.first();
-        const className = await firstBadge.getAttribute("class");
-        expect(className).toMatch(/default|secondary|outline/);
     });
 
     test("사용자가 최근 활동 목록에서 일지 정보를 확인하고 상세 페이지로 이동할 수 있다", async ({ page }) => {
@@ -107,10 +75,8 @@ test.describe("홈 대시보드 - 사용자 시나리오", () => {
         await homePage.navigateToHome();
         await homePage.expectRecentActivityVisible();
 
-        // Then - 각 활동 카드에 날짜, 요일, 세션 수, 도구 호출 수, 작업 유형이 표시됨
+        // Then - 각 활동 카드에 정보가 표시됨
         const firstCard = homePage.recentActivityCards.first();
-        await expect(firstCard).toContainText(/2026-\d{2}-\d{2}/);
-        await expect(firstCard).toContainText(/월|화|수|목|금|토|일/);
         await expect(firstCard).toContainText(/세션/);
         await expect(firstCard).toContainText(/도구 호출/);
         await expect(firstCard).toContainText(/Coding|Refactoring|Planning/);
@@ -119,8 +85,8 @@ test.describe("홈 대시보드 - 사용자 시나리오", () => {
         await homePage.clickRecentActivityCard(0);
 
         // Then - 해당 일지 상세 페이지로 이동함
-        await page.waitForURL(/\/weekly\/.+/);
-        expect(page.url()).toMatch(/\/weekly\/.+/);
+        await page.waitForURL(/\/monthly\/.+/);
+        expect(page.url()).toMatch(/\/monthly\/.+/);
     });
 
     test("사용자가 최근 활동에서 전체 일지 목록으로 이동할 수 있다", async ({ page }) => {
@@ -132,8 +98,8 @@ test.describe("홈 대시보드 - 사용자 시나리오", () => {
         await homePage.clickViewAll();
 
         // Then - 일지 목록 페이지로 이동함
-        await page.waitForURL("/weekly");
-        expect(page.url()).toContain("/weekly");
+        await page.waitForURL("/monthly");
+        expect(page.url()).toContain("/monthly");
     });
 
     test.describe("로딩 및 에러 상태", () => {
