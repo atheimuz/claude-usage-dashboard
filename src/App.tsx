@@ -8,11 +8,11 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 const HomePage = lazy(() => import("@/pages/HomePage").then((m) => ({ default: m.HomePage })));
 
-const WeeklyListPage = lazy(() =>
-    import("@/pages/WeeklyListPage").then((m) => ({ default: m.WeeklyListPage }))
+const MonthlyListPage = lazy(() =>
+    import("@/pages/MonthlyListPage").then((m) => ({ default: m.MonthlyListPage }))
 );
-const WeeklyDetailPage = lazy(() =>
-    import("@/pages/WeeklyDetailPage").then((m) => ({ default: m.WeeklyDetailPage }))
+const MonthlyDetailPage = lazy(() =>
+    import("@/pages/MonthlyDetailPage").then((m) => ({ default: m.MonthlyDetailPage }))
 );
 
 const queryClient = new QueryClient();
@@ -37,10 +37,10 @@ function App() {
                         <Routes>
                             <Route element={<Layout />}>
                                 <Route path="/" element={<HomePage />} />
-                                <Route path="/weekly" element={<WeeklyListPage />} />
+                                <Route path="/monthly" element={<MonthlyListPage />} />
                                 <Route
-                                    path="/weekly/:location/:name"
-                                    element={<WeeklyDetailPage />}
+                                    path="/monthly/:location/:name"
+                                    element={<MonthlyDetailPage />}
                                 />
                             </Route>
                         </Routes>

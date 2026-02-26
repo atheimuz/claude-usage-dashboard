@@ -1,4 +1,4 @@
-import type { WeeklyReport, AggregatedStats, ToolStat, WeeklyTrendPoint, Scoring, FrequentToolItem, ToolUsageItem } from "@/types"
+import type { MonthlyReport, AggregatedStats, ToolStat, MonthlyTrendPoint, Scoring, FrequentToolItem, ToolUsageItem } from "@/types"
 
 function accumulateFrequentTools(
   map: Map<string, FrequentToolItem>,
@@ -20,7 +20,7 @@ function accumulateFrequentTools(
   }
 }
 
-export function aggregateReports(reports: WeeklyReport[]): AggregatedStats {
+export function aggregateReports(reports: MonthlyReport[]): AggregatedStats {
   const dates = new Set<string>()
   let totalSessions = 0
   let totalToolCalls = 0
@@ -61,7 +61,7 @@ export function aggregateReports(reports: WeeklyReport[]): AggregatedStats {
       taskSet.add(task)
     }
 
-    // 주별 트렌드
+    // 월별 트렌드
     const trend = trendMap.get(report.date)
     if (trend) {
       trend.reportCount += 1
@@ -109,7 +109,7 @@ export function aggregateReports(reports: WeeklyReport[]): AggregatedStats {
 
   const mainTasks = Array.from(taskSet)
 
-  const weeklyTrend: WeeklyTrendPoint[] = Array.from(trendMap.entries())
+  const monthlyTrend: MonthlyTrendPoint[] = Array.from(trendMap.entries())
     .map(([date, data]) => ({
       date,
       reportCount: data.reportCount,
@@ -146,7 +146,7 @@ export function aggregateReports(reports: WeeklyReport[]): AggregatedStats {
     totalToolCalls,
     toolUsageAggregated,
     mainTasks,
-    weeklyTrend,
+    monthlyTrend,
     averageEvaluationScore,
     latestScoring,
     scoringCategoryAverages,

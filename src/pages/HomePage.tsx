@@ -73,7 +73,7 @@ export function HomePage() {
                 </p>
             </div>
             <div className="grid grid-cols-1 gap-3 md:grid-cols-3">
-                <ScoreTrendChart weeklyTrend={stats.weeklyTrend} />
+                <ScoreTrendChart monthlyTrend={stats.monthlyTrend} />
                 <ScoreGaugeCard
                     score={stats.averageEvaluationScore ?? stats.latestScoring?.total ?? 0}
                     maxScore={100}

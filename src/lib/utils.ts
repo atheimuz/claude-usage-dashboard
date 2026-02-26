@@ -1,19 +1,19 @@
 import { clsx, type ClassValue } from "clsx"
 import { twMerge } from "tailwind-merge"
-import type { WeeklyReport } from "@/types"
+import type { MonthlyReport } from "@/types"
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
-const FILENAME_REGEX_WEEKLY_PATH = /^([^/]+)\/(\d{4}-\d{2}-W\d+)$/
+const FILENAME_REGEX_MONTHLY_PATH = /^([^/]+)\/(\d{4}-\d{2})$/
 const FILENAME_REGEX_PATH = /^([^/]+)\/(\d{4}-\d{2}-\d{2})$/
 const FILENAME_REGEX_FLAT = /^(\d{4}-\d{2}-\d{2})-(.+)$/
 
 export function parseFilename(filename: string): { date: string; identifier: string; filename: string } {
   const clean = filename.replace(/\.(md|json)$/, "")
-  const weeklyMatch = clean.match(FILENAME_REGEX_WEEKLY_PATH)
-  if (weeklyMatch) return { date: weeklyMatch[2], identifier: weeklyMatch[1], filename: clean }
+  const monthlyMatch = clean.match(FILENAME_REGEX_MONTHLY_PATH)
+  if (monthlyMatch) return { date: monthlyMatch[2], identifier: monthlyMatch[1], filename: clean }
   const pathMatch = clean.match(FILENAME_REGEX_PATH)
   if (pathMatch) return { date: pathMatch[2], identifier: pathMatch[1], filename: clean }
   const flatMatch = clean.match(FILENAME_REGEX_FLAT)
@@ -35,21 +35,19 @@ export function formatDate(dateStr: string): string {
 
 export function formatDateShort(dateStr: string): string {
   const parts = dateStr.split("-")
+  if (parts.length === 2) return `${parts[1]}월`
   return `${parts[1]}-${parts[2]}`
 }
 
-// "2026-01-W3" → "2026년 01월 3주차"
-export function formatWeekLabel(weekKey: string): string {
-  const match = weekKey.match(/^(\d{4})-(\d{2})-W(\d+)$/)
-  if (!match) return weekKey
-  const year = match[1]
-  const month = match[2]
-  const week = match[3]
-  return `${year}년 ${month}월 ${week}주차`
+// "2026-02" → "2026년 02월"
+export function formatMonthLabel(monthKey: string): string {
+  const match = monthKey.match(/^(\d{4})-(\d{2})$/)
+  if (!match) return monthKey
+  return `${match[1]}년 ${match[2]}월`
 }
 
-// date_range start/end → "01/15 ~ 01/21"
-export function formatWeekRange(start: string, end: string): string {
+// date_range start/end → "01/01 ~ 01/31"
+export function formatMonthRange(start: string, end: string): string {
   const s = start.split("T")[0]
   const e = end.split("T")[0]
   const sp = s.split("-")
@@ -57,8 +55,8 @@ export function formatWeekRange(start: string, end: string): string {
   return `${sp[1]}/${sp[2]} ~ ${ep[1]}/${ep[2]}`
 }
 
-// date_range의 start/end로부터 해당 주에 포함되는 모든 날짜 "YYYY-MM-DD" 배열 생성
-export function getWeekDates(startDate: string, endDate: string): string[] {
+// date_range의 start/end로부터 해당 기간에 포함되는 모든 날짜 "YYYY-MM-DD" 배열 생성
+export function getMonthDates(startDate: string, endDate: string): string[] {
   const start = new Date(startDate.split("T")[0] + "T00:00:00")
   const end = new Date(endDate.split("T")[0] + "T00:00:00")
   const dates: string[] = []
@@ -84,8 +82,8 @@ export function formatPercent(value: number, total: number): string {
   return `${((value / total) * 100).toFixed(1)}%`
 }
 
-export function groupByDate(reports: WeeklyReport[]): Map<string, WeeklyReport[]> {
-  const map = new Map<string, WeeklyReport[]>()
+export function groupByDate(reports: MonthlyReport[]): Map<string, MonthlyReport[]> {
+  const map = new Map<string, MonthlyReport[]>()
   for (const report of reports) {
     const existing = map.get(report.date)
     if (existing) {
@@ -102,23 +100,14 @@ function extractKeyFromPath(file: string): string {
   if (clean.includes("/")) {
     return clean.split("/")[1] || ""
   }
-  const match = clean.match(/^(\d{4}-\d{2}-(W\d+|\d{2}))/)
+  const match = clean.match(/^(\d{4}-\d{2}(-\d{2})?)/)
   return match ? match[1] : ""
-}
-
-// 주간 키 정렬용: "2026-01-W3" → "2026-01-W03" 로 패딩하여 문자열 비교 가능하게
-function normalizeKeyForSort(key: string): string {
-  const weekMatch = key.match(/^(\d{4}-\d{2})-W(\d+)$/)
-  if (weekMatch) {
-    return `${weekMatch[1]}-W${weekMatch[2].padStart(2, "0")}`
-  }
-  return key
 }
 
 export function sortFilesByDate(files: string[]): string[] {
   return [...files].sort((a, b) => {
-    const keyA = normalizeKeyForSort(extractKeyFromPath(a))
-    const keyB = normalizeKeyForSort(extractKeyFromPath(b))
+    const keyA = extractKeyFromPath(a)
+    const keyB = extractKeyFromPath(b)
     if (keyB !== keyA) return keyB.localeCompare(keyA)
     return a.localeCompare(b)
   })

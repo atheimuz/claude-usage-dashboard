@@ -109,11 +109,11 @@ export interface ConfigChange {
     details: string[];
 }
 
-export interface WeeklyReport {
+export interface MonthlyReport {
     // 메타 (런타임에 추가)
     identifier: string;
     filename: string;
-    date: string; // 파일명에서 추출한 주간 키 (예: "2026-02-W2")
+    date: string; // 파일명에서 추출한 월간 키 (예: "2026-02")
 
     // JSON 원본 필드
     date_range: DateRange;
@@ -148,7 +148,7 @@ export interface AggregatedStats {
     totalToolCalls: number;
     toolUsageAggregated: ToolStat[];
     mainTasks: string[];
-    weeklyTrend: WeeklyTrendPoint[];
+    monthlyTrend: MonthlyTrendPoint[];
     averageEvaluationScore?: number;
     latestScoring?: Scoring;
     scoringCategoryAverages?: {
@@ -160,7 +160,7 @@ export interface AggregatedStats {
     frequentTools: FrequentToolItem[];
 }
 
-export interface WeeklyTrendPoint {
+export interface MonthlyTrendPoint {
     date: string;
     reportCount: number;
     sessions: number;
