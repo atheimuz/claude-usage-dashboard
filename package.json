@@ -8,7 +8,8 @@
         "build": "tsc -b && vite build",
         "lint": "eslint .",
         "preview": "vite preview",
-        "sync-reports": "tsx scripts/sync-reports.ts"
+        "sync-reports": "tsx scripts/sync-reports.ts",
+        "migrate-to-monthly": "tsx scripts/migrate-to-monthly.ts"
     },
     "dependencies": {
         "@tanstack/react-query": "^5.90.21",
