@@ -2,10 +2,10 @@ import { useMemo, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import type { WeeklyReport } from "@/types";
+import type { MonthlyReport } from "@/types";
 
 interface Props {
-    reports: WeeklyReport[];
+    reports: MonthlyReport[];
     selectedMonth: string | null;
     onSelectMonth: (yearMonth: string | null) => void;
 }
@@ -66,9 +66,6 @@ export function CalendarView({ reports, selectedMonth, onSelectMonth }: Props) {
                             onClick={() => handleMonthClick(i)}
                         >
                             <span>{label}</span>
-                            {hasReports && (
-                                <span className={cn("text-xs", isSelected ? "text-primary-foreground/70" : "text-muted-foreground")}>{count}건</span>
-                            )}
                         </Button>
                     );
                 })}

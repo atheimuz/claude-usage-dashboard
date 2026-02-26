@@ -4,10 +4,10 @@ import { Area, AreaChart, XAxis, YAxis } from "recharts";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ChartContainer, ChartTooltip, type ChartConfig } from "@/components/ui/chart";
 import { formatDateShort } from "@/lib/utils";
-import type { WeeklyTrendPoint } from "@/types";
+import type { MonthlyTrendPoint } from "@/types";
 
 interface ScoreTrendChartProps {
-    weeklyTrend: WeeklyTrendPoint[];
+    monthlyTrend: MonthlyTrendPoint[];
 }
 
 const chartConfig = {
@@ -17,16 +17,16 @@ const chartConfig = {
     }
 } satisfies ChartConfig;
 
-export function ScoreTrendChart({ weeklyTrend }: ScoreTrendChartProps) {
+export function ScoreTrendChart({ monthlyTrend }: ScoreTrendChartProps) {
     const chartData = useMemo(() => {
-        return weeklyTrend
+        return monthlyTrend
             .filter((d) => d.score !== undefined)
             .map((d) => ({
                 date: formatDateShort(d.date),
                 score: d.score!,
                 fullDate: d.date
             }));
-    }, [weeklyTrend]);
+    }, [monthlyTrend]);
 
     if (chartData.length === 0) return null;
 

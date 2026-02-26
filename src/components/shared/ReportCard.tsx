@@ -1,29 +1,26 @@
 import { Link } from "react-router-dom";
 import { ChevronRight } from "lucide-react";
-import { formatWeekLabel, formatWeekRange } from "@/lib/utils";
+import { formatMonthLabel } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
-import type { WeeklyReport } from "@/types";
+import type { MonthlyReport } from "@/types";
 
 interface Props {
-    report: WeeklyReport;
+    report: MonthlyReport;
     showDate?: boolean;
 }
 
 export function ReportCard({ report, showDate }: Props) {
     return (
         <Link
-            to={`/weekly/${report.filename}`}
+            to={`/monthly/${report.filename}`}
             className="flex items-center gap-4 rounded-lg border p-3 transition-colors hover:bg-accent/50"
-            aria-label={`${showDate ? formatWeekLabel(report.date) + " " : ""}${report.identifier} - ${report.summary.sessions}개 세션`}
+            aria-label={`${showDate ? formatMonthLabel(report.date) + " " : ""}${report.identifier} - ${report.summary.sessions}개 세션`}
         >
             <div className="flex-1 space-y-2">
                 {showDate && (
                     <div className="flex items-center gap-2">
                         <span className="font-semibold">
-                            {formatWeekLabel(report.date)}{" "}
-                            <span className="text-sm font-normal text-muted-foreground">
-                                ({formatWeekRange(report.date_range.start, report.date_range.end)})
-                            </span>
+                            {formatMonthLabel(report.date)}
                         </span>
                         <Badge variant="outline" className="text-xs">
                             {report.identifier}

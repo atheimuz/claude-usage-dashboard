@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils"
 
 const NAV_ITEMS = [
   { label: "Dashboard", path: "/" },
-  { label: "Weekly Logs", path: "/weekly" },
+  { label: "Monthly Logs", path: "/monthly" },
 ]
 
 export function Header() {

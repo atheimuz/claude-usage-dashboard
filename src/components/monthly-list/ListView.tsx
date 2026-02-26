@@ -1,10 +1,10 @@
 import { useMemo } from "react"
-import { formatWeekLabel, formatWeekRange, groupByDate } from "@/lib/utils"
+import { formatMonthLabel, groupByDate } from "@/lib/utils"
 import { ReportCard } from "@/components/shared/ReportCard"
-import type { WeeklyReport } from "@/types"
+import type { MonthlyReport } from "@/types"
 
 interface Props {
-  reports: WeeklyReport[]
+  reports: MonthlyReport[]
 }
 
 export function ListView({ reports }: Props) {
@@ -16,18 +16,15 @@ export function ListView({ reports }: Props) {
 
   return (
     <div className="space-y-6">
-      {sortedKeys.map((weekKey) => {
-        const weekReports = grouped.get(weekKey)!
-        const firstReport = weekReports[0]
-        const range = formatWeekRange(firstReport.date_range.start, firstReport.date_range.end)
+      {sortedKeys.map((monthKey) => {
+        const monthReports = grouped.get(monthKey)!
         return (
-          <div key={weekKey}>
+          <div key={monthKey}>
             <h3 className="mb-2 text-lg font-semibold">
-              {formatWeekLabel(weekKey)}{" "}
-              <span className="text-sm font-normal text-muted-foreground">({range})</span>
+              {formatMonthLabel(monthKey)}
             </h3>
             <div className="space-y-2">
-              {weekReports.map((report) => (
+              {monthReports.map((report) => (
                 <ReportCard key={report.filename} report={report} />
               ))}
             </div>
