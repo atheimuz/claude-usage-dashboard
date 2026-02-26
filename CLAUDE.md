@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Claude Usage Dashboard - Claude Code 사용 일지를 웹 대시보드로 시각화하는 SPA. JSON 데이터 파일(`WeeklyReport` 형식)을 fetch하여 종합 통계, 주간 상세 일지, 일지 목록을 제공한다.
+Claude Usage Dashboard - Claude Code 사용 일지를 웹 대시보드로 시각화하는 SPA. JSON 데이터 파일(`MonthlyReport` 형식)을 fetch하여 종합 통계, 월간 상세 일지, 일지 목록을 제공한다.
 
 ## Commands
 
@@ -49,12 +49,12 @@ npx playwright test --ui
 ### Data Flow
 
 ```
-[동기화] ~/.claude/summaries/weekly/*.json → npm run sync-reports → public/data/{location}/*.json
+[동기화] ~/.claude/summaries/monthly/*.json → npm run sync-reports → public/data/{location}/*.json
 
 [런타임]
 public/data/index.json (파일 목록)
          ↓
-public/data/{location}/*.json (WeeklyReport[] 배열, 주간 단위)
+public/data/{location}/*.json (MonthlyReport[] 배열, 월간 단위)
          ↓
 hooks/useReports.ts (fetch → JSON 직접 소비, TanStack Query 캐싱)
          ↓
@@ -67,9 +67,9 @@ lib/aggregator.ts (여러 일지를 집계 → AggregatedStats)
 
 | 경로                      | 페이지           | 설명                                       |
 | ------------------------- | ---------------- | ------------------------------------------ |
-| `/`                       | HomePage         | 종합 대시보드 (통계 카드, 차트, 최근 활동) |
-| `/weekly`                 | WeeklyListPage   | 주간 일지 목록 (달력/리스트 뷰)            |
-| `/weekly/:location/:name` | WeeklyDetailPage | 주간 일지 상세                             |
+| `/`                        | HomePage          | 종합 대시보드 (통계 카드, 차트, 최근 활동) |
+| `/monthly`                 | MonthlyListPage   | 월간 일지 목록 (달력/리스트 뷰)            |
+| `/monthly/:location/:name` | MonthlyDetailPage | 월간 일지 상세                             |
 
 ### Key Directories
 
@@ -78,9 +78,9 @@ src/
 ├── components/
 │   ├── ui/          # shadcn UI 컴포넌트
 │   ├── layout/      # Header, Layout
-│   ├── dashboard/   # 홈 대시보드 전용 컴포넌트
-│   ├── weekly/      # 주간 일지 상세 페이지 컴포넌트
-│   └── weekly-list/ # 주간 일지 목록 페이지 컴포넌트
+│   ├── dashboard/    # 홈 대시보드 전용 컴포넌트
+│   ├── monthly/      # 월간 일지 상세 페이지 컴포넌트
+│   └── monthly-list/ # 월간 일지 목록 페이지 컴포넌트
 ├── hooks/           # useReports (데이터 fetching), useTheme
 ├── lib/             # aggregator, utils
 ├── types/           # TypeScript 인터페이스
@@ -93,22 +93,22 @@ src/
 
 ## Data Format
 
-JSON 파일 위치: `public/data/{location}/YYYY-MM-WN.json` (WeeklyReport[] 배열, 주간 단위)
-소스: `~/.claude/summaries/weekly/*.json` (session-analyzer가 생성하는 주간 배열)
+JSON 파일 위치: `public/data/{location}/YYYY-MM.json` (MonthlyReport[] 배열, 월간 단위)
+소스: `~/.claude/summaries/monthly/*.json` (session-analyzer가 생성하는 월간 배열)
 
 주요 필드: `date_range`, `summary`, `usage_style`, `tool_usage`, `scoring`, `feedback`, `error_summary`, `main_workflow`, `config_changes`
-- `config_changes`: 해당 주에 변경한 skill, command, CLAUDE.md, settings 등의 설정 변경 이력 (`ConfigChange[]`, optional)
+- `config_changes`: 해당 월에 변경한 skill, command, CLAUDE.md, settings 등의 설정 변경 이력 (`ConfigChange[]`, optional)
 
 파일 목록 관리: `public/data/index.json`
 
 ```json
-{ "files": [{ "name": "2026-02-W2.json", "location": "side" }] }
+{ "files": [{ "name": "2026-02.json", "location": "side" }] }
 ```
 
 ### 새 일지 추가
 
-1. `/session-analyzer` 스킬 실행 → `~/.claude/summaries/weekly/` 에 주간 보고서 생성
-2. `npm run sync-reports` 실행 → 주간 파일을 그대로 복사 + index.json 자동 업데이트
+1. `/session-analyzer` 스킬 실행 → `~/.claude/summaries/monthly/` 에 월간 보고서 생성
+2. `npm run sync-reports` 실행 → 월간 파일을 그대로 복사 + index.json 자동 업데이트
 3. `npm run sync-reports -- work` 로 location 지정 가능 (기본값: `side`)
 
 ## Conventions
