@@ -7,12 +7,7 @@
         "sessions": 230,
         "avg_messages": 80.7,
         "avg_tool_calls": 27.3,
-        "main_tasks": [
-            "Coding",
-            "Modification",
-            "Research",
-            "Deployment"
-        ]
+        "main_tasks": ["Coding", "Modification", "Research", "Deployment"]
     },
     "usage_style": {
         "prompt_stats": {
@@ -38,11 +33,6 @@
     },
     "tool_usage": {
         "skills": [
-            {
-                "name": "/granular-commit",
-                "count": 45,
-                "description": "Git 변경사항을 hunk/줄 단위로 분석하여 세밀한 논리적 커밋으로 분리"
-            },
             {
                 "name": "/session-analyzer",
                 "count": 20,
@@ -142,6 +132,11 @@
             }
         ],
         "commands": [
+            {
+                "name": "/granular-commit",
+                "count": 45,
+                "description": "Git 변경사항을 hunk/줄 단위로 분석하여 세밀한 논리적 커밋으로 분리"
+            },
             {
                 "name": "/compact",
                 "count": 30,
@@ -283,11 +278,7 @@
     "error_summary": {
         "rate": 5.2,
         "total": 330,
-        "main_types": [
-            "other",
-            "syntax_error",
-            "permission_denied"
-        ],
+        "main_types": ["other", "syntax_error", "permission_denied"],
         "recovery": {
             "immediate_fix": 76,
             "alternative": 132
@@ -300,18 +291,14 @@
             "name": "daily-publish",
             "action": "created/modified",
             "changes": 1,
-            "details": [
-                "일일 트렌드 블로그 발행, 실행 단계, 트렌드 수집 포함 문서 작성"
-            ]
+            "details": ["일일 트렌드 블로그 발행, 실행 단계, 트렌드 수집 포함 문서 작성"]
         },
         {
             "category": "command",
             "name": "write-post",
             "action": "created/modified",
             "changes": 1,
-            "details": [
-                "블로그 글 작성, 작성 가이드, 주제 분석 포함 문서 작성"
-            ]
+            "details": ["블로그 글 작성, 작성 가이드, 주제 분석 포함 문서 작성"]
         },
         {
             "category": "project_config",
@@ -335,9 +322,7 @@
             "name": "md-to-json",
             "action": "created/modified",
             "changes": 1,
-            "details": [
-                "MD → JSON 변환 Skill, 워크플로우, 1단계: 변환 범위 확인 포함 문서 작성"
-            ]
+            "details": ["MD → JSON 변환 Skill, 워크플로우, 1단계: 변환 범위 확인 포함 문서 작성"]
         },
         {
             "category": "skill",
@@ -371,18 +356,14 @@
             "name": "CLAUDE.md",
             "action": "created/modified",
             "changes": 2,
-            "details": [
-                "CLAUDE.md, 프로젝트 개요, 기술 스택 포함 문서 작성"
-            ]
+            "details": ["CLAUDE.md, 프로젝트 개요, 기술 스택 포함 문서 작성"]
         },
         {
             "category": "skill",
             "name": "menu-manage",
             "action": "created/modified",
             "changes": 1,
-            "details": [
-                "메뉴 데이터 관리, DB 연결, 스키마 참조 포함 문서 작성"
-            ]
+            "details": ["메뉴 데이터 관리, DB 연결, 스키마 참조 포함 문서 작성"]
         }
     ]
 }

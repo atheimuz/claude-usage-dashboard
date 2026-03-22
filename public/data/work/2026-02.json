@@ -7,11 +7,7 @@
         "sessions": 193,
         "avg_messages": 60.7,
         "avg_tool_calls": 20.1,
-        "main_tasks": [
-            "Coding",
-            "Deployment",
-            "Modification"
-        ]
+        "main_tasks": ["Coding", "Deployment", "Modification"]
     },
     "usage_style": {
         "prompt_stats": {
@@ -37,11 +33,6 @@
     },
     "tool_usage": {
         "skills": [
-            {
-                "name": "/granular-commit",
-                "count": 47,
-                "description": "Git 변경사항을 hunk/줄 단위로 분석하여 세밀한 논리적 커밋으로 분리"
-            },
             {
                 "name": "/retrospective",
                 "count": 5,
@@ -117,6 +108,11 @@
         ],
         "commands": [
             {
+                "name": "/granular-commit",
+                "count": 48,
+                "description": "Git 변경사항을 hunk/줄 단위로 분석하여 세밀한 논리적 커밋으로 분리"
+            },
+            {
                 "name": "/feature",
                 "count": 16,
                 "description": "기능 구현 파이프라인"
@@ -125,11 +121,6 @@
                 "name": "/clear",
                 "count": 1,
                 "description": "대화 기록 초기화"
-            },
-            {
-                "name": "/granular-commit",
-                "count": 1,
-                "description": "Git 변경사항을 hunk/줄 단위로 분석하여 세밀한 논리적 커밋으로 분리"
             },
             {
                 "name": "/compact",
@@ -210,10 +201,7 @@
     "error_summary": {
         "rate": 7.9,
         "total": 304,
-        "main_types": [
-            "other",
-            "file_not_found"
-        ],
+        "main_types": ["other", "file_not_found"],
         "recovery": {
             "immediate_fix": 52,
             "alternative": 109
@@ -226,9 +214,7 @@
             "name": "bug-fix",
             "action": "created/modified",
             "changes": 1,
-            "details": [
-                "Bug Fix Command, 사용법, allowed-tools 포함 문서 작성"
-            ]
+            "details": ["Bug Fix Command, 사용법, allowed-tools 포함 문서 작성"]
         },
         {
             "category": "project_config",
@@ -294,9 +280,7 @@
             "name": "implementation-guide",
             "action": "created/modified",
             "changes": 1,
-            "details": [
-                "Implementation Guide, 입력, 출력 포함 문서 작성"
-            ]
+            "details": ["Implementation Guide, 입력, 출력 포함 문서 작성"]
         },
         {
             "category": "project_config",
@@ -319,9 +303,7 @@
             "name": "settings.json",
             "action": "modified",
             "changes": 2,
-            "details": [
-                "설정 값 수정"
-            ]
+            "details": ["설정 값 수정"]
         },
         {
             "category": "skill",
@@ -359,9 +341,7 @@
             "name": "tdd",
             "action": "created/modified",
             "changes": 1,
-            "details": [
-                "TDD Expert Skill, 핵심 원칙, Red-Green-Refactor 사이클 포함 문서 작성"
-            ]
+            "details": ["TDD Expert Skill, 핵심 원칙, Red-Green-Refactor 사이클 포함 문서 작성"]
         }
     ]
 }

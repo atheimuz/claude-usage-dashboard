@@ -7,11 +7,7 @@
         "sessions": 97,
         "avg_messages": 45.8,
         "avg_tool_calls": 14.8,
-        "main_tasks": [
-            "Deployment",
-            "Coding",
-            "Modification"
-        ]
+        "main_tasks": ["Deployment", "Coding", "Modification"]
     },
     "usage_style": {
         "prompt_stats": {
@@ -38,26 +34,9 @@
     "tool_usage": {
         "skills": [
             {
-                "name": "/granular-commit",
-                "count": 33,
-                "description": "Git 변경사항을 hunk/줄 단위로 분석하여 세밀한 논리적 커밋으로 분리"
-            },
-            {
                 "name": "/feature-spec",
                 "count": 2,
                 "description": "기획 명세서 작성"
-            }
-        ],
-        "custom_commands": [
-            {
-                "name": "/code-review",
-                "count": 21,
-                "description": "코드 리뷰 수행."
-            },
-            {
-                "name": "/pr",
-                "count": 15,
-                "description": "현재 커밋사항들의 pr 생성"
             }
         ],
         "agents": [
@@ -118,6 +97,21 @@
             }
         ],
         "commands": [
+            {
+                "name": "/granular-commit",
+                "count": 33,
+                "description": "Git 변경사항을 hunk/줄 단위로 분석하여 세밀한 논리적 커밋으로 분리"
+            },
+            {
+                "name": "/code-review",
+                "count": 21,
+                "description": "코드 리뷰 수행"
+            },
+            {
+                "name": "/pr",
+                "count": 15,
+                "description": "현재 커밋사항들의 pr 생성"
+            },
             {
                 "name": "/private",
                 "count": 2,
@@ -192,10 +186,7 @@
     "error_summary": {
         "rate": 3.6,
         "total": 51,
-        "main_types": [
-            "other",
-            "file_not_found"
-        ],
+        "main_types": ["other", "file_not_found"],
         "recovery": {
             "immediate_fix": 4,
             "alternative": 34
@@ -218,9 +209,7 @@
             "name": "pr",
             "action": "created/modified",
             "changes": 1,
-            "details": [
-                "컨텍스트, 작업, 1. 사전 확인 포함 문서 작성"
-            ]
+            "details": ["컨텍스트, 작업, 1. 사전 확인 포함 문서 작성"]
         },
         {
             "category": "project_config",
@@ -245,18 +234,14 @@
             "name": "api-services",
             "action": "created/modified",
             "changes": 1,
-            "details": [
-                "API 서비스 작성 가이드, 트리거, 기본 구조 포함 문서 작성"
-            ]
+            "details": ["API 서비스 작성 가이드, 트리거, 기본 구조 포함 문서 작성"]
         },
         {
             "category": "skill",
             "name": "crud-generator",
             "action": "created/modified",
             "changes": 1,
-            "details": [
-                "CRUD Generator Skill, 트리거, 입력 정보 포함 문서 작성"
-            ]
+            "details": ["CRUD Generator Skill, 트리거, 입력 정보 포함 문서 작성"]
         },
         {
             "category": "skill",
@@ -282,9 +267,7 @@
             "name": "test-writing-guide",
             "action": "created/modified",
             "changes": 1,
-            "details": [
-                "Test Writing Guide, When to Apply, TDD 워크플로우 포함 문서 작성"
-            ]
+            "details": ["Test Writing Guide, When to Apply, TDD 워크플로우 포함 문서 작성"]
         }
     ]
 }
