@@ -1,6 +1,10 @@
 {
     "files": [
         {
+            "name": "2026-03.json",
+            "location": "work"
+        },
+        {
             "name": "2026-02.json",
             "location": "side"
         },
