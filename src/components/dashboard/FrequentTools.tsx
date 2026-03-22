@@ -1,29 +1,63 @@
+import { useState } from "react";
 import { Sparkles } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { formatNumber } from "@/lib/utils";
 import type { FrequentToolItem } from "@/types";
 
 interface Props {
-    frequentTools: FrequentToolItem[];
+    recentFrequentTools: FrequentToolItem[];
+    allFrequentTools: FrequentToolItem[];
 }
 
-export function FrequentTools({ frequentTools }: Props) {
-    if (frequentTools.length === 0) return null;
+export function FrequentTools({ recentFrequentTools, allFrequentTools }: Props) {
+    const [period, setPeriod] = useState<"recent" | "all">("recent");
 
-    const maxCount = frequentTools[0].totalCount;
+    const tools = period === "recent" ? recentFrequentTools : allFrequentTools;
+
+    if (recentFrequentTools.length === 0 && allFrequentTools.length === 0) return null;
+
+    const maxCount = tools.length > 0 ? tools[0].totalCount : 1;
 
     return (
         <Card>
             <CardHeader>
-                <CardTitle className="flex items-center gap-2 text-lg">
-                    <Sparkles className="h-5 w-5" />
-                    자주 쓰는 도구
-                </CardTitle>
+                <div className="flex items-center justify-between">
+                    <CardTitle className="flex items-center gap-2 text-lg">
+                        <Sparkles className="h-5 w-5" />
+                        자주 쓰는 도구
+                    </CardTitle>
+                    <ToggleGroup
+                        type="single"
+                        value={period}
+                        onValueChange={(value) => {
+                            if (value) setPeriod(value as "recent" | "all");
+                        }}
+                        size="sm"
+                    >
+                        <ToggleGroupItem
+                            value="recent"
+                            aria-label="최근 1개월"
+                            className="text-xs px-2.5 h-7"
+                            data-testid="frequent-tools-tab-recent"
+                        >
+                            최근
+                        </ToggleGroupItem>
+                        <ToggleGroupItem
+                            value="all"
+                            aria-label="전체 기간"
+                            className="text-xs px-2.5 h-7"
+                            data-testid="frequent-tools-tab-all"
+                        >
+                            전체
+                        </ToggleGroupItem>
+                    </ToggleGroup>
+                </div>
             </CardHeader>
             <CardContent>
                 <div className="space-y-3">
-                    {frequentTools.map((item, index) => (
+                    {tools.map((item, index) => (
                         <div
                             key={`${item.category}-${item.name}`}
                             data-testid="frequent-tool-item"
@@ -35,10 +69,10 @@ export function FrequentTools({ frequentTools }: Props) {
                                     {index + 1}
                                 </span>
                                 <div className="min-w-0 flex-1">
-                                    <span className="font-medium text-sm truncate block">
+                                    <span className="font-medium text-sm truncate flex items-center gap-1.5">
                                         <Badge
                                             variant="outline"
-                                            className="justify-center text-[11px] px-1.5 py-0 mr-1.5"
+                                            className="justify-center text-[11px] px-1.5 py-0 shrink-0"
                                         >
                                             {item.category === "agent"
                                                 ? "Agent"
@@ -46,7 +80,7 @@ export function FrequentTools({ frequentTools }: Props) {
                                                   ? "Command"
                                                   : "Skill"}
                                         </Badge>
-                                        <span>{item.name}</span>
+                                        <span className="truncate">{item.name}</span>
                                     </span>
                                     {item.description && (
                                         <span className="text-xs text-muted-foreground truncate block">

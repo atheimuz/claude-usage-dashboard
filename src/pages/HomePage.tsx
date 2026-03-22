@@ -89,7 +89,10 @@ export function HomePage() {
             </div>
             <div className="grid grid-cols-1 gap-3 lg:grid-cols-2">
                 <ToolStatsTable toolStats={stats.toolUsageAggregated} />
-                <FrequentTools frequentTools={stats.frequentTools} />
+                <FrequentTools
+                    recentFrequentTools={stats.recentFrequentTools}
+                    allFrequentTools={stats.frequentTools}
+                />
             </div>
             <TaskTypeGrid mainTasks={stats.mainTasks} />
             <RecentActivity reports={reports} />
