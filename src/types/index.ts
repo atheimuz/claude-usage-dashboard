@@ -135,11 +135,14 @@ export interface ToolStat {
     usageCount: number;
 }
 
+export type FrequentToolTrend = 'new' | 'up' | 'down' | 'stable';
+
 export interface FrequentToolItem {
     name: string;
     category: 'agent' | 'command' | 'skill';
     totalCount: number;
     description?: string;
+    trend?: FrequentToolTrend;
 }
 
 export interface AggregatedStats {
@@ -158,6 +161,7 @@ export interface AggregatedStats {
         workflow: number;
     };
     frequentTools: FrequentToolItem[];
+    recentFrequentTools: FrequentToolItem[];
 }
 
 export interface MonthlyTrendPoint {
