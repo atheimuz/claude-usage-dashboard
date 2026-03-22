@@ -1,4 +1,4 @@
-import type { MonthlyReport, AggregatedStats, ToolStat, MonthlyTrendPoint, Scoring, FrequentToolItem, ToolUsageItem } from "@/types"
+import type { MonthlyReport, AggregatedStats, ToolStat, MonthlyTrendPoint, Scoring, FrequentToolItem, FrequentToolTrend, ToolUsageItem } from "@/types"
 
 function accumulateFrequentTools(
   map: Map<string, FrequentToolItem>,
@@ -18,6 +18,46 @@ function accumulateFrequentTools(
       map.set(key, { name, category, totalCount: item.count, description: item.description })
     }
   }
+}
+
+function collectFrequentTools(reports: MonthlyReport[]): FrequentToolItem[] {
+  const map = new Map<string, FrequentToolItem>()
+  for (const report of reports) {
+    accumulateFrequentTools(map, report.tool_usage.agents, 'agent')
+    accumulateFrequentTools(map, report.tool_usage.commands, 'command')
+    accumulateFrequentTools(map, report.tool_usage.skills, 'skill')
+  }
+  return Array.from(map.values())
+    .sort((a, b) => b.totalCount - a.totalCount)
+    .slice(0, 10)
+}
+
+function computeTrend(
+  recentTools: FrequentToolItem[],
+  previousTools: FrequentToolItem[],
+): FrequentToolItem[] {
+  const previousRankMap = new Map<string, number>()
+  previousTools.forEach((item, index) => {
+    previousRankMap.set(`${item.category}::${item.name}`, index)
+  })
+
+  return recentTools.map((item, currentRank) => {
+    const key = `${item.category}::${item.name}`
+    const previousRank = previousRankMap.get(key)
+
+    let trend: FrequentToolTrend
+    if (previousRank === undefined) {
+      trend = 'new'
+    } else if (previousRank > currentRank) {
+      trend = 'up'
+    } else if (previousRank < currentRank) {
+      trend = 'down'
+    } else {
+      trend = 'stable'
+    }
+
+    return { ...item, trend }
+  })
 }
 
 export function aggregateReports(reports: MonthlyReport[]): AggregatedStats {
@@ -135,10 +175,22 @@ export function aggregateReports(reports: MonthlyReport[]): AggregatedStats {
       }
     : undefined
 
-  // FrequentTools: 배열 변환, 정렬, 상위 10개 추출
+  // FrequentTools: 전체 기간 (기존 방식)
   const frequentTools: FrequentToolItem[] = Array.from(frequentToolsMap.values())
     .sort((a, b) => b.totalCount - a.totalCount)
     .slice(0, 10)
+
+  // FrequentTools: 최근 1개월 + 트렌드
+  const allDates = Array.from(dates).sort()
+  const latestMonth = allDates[allDates.length - 1]
+  const previousMonths = allDates.slice(0, -1)
+
+  const recentReports = reports.filter(r => r.date === latestMonth)
+  const previousReports = reports.filter(r => previousMonths.includes(r.date))
+
+  const recentRaw = collectFrequentTools(recentReports)
+  const previousRaw = collectFrequentTools(previousReports)
+  const recentFrequentTools = computeTrend(recentRaw, previousRaw)
 
   return {
     totalDays: dates.size,
@@ -151,5 +203,6 @@ export function aggregateReports(reports: MonthlyReport[]): AggregatedStats {
     latestScoring,
     scoringCategoryAverages,
     frequentTools,
+    recentFrequentTools,
   }
 }
